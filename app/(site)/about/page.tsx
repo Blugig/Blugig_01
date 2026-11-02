@@ -13,6 +13,7 @@ import { CtaBand } from "@/components/sections/service/CtaBand";
 import { HeroBackdrop, HeroParticles } from "@/components/sections/service/ServiceHero";
 import { ParticleField } from "@/components/three/ParticleField";
 import { Chip } from "@/components/ui/Chip";
+import { PageHeading } from "@/components/ui/PageHeading";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { aboutCta, aboutHero, focus, partnerBand, story, values } from "@/content/about";
 import { site } from "@/content/site";
@@ -22,9 +23,9 @@ import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Avantra Technologies | Mitti Partner in Bengaluru",
+  title: "About Avantra | Mitti & Workato Partner, Bengaluru",
   description:
-    "Avantra Technologies is a Mitti implementation partner in Bengaluru: practical setup, training and ongoing improvement for operations teams.",
+    "Avantra Technologies is a Mitti implementation partner and Workato Silver Partner in Bengaluru, helping operations teams put Mitti into practice.",
   path: "/about",
 });
 
@@ -41,13 +42,16 @@ export default function AboutPage() {
         background={<HeroBackdrop />}
         copy={
           <div className="flex max-w-[46.5rem] flex-col gap-6">
-            <Chip icon={Compass} className="enter-fade">
-              {aboutHero.chip}
-            </Chip>
-            <h1 className="title-xl">
+            <PageHeading
+              label={
+                <Chip as="span" icon={Compass} className="enter-fade">
+                  {aboutHero.chip}
+                </Chip>
+              }
+            >
               <SplitWords text={aboutHero.titleLead} />{" "}
               <SplitWords text={aboutHero.titleAccent} offset={leadCount} wordClassName="text-grad" />
-            </h1>
+            </PageHeading>
             <p className="enter-fade text-l max-w-[36rem]" style={d(0.5)}>
               {aboutHero.sub}
             </p>

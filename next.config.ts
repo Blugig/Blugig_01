@@ -2,8 +2,12 @@ import type { NextConfig } from "next";
 
 /** Canonical host (matches PRODUCTION_URL in content/site.ts). */
 const PRODUCTION_URL = "https://www.avantratechnologies.com";
-/** Railway's generated domain for the production service: it must not serve a second copy of the site. */
-const RAILWAY_HOST = "avantra-tech-production.up.railway.app";
+/**
+ * Hosts that must not serve a second copy of the site: Railway's generated domain for the production
+ * service, and the bare domain (served by GoDaddy forwarding today; once it points at Railway, this
+ * redirect takes over with the path intact).
+ */
+const NON_CANONICAL_HOSTS = ["avantra-tech-production.up.railway.app", "avantratechnologies.com"];
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -19,13 +23,14 @@ const nextConfig: NextConfig = {
     /bot|crawl|spider|slurp|preview|lighthouse|facebookexternalhit|facebookcatalog|whatsapp|vkshare|tumblr|yeti|ia_archiver|googleweblight|google-|-google|yandex|baidu|sogou|chatgpt|perplexity|claude|anthropic|cohere|ccbot/i,
   async redirects() {
     return [
-      /** The Railway host → the same path on www (308, which search engines treat as permanent). */
-      {
+      /** Other hosts → the same path on www (308, which search engines treat as permanent). */
+      ...NON_CANONICAL_HOSTS.map((host) => ({
         source: "/:path*",
-        has: [{ type: "host", value: RAILWAY_HOST }],
+        // Next matches `has` values as an anchored regex (^…$), so www can't match the bare domain; dots escaped.
+        has: [{ type: "host" as const, value: host.replace(/\./g, "\\.") }],
         destination: `${PRODUCTION_URL}/:path*`,
         permanent: true,
-      },
+      })),
       /** Old Blugig service pages → the Avantra services overview. */
       { source: "/services/:slug", destination: "/services", permanent: true },
     ];

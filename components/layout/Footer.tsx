@@ -50,8 +50,8 @@ export function Footer() {
       {/* Link grid */}
       <div className="shell grid gap-12 pt-4 pb-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.1fr]">
         <div className="flex flex-col gap-5">
-          <Link href="/" aria-label={`${site.name} — home`} className="w-fit">
-            <Logo variant="onBrand" height={40} className="h-10 w-auto" />
+          <Link href="/" className="w-fit">
+            <Logo variant="onBrand" height={40} alt={site.name} className="h-10 w-auto" />
           </Link>
           <p className="-mt-2.5 text-[0.5625rem] leading-none font-medium tracking-[0.2em] whitespace-nowrap text-slate uppercase">{site.slogan}</p>
           <p className="text-s max-w-[18rem] text-gray-800">

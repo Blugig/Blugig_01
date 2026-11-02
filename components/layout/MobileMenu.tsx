@@ -70,8 +70,8 @@ export function MobileMenu() {
             <Dialog.Description>Site navigation</Dialog.Description>
           </VisuallyHidden.Root>
           <div className="flex h-16 shrink-0 items-center justify-between">
-            <Link href="/" onClick={close} aria-label={`${site.name} — home`}>
-              <Logo variant="onLight" height={28} className="h-7 w-auto" />
+            <Link href="/" onClick={close}>
+              <Logo variant="onLight" height={28} alt={site.name} className="h-7 w-auto" />
             </Link>
             <Dialog.Close
               className="flex size-10 items-center justify-center rounded-full bg-white"

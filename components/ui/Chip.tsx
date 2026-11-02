@@ -8,22 +8,27 @@ const tones = {
   zone: "text-[color:var(--page-muted)]",
 } as const;
 
-/** zig.ai `.section_chips` — line icon + medium 16px label above every heading. */
+/**
+ * zig.ai `.section_chips` — line icon + medium 16px label above every heading.
+ * `as="span"` for a chip that is part of the heading itself (see PageHeading).
+ */
 export function Chip({
   icon: Icon,
   children,
   tone = "default",
+  as: Tag = "p",
   className,
 }: {
   icon?: LucideIcon;
   children: React.ReactNode;
   tone?: keyof typeof tones;
+  as?: "p" | "span";
   className?: string;
 }) {
   return (
-    <p className={cn("flex items-center gap-2 text-base leading-[1.3] font-medium tracking-normal", tones[tone], className)}>
+    <Tag className={cn("flex items-center gap-2 text-base leading-[1.3] font-medium tracking-normal", tones[tone], className)}>
       {Icon ? <Icon aria-hidden className="size-6 shrink-0" strokeWidth={1.4} /> : null}
       <span>{children}</span>
-    </p>
+    </Tag>
   );
 }

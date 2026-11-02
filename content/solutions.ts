@@ -11,7 +11,8 @@ export type Solution = {
 };
 
 export const solutionsHero = {
-  eyebrow: "Solutions with Mitti",
+  /** Opens the page's H1 (see PageHeading): the search phrase the page targets. */
+  eyebrow: "Mitti solutions for inspections, audits and corrective actions",
   titleLead: "Solve the operational problems",
   titleAccent: "that cost you most.",
   sub: "Practical Mitti solutions for inspections, follow-up, and visibility across your sites.",

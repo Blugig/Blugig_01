@@ -37,7 +37,7 @@ type Swap = "in" | "out" | "idle";
 /**
  * zig hero (`.hero_container-new`): copy column over a full-bleed animation
  * layer. Desktop: 100vh clamped to 54.375–56.25rem, columns 1fr 1fr (1.4fr 1fr
- * from 1280px). ≤991px: stacked and centred, min-height 75rem, the wheel sits
+ * from 1280px). ≤991px: stacked and centred, min-height 78.5rem (zig's 75rem plus the H1's kicker line), the wheel sits
  * at the bottom under a top fade.
  * Two stages share the layout: a short scroll swaps the inspection copy for the
  * integration copy — the headline letter by letter, the wheel turning to the
@@ -69,7 +69,7 @@ export function Hero() {
       >
         <HeroWheel stage={stage} />
         <div className="shell relative z-10">
-          <div className="grid items-center gap-5 min-[992px]:h-screen min-[992px]:max-h-[56.25rem] min-[992px]:min-h-[54.375rem] min-[992px]:grid-cols-2 min-[1280px]:grid-cols-[1.4fr_1fr] max-[991px]:flex max-[991px]:min-h-[75rem] max-[991px]:flex-col max-[991px]:pt-[8.625rem] max-[767px]:gap-15 max-[767px]:pb-[6.875rem] max-[479px]:block max-[479px]:pt-[9.75rem] max-[479px]:pb-0">
+          <div className="grid items-center gap-5 min-[992px]:h-screen min-[992px]:max-h-[56.25rem] min-[992px]:min-h-[54.375rem] min-[992px]:grid-cols-2 min-[1280px]:grid-cols-[1.4fr_1fr] max-[991px]:flex max-[991px]:min-h-[78.5rem] max-[991px]:flex-col max-[991px]:pt-[8.625rem] max-[767px]:gap-15 max-[767px]:pb-[6.875rem] max-[479px]:block max-[479px]:pt-[9.75rem] max-[479px]:pb-0">
             <div className="flex w-full max-w-[46.5rem] flex-col gap-6 max-[991px]:items-center max-[991px]:text-center">
               <div className="enter-fade max-[767px]:max-w-[24rem]" style={d(0)}>
                 <Badges badges={hero.badges} />
@@ -134,15 +134,29 @@ function HeroCopy({
       style={{ "--lag": `${lag}s` } as CSSProperties}
     >
       <div className="flex flex-col gap-6 max-[991px]:items-center max-[767px]:max-w-[24rem]">
-        {/* Lead and accent each own a line (balanced when the accent wraps), as in the mockups.
-            The letters are the only copy of the text (crawlers read it once); the space between the
-            lines keeps the words apart, and aria-label spares screen readers the letter spans. */}
-        <Heading className="title-xl" aria-label={`${copy.titleLead} ${copy.titleAccent}`}>
-          <span aria-hidden className="block text-balance">
-            <SplitChars text={copy.titleLead} />
-          </span>{" "}
-          <span aria-hidden className="block text-balance">
-            <SplitChars text={copy.titleAccent} offset={leadCount} gradient />
+        {/* The kicker opens the heading with the page's search phrase in plain text. Lead and accent then
+            each own a line (balanced when the accent wraps), as in the mockups. The letters are the only
+            copy of the headline (crawlers read it once); the colon and spaces keep the parts apart, and
+            aria-label spares screen readers the letter spans. */}
+        <Heading
+          className="flex flex-col gap-5 max-[991px]:items-center"
+          aria-label={`${copy.kicker}: ${copy.titleLead} ${copy.titleAccent}`}
+        >
+          <span aria-hidden className="hero-swap block" style={sd(0.3)}>
+            <span className="eyebrow enter-fade block text-gray-600" style={d(0.05)}>
+              {copy.kicker}
+            </span>
+          </span>
+          <span aria-hidden className="sr-only">
+            :{" "}
+          </span>
+          <span className="title-xl block">
+            <span aria-hidden className="block text-balance">
+              <SplitChars text={copy.titleLead} />
+            </span>{" "}
+            <span aria-hidden className="block text-balance">
+              <SplitChars text={copy.titleAccent} offset={leadCount} gradient />
+            </span>
           </span>
         </Heading>
         <div className="hero-swap" style={sd(0.4)}>

@@ -20,7 +20,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Mitti (SafetyCulture) Implementation Partner | Avantra",
   description:
-    "Avantra plans, configures and rolls out Mitti (formerly SafetyCulture) across your sites, so issues get fixed faster and every team stays audit-ready.",
+    "Avantra plans, configures and rolls out Mitti (formerly SafetyCulture) across your sites, with Workato integrations, so every issue gets fixed.",
   path: "/",
 });
 

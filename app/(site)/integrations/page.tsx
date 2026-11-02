@@ -9,9 +9,9 @@ import { integrations } from "@/content/home";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti + Workato Integrations for ERP, ITSM & HRIS | Avantra",
+  title: "Mitti + Workato Integrations: ERP, ITSM, HRIS | Avantra",
   description:
-    "Connect Mitti to ServiceNow, SAP, Workday, Power BI and more with Workato. Built by a Workato Silver Partner, from assessment to hand-over.",
+    "Connect Mitti to SAP, ServiceNow, Salesforce and your HR tools with Workato. Findings create tickets and work orders automatically.",
   path: "/integrations",
 });
 
@@ -23,7 +23,7 @@ export default function IntegrationsPage() {
       <ServiceHero
         crumb="Integrations"
         path="/integrations"
-        eyebrow={integrations.chip}
+        eyebrow={integrations.page.heading}
         lead={integrations.titleLead}
         accentText={integrations.titleAccent}
         summary={integrations.sub}

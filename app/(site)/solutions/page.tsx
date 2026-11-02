@@ -11,9 +11,9 @@ import { solutions, solutionsCta, solutionsHero, solutionsIndustries, solutionsI
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti Solutions for Inspections, Audits & Actions | Avantra",
+  title: "Mitti Solutions: Inspections, Audits & Actions | Avantra",
   description:
-    "Mitti solutions for inspections and audits, issue reporting, corrective actions, site standards, asset checks and Workato-connected workflows.",
+    "Digital inspections, issue reporting, corrective actions and asset checks on Mitti, configured for manufacturing, construction and facilities teams.",
   path: "/solutions",
 });
 

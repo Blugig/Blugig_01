@@ -54,8 +54,8 @@ export function Navbar() {
         aria-label="Main"
         className="relative mx-auto grid h-16 max-w-[85rem] grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[1fr_auto_1fr]"
       >
-        <Link href="/" aria-label={`${site.name} — home`} className="justify-self-start">
-          <Logo eager height={32} className="h-7 w-auto lg:h-8" />
+        <Link href="/" className="justify-self-start">
+          <Logo eager height={32} alt={site.name} className="h-7 w-auto lg:h-8" />
         </Link>
 
         <NavigationMenu.Root value={menu} onValueChange={setMenu} delayDuration={120} className="relative hidden lg:block">

@@ -6,12 +6,13 @@ import { CalendlyEmbed } from "@/app/(site)/contact/CalendlyEmbed";
 import { SplitWords } from "@/components/motion/SplitWords";
 import { HeroRays } from "@/components/sections/home/HeroArt";
 import { Chip } from "@/components/ui/Chip";
+import { PageHeading } from "@/components/ui/PageHeading";
 import { contactDetails, site } from "@/content/site";
 import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact Avantra | Book a Mitti Rollout Consultation",
-  description: `Talk to Avantra about your Mitti rollout: a new implementation, improving an existing setup, or Workato integrations. We reply within ${site.replyTime}.`,
+  description: `Book a free Mitti rollout consultation for a new implementation, an existing setup or Workato integrations. We reply within ${site.replyTime}.`,
   path: "/contact",
 });
 
@@ -34,12 +35,15 @@ export default function ContactPage() {
       <div className="shell grid gap-14 pt-32 pb-[clamp(4.5rem,8vw,6.25rem)] lg:grid-cols-[1fr_1.15fr] lg:gap-16">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-6">
-            <Chip icon={MessageSquare} className="enter-fade">
-              Contact
-            </Chip>
-            <h1 className="title-xl">
+            <PageHeading
+              label={
+                <Chip as="span" icon={MessageSquare} className="enter-fade">
+                  Book a Mitti rollout consultation
+                </Chip>
+              }
+            >
               <SplitWords text="Let's talk about" /> <SplitWords text="your Mitti rollout." offset={3} wordClassName="text-grad" />
-            </h1>
+            </PageHeading>
             <p className="enter-fade text-l max-w-[30rem]" style={d(0.5)}>
               Tell us about your operations and what you want to improve. We&apos;ll help you find the right starting point.
             </p>
