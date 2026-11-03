@@ -49,7 +49,7 @@ export const site = {
   parentProfiles: ["https://www.linkedin.com/company/sspmconsultants"] as string[],
   copyright: "© 2026 Avantra Technologies. An SSPM IT SOLUTIONS PRIVATE LIMITED COMPANY. All rights reserved.",
   /** Booking link (contact page, integration assessment); NEXT_PUBLIC_CALENDLY_URL overrides it. */
-  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/avantratechnologies-info/30min",
+  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/avantratechnologies/30min",
 } as const;
 
 /** Contact lines that are set, with their link (footer + contact page). */
