@@ -28,15 +28,16 @@ pinned in `package.json` → `engines`.
 
 1. Railway → **New Project → Deploy from GitHub repo** → pick this repository (each push to `main` redeploys).
 2. **Settings → Networking → Generate Domain** (or add your custom domain).
-3. **Variables** — copy the keys from `.env.example`. Set `NEXT_PUBLIC_SITE_URL` to the final domain
-   (e.g. `https://avantra.example`); `NEXT_PUBLIC_*` values are baked in at build time, so redeploy after changing them.
+3. **Variables** — copy the keys from `.env.example`. The canonical domain (`https://www.avantratechnologies.com`)
+   is fixed in `content/site.ts`, not set by a variable; `NEXT_PUBLIC_*` values are baked in at build time, so redeploy after changing them.
 
 `next start` listens on Railway's `PORT` automatically. The contact form's rate limit is in-memory, which suits a
 single replica.
 
 ## Pages
-`/` · `/solutions` · `/services` · `/how-we-work` · `/about` · `/contact` · `/privacy` · `/terms`
-(old `/services/:slug` URLs redirect to `/services` — `next.config.ts`).
+`/` · `/solutions` · `/services` · `/integrations` · `/how-we-work` · `/about` · `/contact` · `/blog` · `/privacy` · `/terms`
+(old `/services/:slug` URLs redirect to `/services` — `next.config.ts`). Blog posts are written in `/admin`
+(`ADMIN_PASSWORD`; stored in Postgres via `DATABASE_URL`, see `lib/blog/store.ts`).
 
 ## Where things live
 - **Copy** — `content/*.ts`: `site`, `navigation`, `home`, `solutions`, `services`, `howWeWork`, `about`, `industries`, `testimonials`

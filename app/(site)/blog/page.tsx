@@ -6,6 +6,7 @@ import { SplitWords } from "@/components/motion/SplitWords";
 import { HeroRays } from "@/components/sections/home/HeroArt";
 import { ButtonLink } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
+import { PageHeading } from "@/components/ui/PageHeading";
 import { blog } from "@/content/blog";
 import { analyzeMarkdown } from "@/lib/blog/markdown";
 import { formatDate, postExcerpt, postPath, readingMinutes } from "@/lib/blog/post";
@@ -18,14 +19,15 @@ export const instant = false;
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getLivePosts();
   const base = pageMetadata({
-    title: "Blog | Avantra Technologies",
-    description: "Practical writing on Mitti rollouts, digital inspections and Workato integrations from Avantra Technologies.",
+    title: "Mitti & SafetyCulture Rollout Blog | Avantra",
+    description:
+      "Guides on Mitti (formerly SafetyCulture) rollouts, digital inspections and Workato integrations for operations and EHS teams.",
     path: "/blog",
   });
   return {
     ...base,
     alternates: { canonical: "/blog", types: { "application/rss+xml": [{ url: "/blog/rss.xml", title: "Avantra Technologies blog" }] } },
-    // Until there are a few posts the list is thin, so it stays out of search (each post is indexed on its own).
+    // An empty list has nothing to rank, so it stays out of search until the first post is live.
     ...(blogIndexIndexable(posts) ? {} : { robots: { index: false, follow: true } }),
   };
 }
@@ -40,13 +42,17 @@ export default async function BlogPage() {
       <HeroRays className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-70" />
       <div className="shell flex flex-col gap-14 pt-32 pb-[clamp(4.5rem,8vw,6.25rem)]">
         <div className="flex flex-col gap-6">
-          <Chip icon={Newspaper} className="enter-fade">
-            {blog.chip}
-          </Chip>
-          <h1 className="title-xl max-w-[56rem]">
+          <PageHeading
+            className="max-w-[56rem]"
+            label={
+              <Chip as="span" icon={Newspaper} className="enter-fade">
+                {blog.chip}
+              </Chip>
+            }
+          >
             <SplitWords text={blog.titleLead} />{" "}
             <SplitWords text={blog.titleAccent} offset={leadCount} wordClassName="text-grad" />
-          </h1>
+          </PageHeading>
           <p className="enter-fade text-l max-w-[36rem]" style={d(0.5)}>
             {blog.sub}
           </p>

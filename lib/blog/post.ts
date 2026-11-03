@@ -62,8 +62,8 @@ export function toEditable(p: Post): EditablePost {
   };
 }
 
-/** The blog index stays out of search until it has this many live posts (a one-post index is thin). */
-export const MIN_POSTS_TO_INDEX = 3;
+/** The blog index joins search (and the sitemap) once this many posts are live; with none it's an empty page. */
+export const MIN_POSTS_TO_INDEX = 1;
 
 /** Default byline: the company, until a named person writes the post (named authors are better for E-E-A-T). */
 export const DEFAULT_AUTHOR: PostAuthor = { name: "Avantra Technologies", role: "", url: "", bio: "" };

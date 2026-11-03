@@ -5,6 +5,7 @@ import { HeroRays } from "@/components/sections/home/HeroArt";
 import { HeroMotion } from "@/components/sections/home/HeroMotion";
 import { ParticleField } from "@/components/three/ParticleField";
 import { ButtonLink } from "@/components/ui/Button";
+import { PageHeading } from "@/components/ui/PageHeading";
 import { alpha, shade } from "@/lib/color";
 import type { ShapeName } from "@/lib/three/shapes";
 import { breadcrumbJsonLd, JsonLd } from "@/lib/seo";
@@ -36,6 +37,7 @@ export function ServiceHero({
 }: {
   crumb: string;
   path: string;
+  /** The mono label above the headline. It opens the H1, so word it as the page's search phrase. */
   eyebrow: string;
   lead: string;
   accentText: string;
@@ -70,13 +72,16 @@ export function ServiceHero({
                   </li>
                 </ol>
               </nav>
-              <p className="eyebrow enter-fade flex items-center gap-3 text-gray-600" style={d(0.05)}>
-                <span aria-hidden className="size-2 rounded-full" style={{ background: accent }} />
-                {eyebrow}
-              </p>
-              <h1 className="title-xl">
+              <PageHeading
+                label={
+                  <span className="eyebrow enter-fade flex items-center gap-3 text-gray-600" style={d(0.05)}>
+                    <span aria-hidden className="size-2 shrink-0 rounded-full" style={{ background: accent }} />
+                    {eyebrow}
+                  </span>
+                }
+              >
                 <SplitWords text={lead} /> <SplitWords text={accentText} offset={leadCount} wordClassName="text-grad" />
-              </h1>
+              </PageHeading>
               <p className="enter-fade text-l max-w-[33.75rem]" style={d(0.5)}>
                 {summary}
               </p>

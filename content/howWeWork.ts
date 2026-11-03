@@ -1,6 +1,7 @@
 /** How we work page copy. */
 export const howHero = {
-  eyebrow: "Our implementation approach",
+  /** Opens the page's H1 (see PageHeading): the search phrase the page targets. */
+  eyebrow: "Our 4-phase Mitti rollout plan",
   titleLead: "A clear plan.",
   titleAccent: "A confident rollout.",
   sub: "We work with your team to turn operational requirements into a practical Mitti implementation.",

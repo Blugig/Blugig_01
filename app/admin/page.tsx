@@ -62,8 +62,8 @@ export default async function AdminPostsPage() {
         ) : null}
         {liveIndexable < MIN_POSTS_TO_INDEX ? (
           <p className="rounded-2xl bg-white p-4 text-sm text-gray-700">
-            Each live post is in the sitemap and can rank. The <strong>/blog</strong> index page joins search once {MIN_POSTS_TO_INDEX} posts are
-            live ({liveIndexable} so far), so Google doesn&apos;t see a thin list page.
+            No live posts yet, so the <strong>/blog</strong> page stays out of search. Publish a post and it joins the sitemap with the page
+            itself.
           </p>
         ) : null}
 

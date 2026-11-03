@@ -13,6 +13,7 @@ import { Related } from "@/components/sections/service/Related";
 import { HeroBackdrop, HeroParticles } from "@/components/sections/service/ServiceHero";
 import { ButtonLink } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
+import { PageHeading } from "@/components/ui/PageHeading";
 import { phases } from "@/content/howWeWork";
 import {
   engagementModels,
@@ -26,9 +27,9 @@ import {
 import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti Implementation Services & Rollout Support | Avantra",
+  title: "Mitti Implementation Services & Training | Avantra",
   description:
-    "Mitti implementation services: discovery, configuration, inspections and workflows, reporting, training and launch, and ongoing optimization.",
+    "Mitti implementation services: discovery, configuration, templates, reporting, training, launch and ongoing optimization from certified experts.",
   path: "/services",
 });
 
@@ -44,13 +45,16 @@ export default function ServicesPage() {
         copy={
           <div className="flex max-w-[46.5rem] flex-col gap-[2.625rem]">
             <div className="flex flex-col gap-6">
-              <Chip icon={Lightbulb} className="enter-fade">
-                {servicesHero.chip}
-              </Chip>
-              <h1 className="title-xl">
+              <PageHeading
+                label={
+                  <Chip as="span" icon={Lightbulb} className="enter-fade">
+                    {servicesHero.chip}
+                  </Chip>
+                }
+              >
                 <SplitWords text={servicesHero.titleLead} />{" "}
                 <SplitWords text={servicesHero.titleAccent} offset={leadCount} wordClassName="text-grad" />
-              </h1>
+              </PageHeading>
               <p className="enter-fade text-l max-w-[36rem]" style={d(0.5)}>
                 {servicesHero.sub}
               </p>

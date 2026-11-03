@@ -10,10 +10,11 @@ export const site = {
   /** Brand line from the logo lockup. */
   slogan: "Smarter operations. Safer teams.",
   /**
-   * Canonical origin (canonicals, sitemap, robots, OG, JSON-LD). NEXT_PUBLIC_SITE_URL overrides it, but
-   * never fall back to RAILWAY_PUBLIC_DOMAIN: that told search engines the Railway copy was the real site.
+   * Canonical origin (canonicals, sitemap, robots, OG, JSON-LD). Deliberately not read from the
+   * environment: a NEXT_PUBLIC_SITE_URL set to the Railway domain twice told search engines the
+   * Railway copy was the real site. Every build uses the production domain.
    */
-  url: (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_URL).replace(/\/+$/, ""),
+  url: PRODUCTION_URL,
   description:
     "Avantra Technologies is a Mitti implementation partner. We help operations teams plan, configure and roll out Mitti by SafetyCulture — from setup to site-wide adoption.",
   /** Each contact value is rendered only when set (footer, contact page, JSON-LD). */

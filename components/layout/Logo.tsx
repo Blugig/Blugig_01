@@ -21,7 +21,8 @@ const ART = {
  * (where the logo's own cyan "a" would disappear). `auto` renders all three and
  * lets globals.css pick one for the active scroll zone (ink → white, sky → navy).
  * `height` is the largest rendered height (sizes the srcset); `className` sets
- * the displayed size. Callers wrap it in a link that carries the accessible name.
+ * the displayed size. A logo that is a link's only content takes `alt` (the brand
+ * name): that names the link for screen readers and gives search engines anchor text.
  */
 export function Logo({
   variant = "auto",

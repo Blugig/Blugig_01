@@ -18,8 +18,8 @@ const azeret = Azeret_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s | ${site.name}`,
+    default: "Mitti (SafetyCulture) Implementation Partner | Avantra",
+    template: `%s | ${site.shortName}`,
   },
   description: site.description,
   applicationName: site.name,

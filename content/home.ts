@@ -14,6 +14,8 @@ export const hero = {
   badges: site.credentials,
   stages: [
     {
+      /** Small line that opens the H1: the search phrase the home page targets. */
+      kicker: "Mitti (SafetyCulture) implementation partner",
       titleLead: "Every inspection,",
       titleAccent: "turned into action.",
       sub: "Avantra designs, deploys, and scales Mitti across your sites, so issues get fixed faster and every team stays audit-ready.",
@@ -22,6 +24,7 @@ export const hero = {
       apps: [],
     },
     {
+      kicker: "Mitti and Workato integrations",
       titleLead: "Connect Mitti",
       titleAccent: "to every system you run.",
       sub: "Avantra builds Workato automations that sync inspections, issues and actions with your ERP, CRM, HR and ticketing tools.",
@@ -154,6 +157,8 @@ export const integrations = {
   },
   /** Integrations page hero: the title and intro above, the assessment button, then this link; `flows` heads the flow cards (H2). */
   page: {
+    /** Opens the Integrations page's H1 (see PageHeading): the search phrase the page targets. */
+    heading: "Mitti and Workato integrations for ERP, ITSM and HR systems",
     secondary: { label: "See the flows", href: "#flows" },
     flows: {
       lead: "Four flows that",

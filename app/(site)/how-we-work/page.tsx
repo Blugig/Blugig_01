@@ -12,9 +12,9 @@ import { governance, howCta, howHero, ownership, phases, readiness } from "@/con
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "How We Implement Mitti: A 4-Phase Rollout Plan | Avantra",
+  title: "How We Implement Mitti: 4-Phase Rollout | Avantra",
   description:
-    "Our Mitti implementation approach: discover, configure and validate, train and launch, then support and improve, with clear deliverables.",
+    "Our 4-phase Mitti rollout: discover, configure and validate, train and launch, then support and improve, with clear deliverables each phase.",
   path: "/how-we-work",
 });
 

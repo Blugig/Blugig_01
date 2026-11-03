@@ -7,7 +7,8 @@ Each value is rendered only when set (footer, contact page, JSON-LD).
 - [x] `email`, `phone`, `address`
 - [x] `social.linkedin`
 - [ ] Confirm reply-time promise `replyTime` ("1 business day") — used on /contact, in the form success message and the /contact meta description.
-- [x] Production domain — `PRODUCTION_URL` (www.avantratechnologies.com) is the default; `NEXT_PUBLIC_SITE_URL` only overrides it (e.g. staging). No Railway fallback.
+- [x] Production domain — `PRODUCTION_URL` (www.avantratechnologies.com) in `content/site.ts`, not overridable by env (a `NEXT_PUBLIC_SITE_URL` pointing at Railway broke canonicals on the live site, 2 Nov 2026).
+- [ ] **Delete `NEXT_PUBLIC_SITE_URL` from the Railway service's Variables** (the code ignores it now).
 - [x] City spelled "Bengaluru" everywhere (was "Bangalore" on the site, "Bengaluru" in schema). Use the same spelling on LinkedIn and partner listings.
 
 ## SEO — owner actions (see the audit's action plan)
@@ -20,7 +21,7 @@ Each value is rendered only when set (footer, contact page, JSON-LD).
 - [ ] Ask SSPM to link to www.avantratechnologies.com from its website.
 - [ ] Proof and people: 2–3 case studies with real numbers (client permission, or anonymised), a team section on About (names, roles, photos, Mitti/Workato certifications, LinkedIn), one citable fact per service page. Never invent numbers or testimonials.
 - [ ] Deepen Solutions, Integrations, How we work and About (~800 words of real detail each).
-- [ ] Blog: publish 2–3 more posts in /admin with **named authors** (role + LinkedIn). The /blog index joins search automatically at 3 live posts; posts get the sitemap, RSS, structured data and an IndexNow ping on publish without any code change.
+- [ ] Blog: publish 2–3 more posts in /admin with **named authors** (role + LinkedIn). The /blog index is indexable while at least one post is live; posts get the sitemap, RSS, structured data and an IndexNow ping on publish without any code change.
 
 ## Blog admin (/admin) — setup on Railway
 - [ ] Add a **Postgres** database to the Railway project, and in the web service's Variables add `DATABASE_URL` → reference the database's `DATABASE_URL`. The `blog_posts` table and the example post are created on first request. Until then the admin can't save (the container disk is wiped on deploy) and the site shows the example post.
