@@ -14,6 +14,7 @@ import { integrationsMenu, mainNav, primaryCta } from "@/content/navigation";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import { solutions } from "@/content/solutions";
+import { DESKTOP_QUERY, useMediaQuery } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 
 const navlink =
@@ -21,13 +22,13 @@ const navlink =
 
 /**
  * zig navbar: logo left · white pill of links centred · two pill buttons right.
- * The `.nav_bg` layer fades in after 200px of scroll and follows the page colour.
+ * The `.nav_bg` layer fades in after 200px of scroll on desktop (as soon as the page moves below
+ * 1024px) and follows the page colour.
  * Solutions / Services open their mega menu on hover and go to their page on click.
  */
 export function Navbar() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
-  const [scrolled, setScrolled] = useState(false);
   // Open mega menu (its trigger href, or ""). Closed on every route change, since the nav persists across pages.
   const [menu, setMenu] = useState("");
   const [menuPath, setMenuPath] = useState(pathname);
@@ -36,9 +37,15 @@ export function Navbar() {
     setMenu("");
   }
 
+  // 0 at the top, 1 once the page moves, 2 past 200px. Desktop keeps zig's 200px fade-in (its heroes
+  // pin or clear the bar); narrower screens scroll copy under the bar at once, so it fills in straight away.
+  const [depth, setDepth] = useState(0);
+  const desktop = useMediaQuery(DESKTOP_QUERY);
+  const scrolled = depth >= (desktop ? 2 : 1);
+
   useMotionValueEvent(scrollY, "change", (y) => {
-    const next = y >= 200;
-    setScrolled((prev) => (prev === next ? prev : next));
+    const next = y >= 200 ? 2 : y > 8 ? 1 : 0;
+    setDepth((prev) => (prev === next ? prev : next));
   });
 
   return (
