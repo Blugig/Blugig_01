@@ -57,7 +57,8 @@ function SheetMock() {
           ))}
         </div>
       </div>
-      <div className="absolute -top-5 right-2 flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[11px] text-ink shadow-[0_12px_30px_-8px_rgba(4,28,66,0.25)]">
+      {/* Floats above the table's top edge, clear of the column labels (the table's padding is 0.75rem). */}
+      <div className="absolute -top-7 right-2 flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[11px] text-ink shadow-[0_12px_30px_-8px_rgba(4,28,66,0.25)]">
         <span className="flex size-5 items-center justify-center rounded-full bg-sky-500">
           <Zap className="size-3" strokeWidth={2} />
         </span>

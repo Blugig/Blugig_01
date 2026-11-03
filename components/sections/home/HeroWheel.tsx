@@ -95,21 +95,54 @@ const MUTED = "#626d81";
 const rad = (deg: number) => (deg * Math.PI) / 180;
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
-export function HeroWheel({ stage }: { stage: number }) {
+/** How far the tablet scene hangs below the hero's foot (px). */
+const TABLET_DROP = 8;
+
+/**
+ * Stacked layouts (≤991px) pin the scene to the hero's foot at full width, so
+ * the cards fill a band of fixed proportion there. The hero reserves that band
+ * under its copy (the `--hero-zone` spacer) so the copy can never run into the
+ * cards, however it wraps. Measured from the top resting card to the scene's
+ * foot, in container-width units (`cqw`, the hero is the container).
+ */
+function stackedZone(variant: "tablet" | "mobile") {
+  const V = VARIANTS[variant];
+  const top = V.ny + V.k * (C.y - R * Math.sin(rad(REST[0])) + BOX.t);
+  const cqw = (((V.h - top) / V.w) * 100).toFixed(2);
+  return variant === "tablet" ? `calc(${cqw}cqw - ${TABLET_DROP}px)` : `${cqw}cqw`;
+}
+export const STACKED_ZONE = { tablet: stackedZone("tablet"), mobile: stackedZone("mobile") } as const;
+
+/**
+ * `lift` (px, stacked layouts only) raises the whole layer so the cards sit
+ * right under a stage whose copy ends above the hero's shared copy cell; it
+ * eases with the wheel's turn once `animateLift` is on (after the first swap,
+ * so the first paint never slides).
+ */
+export function HeroWheel({ stage, lift = 0, animateLift = false }: { stage: number; lift?: number; animateLift?: boolean }) {
   const wide = useMediaQuery("(min-width: 1280px)");
   const desk = useMediaQuery("(min-width: 992px)");
   const tablet = useMediaQuery("(min-width: 480px)");
   const mounted = useMediaQuery("(min-width: 0px)");
   const reduce = useReducedMotionSafe();
   const variant: Variant | null = !mounted ? null : wide ? "wide" : desk ? "desk" : tablet ? "tablet" : "mobile";
+  const rise = variant === "tablet" || variant === "mobile" ? lift : 0;
 
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 z-0 select-none">
+    <div
+      aria-hidden
+      className={cn(
+        "pointer-events-none absolute inset-0 z-0 select-none",
+        animateLift && !reduce && "transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]",
+      )}
+      style={rise ? { transform: `translate3d(0, ${-rise}px, 0)` } : undefined}
+    >
       {variant ? <Scene key={variant} variant={variant} reduce={reduce} stage={stage} /> : null}
-      {/* zig `.hero-animation_grad`: side fades on very wide screens, top fade when stacked */}
+      {/* zig `.hero-animation_grad`: side fades on very wide screens; when stacked, a top fade over the copy that
+          clears by the top card (the hero's `--hero-zone` band), so spokes show faintly behind the buttons only */}
       <div className="absolute inset-y-0 left-0 hidden w-[30vw] bg-[linear-gradient(90deg,var(--color-canvas)_38%,transparent)] min-[1920px]:block" />
       <div className="absolute inset-y-0 right-0 hidden w-[10vw] bg-[linear-gradient(-90deg,var(--color-canvas),transparent)] min-[1920px]:block" />
-      <div className="absolute inset-x-0 top-0 z-[1] h-1/2 bg-[linear-gradient(180deg,var(--color-canvas)_62%,transparent)] min-[992px]:hidden max-[479px]:h-[55%]" />
+      <div className="absolute inset-x-0 top-0 bottom-(--hero-zone) z-1 bg-[linear-gradient(180deg,var(--color-canvas)_60%,transparent)] min-[992px]:hidden" />
     </div>
   );
 }
@@ -195,8 +228,8 @@ function Scene({ variant, reduce, stage }: { variant: Variant; reduce: boolean; 
     <div ref={wrapRef} className={cn("absolute inset-0 flex justify-center overflow-hidden", stacked ? "items-end" : "items-center")}>
       <div
         ref={stageRef}
-        className={cn("relative shrink-0", stacked ? "w-full" : "h-full", variant === "tablet" && "-mb-2")}
-        style={{ aspectRatio: `${V.w} / ${V.h}` }}
+        className={cn("relative shrink-0", stacked ? "w-full" : "h-full")}
+        style={{ aspectRatio: `${V.w} / ${V.h}`, marginBottom: variant === "tablet" ? -TABLET_DROP : undefined }}
       >
         <div
           className="absolute top-0 left-0 origin-top-left transition-opacity duration-700"

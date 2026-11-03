@@ -133,7 +133,8 @@ export function MobileMenu() {
             ))}
           </motion.nav>
 
-          <div className="sticky bottom-0 mt-8 flex flex-col gap-3 bg-[linear-gradient(0deg,var(--color-canvas)_70%,transparent)] pt-8">
+          {/* Pinned to the bottom, except on short (landscape phone) screens, where it would cover the links. */}
+          <div className="sticky bottom-0 mt-8 flex flex-col gap-3 bg-[linear-gradient(0deg,var(--color-canvas)_70%,transparent)] pt-8 [@media(max-height:31.25rem)]:static [@media(max-height:31.25rem)]:pt-0">
             <ButtonLink href={primaryCta.href} onClick={close} className="w-full">
               {primaryCta.label}
             </ButtonLink>

@@ -136,7 +136,9 @@ export function Footer() {
         <FooterWordmark />
       </div>
 
-      <div className="shell flex flex-col gap-3 border-t border-ink/15 py-6 text-sm text-gray-800 sm:flex-row sm:items-center sm:justify-between">
+      {/* Clear of the fixed back-to-top button (bottom-right, 3rem plus 1–1.5rem inset): room below the stacked
+          row on phones, room to the right of the legal links once they share a line. */}
+      <div className="shell flex flex-col gap-3 border-t border-ink/15 pt-6 pb-20 text-sm text-gray-800 sm:flex-row sm:items-center sm:justify-between sm:pr-[5.25rem] sm:pb-6">
         <p>{site.copyright}</p>
         <ul className="flex gap-6">
           {footerNav.legal.map((l) => (

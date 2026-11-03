@@ -3,9 +3,9 @@
 import { ArrowRight, CirclePlay } from "lucide-react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import Image, { type StaticImageData } from "next/image";
-import { useState, type CSSProperties } from "react";
+import { useLayoutEffect, useRef, useState, type CSSProperties, type Ref } from "react";
 import { SplitChars } from "@/components/motion/SplitChars";
-import { HeroWheel } from "@/components/sections/home/HeroWheel";
+import { HeroWheel, STACKED_ZONE } from "@/components/sections/home/HeroWheel";
 import { ButtonLink } from "@/components/ui/Button";
 import { hero } from "@/content/home";
 import { useScrollChoreography } from "@/lib/hooks";
@@ -37,8 +37,10 @@ type Swap = "in" | "out" | "idle";
 /**
  * zig hero (`.hero_container-new`): copy column over a full-bleed animation
  * layer. Desktop: 100vh clamped to 54.375–56.25rem, columns 1fr 1fr (1.4fr 1fr
- * from 1280px). ≤991px: stacked and centred, min-height 78.5rem (zig's 75rem plus the H1's kicker line), the wheel sits
- * at the bottom under a top fade.
+ * from 1280px). ≤991px: stacked and centred; the wheel sits at the bottom under
+ * a top fade, and the copy is followed by a spacer as tall as the wheel's card
+ * band (`--hero-zone`, from HeroWheel's geometry), so the hero grows with its
+ * copy and the cards always start below it.
  * Two stages share the layout: a short scroll swaps the inspection copy for the
  * integration copy — the headline letter by letter, the wheel turning to the
  * next set of cards — and scrolling back swaps it back. The credential badges
@@ -61,23 +63,59 @@ export function Hero() {
   });
   const swapped = seen.every(Boolean);
 
+  // Both stages share one grid cell, so the shorter stage (the first: it has no app chips) ends above the
+  // cell's foot. lift[i] is that shortfall; stacked, the wheel rides up by it so the cards sit under the copy
+  // that is showing. Layout offsets, so the copy's entrance transforms don't skew it.
+  const copyRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [lift, setLift] = useState<number[]>([]);
+  useLayoutEffect(() => {
+    const els = copyRefs.current.filter((el): el is HTMLDivElement => !!el);
+    const measure = () => {
+      const ends = els.map((el) => {
+        const last = el.lastElementChild as HTMLElement | null;
+        return last ? last.offsetTop + last.offsetHeight : 0;
+      });
+      const max = Math.max(...ends);
+      setLift((prev) => {
+        const next = ends.map((end) => Math.round(max - end));
+        return next.length === prev.length && next.every((v, i) => v === prev[i]) ? prev : next;
+      });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    els.forEach((el) => [...el.children].forEach((child) => ro.observe(child)));
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <section className="relative" style={pinned ? { height: `calc(${HERO_H} + ${PIN})` } : undefined}>
       <div
-        className={cn("relative isolate overflow-hidden", pinned && "sticky")}
-        style={pinned ? { top: `min(0px, calc(100vh - ${HERO_H}))` } : undefined}
+        className={cn(
+          "@container relative isolate overflow-hidden max-[992px]:[--hero-zone:var(--zone-tablet)] max-[480px]:[--hero-zone:var(--zone-mobile)]",
+          pinned && "sticky",
+        )}
+        style={
+          {
+            "--zone-tablet": STACKED_ZONE.tablet,
+            "--zone-mobile": STACKED_ZONE.mobile,
+            ...(pinned ? { top: `min(0px, calc(100vh - ${HERO_H}))` } : null),
+          } as CSSProperties
+        }
       >
-        <HeroWheel stage={stage} />
+        <HeroWheel stage={stage} lift={lift[stage] ?? 0} animateLift={swapped} />
         <div className="shell relative z-10">
-          <div className="grid items-center gap-5 min-[992px]:h-screen min-[992px]:max-h-[56.25rem] min-[992px]:min-h-[54.375rem] min-[992px]:grid-cols-2 min-[1280px]:grid-cols-[1.4fr_1fr] max-[991px]:flex max-[991px]:min-h-[78.5rem] max-[991px]:flex-col max-[991px]:pt-[8.625rem] max-[767px]:gap-15 max-[767px]:pb-[6.875rem] max-[479px]:block max-[479px]:pt-[9.75rem] max-[479px]:pb-0">
-            <div className="flex w-full max-w-[46.5rem] flex-col gap-6 max-[991px]:items-center max-[991px]:text-center">
-              <div className="enter-fade max-[767px]:max-w-[24rem]" style={d(0)}>
+          <div className="grid items-center gap-5 min-[992px]:h-screen min-[992px]:max-h-[56.25rem] min-[992px]:min-h-[54.375rem] min-[992px]:grid-cols-2 min-[1280px]:grid-cols-[1.4fr_1fr] max-[992px]:flex max-[992px]:flex-col max-[992px]:gap-0 max-[992px]:pt-[8.125rem] max-[480px]:pt-[7.25rem]">
+            <div className="flex w-full max-w-[46.5rem] flex-col gap-6 max-[992px]:items-center max-[992px]:text-center">
+              <div className="enter-fade max-[768px]:max-w-[24rem]" style={d(0)}>
                 <Badges badges={hero.badges} />
               </div>
               <div className="grid w-full" style={{ "--dir": dir } as CSSProperties}>
                 {hero.stages.map((copy, i) => (
                   <HeroCopy
                     key={i}
+                    ref={(el) => {
+                      copyRefs.current[i] = el;
+                    }}
                     copy={copy}
                     heading={i === 0 ? "h1" : "h2"}
                     swap={i === stage ? "in" : seen[i] ? "out" : "idle"}
@@ -87,6 +125,8 @@ export function Hero() {
                 ))}
               </div>
             </div>
+            {/* Stacked: room for the wheel's cards, which HeroWheel pins to the hero's foot. */}
+            <div aria-hidden className="h-(--hero-zone) w-full shrink-0 mt-8 max-[480px]:mt-6 min-[992px]:hidden" />
           </div>
           {hero.stages.map((copy, i) =>
             copy.apps.length ? (
@@ -94,7 +134,7 @@ export function Hero() {
                 key={i}
                 apps={copy.apps}
                 visible={i === stage}
-                className="absolute right-[var(--gutter)] bottom-8 justify-end max-[991px]:hidden"
+                className="absolute right-[var(--gutter)] bottom-8 justify-end max-[992px]:hidden"
               />
             ) : null,
           )}
@@ -111,12 +151,14 @@ export function Hero() {
  * first load, before any swap, when the letters must paint visibly for LCP.
  */
 function HeroCopy({
+  ref,
   copy,
   heading: Heading,
   swap,
   lag,
   entering,
 }: {
+  ref?: Ref<HTMLDivElement>;
   copy: Stage;
   heading: "h1" | "h2";
   swap: Swap;
@@ -127,19 +169,20 @@ function HeroCopy({
   const sd = (s: number) => ({ "--sd": `${s + lag}s` }) as CSSProperties;
   return (
     <div
+      ref={ref}
       data-swap={swap}
       data-enter={entering || undefined}
       inert={swap !== "in"}
-      className="flex flex-col gap-[2.625rem] [grid-area:1/1] max-[991px]:items-center"
+      className="flex flex-col gap-[2.625rem] [grid-area:1/1] max-[992px]:items-center"
       style={{ "--lag": `${lag}s` } as CSSProperties}
     >
-      <div className="flex flex-col gap-6 max-[991px]:items-center max-[767px]:max-w-[24rem]">
+      <div className="flex flex-col gap-6 max-[992px]:items-center max-[768px]:max-w-[24rem]">
         {/* The kicker opens the heading with the page's search phrase in plain text. Lead and accent then
             each own a line (balanced when the accent wraps), as in the mockups. The letters are the only
             copy of the headline (crawlers read it once); the colon and spaces keep the parts apart, and
             aria-label spares screen readers the letter spans. */}
         <Heading
-          className="flex flex-col gap-5 max-[991px]:items-center"
+          className="flex flex-col gap-5 max-[992px]:items-center"
           aria-label={`${copy.kicker}: ${copy.titleLead} ${copy.titleAccent}`}
         >
           <span aria-hidden className="hero-swap block" style={sd(0.3)}>
@@ -165,9 +208,9 @@ function HeroCopy({
           </p>
         </div>
       </div>
-      <div className="hero-swap max-[479px]:w-full" style={sd(0.5)}>
+      <div className="hero-swap max-[480px]:w-full" style={sd(0.5)}>
         <div
-          className="enter-fade flex flex-wrap items-center gap-3 max-[991px]:justify-center max-[479px]:w-full max-[479px]:flex-col max-[479px]:items-stretch"
+          className="enter-fade flex flex-wrap items-center gap-3 max-[992px]:justify-center max-[480px]:w-full max-[480px]:flex-col max-[480px]:items-stretch"
           style={d(0.65)}
         >
           <ButtonLink href={copy.primary.href}>
@@ -198,7 +241,7 @@ function ButtonIcon({ name }: { name?: keyof typeof BUTTON_ICONS }) {
 /** Partner credentials as small cards: Mitti shows its wordmark, Workato its badge. */
 function Badges({ badges }: { badges: typeof hero.badges }) {
   return (
-    <ul className="flex flex-wrap gap-3 max-[991px]:justify-center">
+    <ul className="flex flex-wrap gap-3 max-[992px]:justify-center">
       {badges.map((badge) => (
         <li
           key={badge.name}
