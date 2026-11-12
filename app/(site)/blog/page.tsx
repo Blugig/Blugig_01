@@ -19,9 +19,9 @@ export const instant = false;
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getLivePosts();
   const base = pageMetadata({
-    title: "Mitti & SafetyCulture Rollout Blog | Avantra",
+    title: "Mitti by SafetyCulture Guides | Avantra Blog",
     description:
-      "Guides on Mitti (formerly SafetyCulture) rollouts, digital inspections and Workato integrations for operations and EHS teams.",
+      "Guides from Avantra's Mitti experts on rollouts, digital inspections, corrective actions, and Workato integrations for operations teams.",
     path: "/blog",
   });
   return {
