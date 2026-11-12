@@ -11,9 +11,9 @@ import { solutions, solutionsCta, solutionsHero, solutionsIndustries, solutionsI
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti Solutions: Inspections, Audits & Actions | Avantra",
+  title: "Mitti Solutions for Inspections and Actions | Avantra",
   description:
-    "Digital inspections, issue reporting, corrective actions and asset checks on Mitti, configured for manufacturing, construction and facilities teams.",
+    "Use Mitti for digital inspections, audits, issue reporting, and follow-up. Avantra configures the workflows your sites actually run.",
   path: "/solutions",
 });
 

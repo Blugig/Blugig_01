@@ -15,7 +15,7 @@ export const hero = {
   stages: [
     {
       /** Small line that opens the H1: the search phrase the home page targets. */
-      kicker: "Mitti (SafetyCulture) implementation partner",
+      kicker: "Mitti experts at Avantra",
       titleLead: "Every inspection,",
       titleAccent: "turned into action.",
       sub: "Avantra designs, deploys, and scales Mitti across your sites, so issues get fixed faster and every team stays audit-ready.",
@@ -29,7 +29,7 @@ export const hero = {
       titleAccent: "to every system you run.",
       sub: "Avantra builds Workato automations that sync inspections, issues and actions with your ERP, CRM, HR and ticketing tools.",
       primary: { label: "Plan my integration", href: "/contact" },
-      secondary: { label: "See integrations", href: "/services" },
+      secondary: { label: "See integrations", href: "/integrations" },
       apps: ["Salesforce", "SAP", "ServiceNow", "Slack", "Teams", "+more"],
     },
   ],
@@ -79,7 +79,7 @@ export const gap = {
 };
 
 export const statement = {
-  accent: "Your Mitti implementation partner,",
+  accent: "Mitti experts at Avantra,",
   rest: "from planning and configuration to adoption and rollout.",
 };
 
@@ -166,7 +166,7 @@ export const integrations = {
       sub: "Each flow starts with a Mitti finding and ends in the system that owns the fix, with the status synced back to Mitti.",
     },
   },
-  /** The button opens the Calendly link (NEXT_PUBLIC_CALENDLY_URL) when set; `href` is the fallback. */
+  /** The button opens the Calendly booking page; `href` is the fallback if that URL is ever empty. */
   cta: {
     text: "Not sure where to start? We'll map your first integrations in one session.",
     label: "Book an integration assessment",

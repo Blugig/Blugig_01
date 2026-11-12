@@ -258,7 +258,7 @@ function Badges({ badges }: { badges: typeof hero.badges }) {
             </span>
           ) : (
             <>
-              <Image src={workatoBadge} alt="" width={44} height={44} className="size-11" />
+              <Image src={workatoBadge} alt="Workato Silver Partner" width={44} height={44} className="size-11" />
               <span className="flex flex-col text-left">
                 <span className="text-base leading-[1.2] font-semibold text-ink">{badge.name}</span>
                 <span className="text-sm leading-[1.3] text-gray-600">{badge.line}</span>

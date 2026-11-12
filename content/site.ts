@@ -1,12 +1,21 @@
 /** The production domain: the canonical host for every URL search engines see (next.config.ts redirects other hosts here). */
 export const PRODUCTION_URL = "https://www.avantratechnologies.com";
 
+/**
+ * The only booking page. Not read from the environment, so a stale
+ * NEXT_PUBLIC_CALENDLY_URL cannot point at the retired avantratechnologies-info event.
+ */
+export const CALENDLY_URL = "https://calendly.com/avantratechnologies/30min";
+
+/** Avantra's LinkedIn company page (footer icon and Organization sameAs). */
+export const LINKEDIN_URL = "https://www.linkedin.com/company/144056120/";
+
 /** Global site settings. Empty contact values are hidden on the site and tracked in TODO.md. */
 export const site = {
   name: "Avantra Technologies",
   shortName: "Avantra",
   legalName: "Avantra Technologies",
-  tagline: "Mitti Implementation Partner",
+  tagline: "Mitti experts",
   /** Brand line from the logo lockup. */
   slogan: "Smarter operations. Safer teams.",
   /**
@@ -16,7 +25,7 @@ export const site = {
    */
   url: PRODUCTION_URL,
   description:
-    "Avantra Technologies is a Mitti implementation partner. We help operations teams plan, configure and roll out Mitti by SafetyCulture — from setup to site-wide adoption.",
+    "Avantra Technologies is a team of Mitti experts. We help operations teams plan, configure, and roll out Mitti by SafetyCulture, from the first setup to everyday use across sites.",
   /** Each contact value is rendered only when set (footer, contact page, JSON-LD). */
   email: "info@avantratechnologies.com" as string,
   /** Listed in this order everywhere; the first is the primary (structured data). */
@@ -25,14 +34,14 @@ export const site = {
   address: "Bengaluru, Karnataka, India" as string,
   replyTime: "1 business day",
   social: {
-    /** The parent company's page (footer link) until Avantra has its own company page. */
-    linkedin: "https://www.linkedin.com/company/sspmconsultants" as string,
+    /** Avantra's company page. The parent company's page stays on parentProfiles. */
+    linkedin: LINKEDIN_URL as string,
   },
   /**
-   * Avantra's own profiles, listed as Organization `sameAs` in structured data: add its LinkedIn
-   * company page and the Mitti / Workato partner-directory listings once they're live.
+   * Avantra's own profiles, listed as Organization `sameAs`. Add Mitti and Workato
+   * partner-directory listings here once they are live.
    */
-  profiles: [] as string[],
+  profiles: [LINKEDIN_URL] as string[],
   /** Partner programme shown as a badge (footer + About). */
   partner: {
     name: "Workato Automation League — Silver Partner",
@@ -48,8 +57,8 @@ export const site = {
   /** The parent company's profiles, credited to it (parentOrganization) in structured data, never to Avantra. */
   parentProfiles: ["https://www.linkedin.com/company/sspmconsultants"] as string[],
   copyright: "© 2026 Avantra Technologies. An SSPM IT SOLUTIONS PRIVATE LIMITED COMPANY. All rights reserved.",
-  /** Booking link (contact page, integration assessment); NEXT_PUBLIC_CALENDLY_URL overrides it. */
-  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/avantratechnologies/30min",
+  /** Booking link for every "Book a call", "Let's talk", and Calendly button. */
+  calendlyUrl: CALENDLY_URL,
 } as const;
 
 /** Contact lines that are set, with their link (footer + contact page). */

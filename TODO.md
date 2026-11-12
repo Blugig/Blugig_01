@@ -15,7 +15,7 @@ Each value is rendered only when set (footer, contact page, JSON-LD).
 - [ ] Deploy, then check the Railway host redirects: `curl -sI https://avantra-tech-production.up.railway.app/about` → `308` to www. Keep the Railway domain attached.
 - [ ] Google Search Console: add a **Domain** property for `avantratechnologies.com` (DNS TXT record in GoDaddy; never delete it), submit `sitemap.xml`, request indexing for /, /services, /solutions, /integrations.
 - [ ] Bing Webmaster Tools: import from Search Console. After each deploy, `npm run indexnow` pings Bing/IndexNow (key file `public/266ad790aefc0f0477960e0ac1ed1c94.txt`).
-- [ ] Create an **Avantra Technologies LinkedIn company page**; add its URL to `site.profiles` (structured data `sameAs`) and swap the footer link `social.linkedin` to it.
+- [x] Avantra LinkedIn company page is https://www.linkedin.com/company/144056120/ (`site.social.linkedin`, footer icon, and Organization `sameAs` via `site.profiles`).
 - [ ] Partner directories: ask the Mitti partner manager for a listing (integrations.safetyculture.com) and Workato how service partners are listed. When live, add the URLs to `site.profiles` and link the hero/About badges to them.
 - [ ] Google Business Profile only if the Bengaluru office has signage, staff during business hours and receives visitors (no virtual offices).
 - [ ] Ask SSPM to link to www.avantratechnologies.com from its website.
@@ -36,7 +36,7 @@ Each value is rendered only when set (footer, contact page, JSON-LD).
 - [ ] Client logos (with permission) — the marquee under the statement shows Mitti services/use cases until then (`content/home.ts` → `platforms`).
 
 ## Content to supply (hidden until set)
-- [x] Booking link — calendly.com/avantratechnologies/30min in `content/site.ts` (`NEXT_PUBLIC_CALENDLY_URL` overrides it; the old `avantratechnologies-info` link is gone).
+- [x] Booking link — https://calendly.com/avantratechnologies/30min is fixed in `content/site.ts`. The site no longer reads `NEXT_PUBLIC_CALENDLY_URL`. Delete that variable on Railway if it is still set (the old `avantratechnologies-info` event is dead).
 
 ## Content to confirm
 - [ ] Integration systems list — `content/home.ts` → `integrations.groups` (example systems per category on Home `#integrations`).
@@ -52,7 +52,7 @@ Each value is rendered only when set (footer, contact page, JSON-LD).
 
 ## Integrations (env — see `.env.example`)
 - [ ] `CONTACT_WEBHOOK_URL` (n8n / Zapier / Make) and/or `RESEND_API_KEY` + `CONTACT_TO_EMAIL` (+ verified `CONTACT_FROM_EMAIL`). Lead payload field is `topic`.
-- [ ] Optional `NEXT_PUBLIC_CALENDLY_URL`
+- [x] Booking URL is fixed in code. Do not set `NEXT_PUBLIC_CALENDLY_URL` (the site ignores it).
 - [ ] Rate limit is in-memory per instance — fine for one Railway replica; move to a shared store (e.g. Redis on Railway) if you scale to several.
 
 ## Analytics

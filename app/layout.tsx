@@ -15,22 +15,31 @@ const azeret = Azeret_Mono({
   display: "swap",
 });
 
+const shareImage = `${site.url}/opengraph-image`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Mitti (SafetyCulture) Implementation Partner | Avantra",
+    default: "Mitti Experts at Avantra Technologies",
     template: `%s | ${site.shortName}`,
   },
   description: site.description,
   applicationName: site.name,
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: site.name,
     locale: "en_US",
-    url: "/",
+    url: site.url,
+    title: "Mitti Experts at Avantra Technologies",
+    description: site.description,
+    images: [{ url: shareImage, width: 1200, height: 630, alt: `${site.name} — Mitti experts` }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mitti Experts at Avantra Technologies",
+    description: site.description,
+    images: [{ url: shareImage, width: 1200, height: 630, alt: `${site.name} — Mitti experts` }],
+  },
 };
 
 export const viewport: Viewport = {

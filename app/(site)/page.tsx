@@ -18,9 +18,9 @@ import { services } from "@/content/services";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti (SafetyCulture) Implementation Partner | Avantra",
+  title: "Mitti Experts for Site Operations | Avantra",
   description:
-    "Avantra plans, configures and rolls out Mitti (formerly SafetyCulture) across your sites, with Workato integrations, so every issue gets fixed.",
+    "Avantra Technologies is a team of Mitti experts. We help operations teams roll out Mitti by SafetyCulture, from the first setup to inspections and actions across sites.",
   path: "/",
 });
 

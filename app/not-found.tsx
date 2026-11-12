@@ -3,9 +3,15 @@ import { SiteChrome } from "@/components/layout/SiteChrome";
 import { ParticleField } from "@/components/three/ParticleField";
 import { ButtonLink } from "@/components/ui/Button";
 
+const notFoundTitle = "Page Not Found | Avantra Technologies";
+const notFoundDescription = "This page is not on the Avantra Technologies website. Go back home or browse Mitti services.";
+
 export const metadata: Metadata = {
-  title: "Page not found",
-  robots: { index: false },
+  title: { absolute: notFoundTitle },
+  description: notFoundDescription,
+  robots: { index: false, follow: false },
+  openGraph: { title: notFoundTitle, description: notFoundDescription, siteName: "Avantra Technologies" },
+  twitter: { card: "summary_large_image", title: notFoundTitle, description: notFoundDescription },
 };
 
 /**

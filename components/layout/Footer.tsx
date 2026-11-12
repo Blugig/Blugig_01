@@ -55,7 +55,7 @@ export function Footer() {
           </Link>
           <p className="-mt-2.5 text-[0.5625rem] leading-none font-medium tracking-[0.2em] whitespace-nowrap text-slate uppercase">{site.slogan}</p>
           <p className="text-s max-w-[18rem] text-gray-800">
-            {site.tagline} — implementation, enablement and ongoing support for Mitti by SafetyCulture.
+            {site.tagline} at Avantra — setup, training, and ongoing support for Mitti by SafetyCulture.
           </p>
           {contact.length > 0 ? (
             <ul className="flex flex-col gap-2.5">

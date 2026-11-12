@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: { default: "Admin", template: "%s · Avantra admin" },
+  description: "Private area for writing and publishing Avantra Technologies blog posts.",
   robots: { index: false, follow: false },
 };
 
