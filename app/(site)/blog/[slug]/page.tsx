@@ -9,7 +9,7 @@ import { blogPostingJsonLd, hasPersonAuthor } from "@/lib/blog/jsonld";
 import { analyzeMarkdown, renderMarkdown } from "@/lib/blog/markdown";
 import { formatDate, postExcerpt, postImagePath, postPath, postTitleTag, readingMinutes } from "@/lib/blog/post";
 import { findLivePost, relatedPosts } from "@/lib/blog/queries";
-import { breadcrumbJsonLd, faqJsonLd, JsonLd } from "@/lib/seo";
+import { asHttps, breadcrumbJsonLd, faqJsonLd, JsonLd } from "@/lib/seo";
 
 /**
  * A post renders per request with no static fallback. Crawlers (htmlLimitedBots in
@@ -25,10 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!found || "movedTo" in found) return {};
   const { post } = found;
   const path = postPath(post.slug);
+  const image = { url: postImagePath(post.slug), width: 1200, height: 630, alt: post.title };
   return {
     title: { absolute: postTitleTag(post) },
     description: post.description,
-    alternates: { canonical: post.canonicalUrl || path },
+    alternates: { canonical: post.canonicalUrl ? asHttps(post.canonicalUrl) : path },
     ...(post.noindex ? { robots: { index: false, follow: true } } : {}),
     authors: [{ name: post.author.name, ...(post.author.url ? { url: post.author.url } : {}) }],
     openGraph: {
@@ -42,8 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       modifiedTime: post.updatedAt,
       authors: [post.author.name],
       tags: post.tags,
-      images: [{ url: postImagePath(post.slug), width: 1200, height: 630, alt: post.title }],
+      images: [image],
     },
+    twitter: { card: "summary_large_image", title: post.title, description: post.description, images: [image] },
   };
 }
 

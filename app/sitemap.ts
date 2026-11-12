@@ -9,7 +9,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getLivePosts();
   return [
     ...pages.map((p) => ({
-      url: absoluteUrl(p),
+      // Homepage has no trailing slash, matching the canonical Next resolves from metadataBase.
+      url: absoluteUrl(p).replace(/\/$/, ""),
       changeFrequency: "monthly" as const,
       priority: p === "/" ? 1 : p === "/privacy" || p === "/terms" ? 0.3 : 0.8,
     })),

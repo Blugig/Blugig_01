@@ -1,6 +1,6 @@
 import { ogSize, renderOg } from "@/lib/og";
 
-export const alt = "Avantra Technologies — Mitti implementation partner";
+export const alt = "Avantra Technologies, Mitti experts for Mitti by SafetyCulture";
 export const size = ogSize;
 export const contentType = "image/png";
 

@@ -9,9 +9,9 @@ import { integrations } from "@/content/home";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti + Workato Integrations: ERP, ITSM, HRIS | Avantra",
+  title: "Connect Mitti to ERP, IT, and HR Systems | Avantra",
   description:
-    "Connect Mitti to SAP, ServiceNow, Salesforce and your HR tools with Workato. Findings create tickets and work orders automatically.",
+    "Mitti experts connect Mitti by SafetyCulture to SAP, ServiceNow, Salesforce, and HR tools with Workato, so a finding can open a ticket or work order on its own.",
   path: "/integrations",
 });
 

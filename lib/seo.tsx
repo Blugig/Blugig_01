@@ -6,14 +6,19 @@ export function absoluteUrl(path = "/") {
   return new URL(path, site.url).toString();
 }
 
-/** The site-wide share image (app/opengraph-image.tsx, 1200×630). */
-const OG_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} — Mitti implementation partner` };
+/** The site-wide share image (app/opengraph-image.tsx, 1200×630). Relative URL; metadataBase makes it https. */
+const OG_IMAGE = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: `${site.name}, Mitti experts for Mitti by SafetyCulture`,
+};
 
 /**
- * A page's title, description, canonical and Open Graph, all for the same URL.
- * The title is absolute (it names the brand itself), and openGraph repeats the
- * layout's shared fields and image because a page's openGraph replaces the
- * inherited one whole.
+ * A page's title, description, canonical, Open Graph, and Twitter card, all for the same URL.
+ * The title is absolute (it names the brand itself). openGraph and twitter repeat the shared
+ * fields and image because a page's social metadata replaces the inherited object whole.
+ * Paths stay relative so metadataBase (https://www.avantratechnologies.com) resolves them.
  */
 export function pageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {
   return {
@@ -21,14 +26,33 @@ export function pageMetadata({ title, description, path }: { title: string; desc
     description,
     alternates: { canonical: path },
     openGraph: { type: "website", siteName: site.name, locale: "en_US", url: path, title, description, images: [OG_IMAGE] },
+    twitter: { card: "summary_large_image", title, description, images: [OG_IMAGE] },
   };
 }
 
 /**
- * The company as the most specific schema.org type that fits (ProfessionalService
- * is an Organization), with one Service per offering. `sameAs` lists only
- * Avantra's own profiles; the parent's go on parentOrganization, so the two
- * aren't read as one company.
+ * Keep our own absolute URLs on https://www. Relative paths are unchanged so metadataBase can resolve them.
+ * Other sites' URLs are left as the author wrote them.
+ */
+export function asHttps(pathOrUrl: string) {
+  if (!pathOrUrl.startsWith("http://")) return pathOrUrl;
+  try {
+    const url = new URL(pathOrUrl);
+    const host = url.hostname.toLowerCase();
+    const ours = host === "www.avantratechnologies.com" || host === "avantratechnologies.com" || host.endsWith(".up.railway.app");
+    if (!ours) return pathOrUrl;
+    url.protocol = "https:";
+    url.hostname = "www.avantratechnologies.com";
+    return url.toString();
+  } catch {
+    return pathOrUrl;
+  }
+}
+
+/**
+ * Organization (also a ProfessionalService) with one Service per offering.
+ * `sameAs` lists only Avantra's own profiles; the parent's go on parentOrganization,
+ * so the two aren't read as one company.
  */
 export function organizationJsonLd() {
   const offers = [
@@ -37,7 +61,7 @@ export function organizationJsonLd() {
   ];
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["Organization", "ProfessionalService"],
     "@id": absoluteUrl("/#organization"),
     name: site.legalName,
     alternateName: site.shortName,
