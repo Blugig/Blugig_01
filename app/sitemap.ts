@@ -5,7 +5,23 @@ import { absoluteUrl } from "@/lib/seo";
 
 /** Site pages, plus every indexable blog post (with its real last-edited date) and /blog once it's indexable. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages = ["/", "/solutions", "/services", "/integrations", "/how-we-work", "/about", "/contact", "/privacy", "/terms"];
+  const pages = [
+    "/",
+    "/solutions",
+    "/services",
+    "/mitti-experts",
+    "/mitti-experts/construction",
+    "/mitti-experts/manufacturing",
+    "/mitti-experts/facilities",
+    "/mitti-experts/healthcare",
+    "/mitti-training",
+    "/integrations",
+    "/how-we-work",
+    "/about",
+    "/contact",
+    "/privacy",
+    "/terms",
+  ];
   const posts = await getLivePosts();
   return [
     ...pages.map((p) => ({

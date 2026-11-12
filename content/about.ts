@@ -46,7 +46,7 @@ export const partnerBand = {
   chip: "Mitti",
   lead: "Your",
   highlight: "Mitti",
-  rest: "Implementation Partner.",
+  rest: "experts.",
   sub: "From planning and configuration to adoption and rollout.",
 };
 
