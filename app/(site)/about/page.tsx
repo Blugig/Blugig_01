@@ -137,7 +137,7 @@ export default function AboutPage() {
                 <Image src={mittiLogo} alt="" width={120} height={46} className="h-auto w-30" />
                 <p className="text-m text-gray-600">
                   <span className="block font-medium text-ink">Mitti Certified Experts</span>
-                  Implementation partner for Mitti
+                  Mitti experts
                 </p>
               </li>
               <li className="flex items-center gap-4">

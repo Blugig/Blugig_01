@@ -156,7 +156,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {post.author.bio ||
                   (person
                     ? `${post.author.name} works on Mitti rollouts at ${site.name}.`
-                    : `${site.name} is a Mitti implementation partner in Bengaluru, helping operations teams plan, configure and roll out Mitti, and connect it to the systems they already run.`)}
+                    : `${site.name} is a team of Mitti experts in Bengaluru, helping operations teams plan, configure and roll out Mitti, and connect it to the systems they already run.`)}
               </p>
               {person && post.author.url ? (
                 <a href={post.author.url} target="_blank" rel="author noopener" className="text-s w-fit text-blue-700 hover:underline">

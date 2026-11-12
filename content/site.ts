@@ -6,7 +6,7 @@ export const site = {
   name: "Avantra Technologies",
   shortName: "Avantra",
   legalName: "Avantra Technologies",
-  tagline: "Mitti Implementation Partner",
+  tagline: "Mitti experts",
   /** Brand line from the logo lockup. */
   slogan: "Smarter operations. Safer teams.",
   /**
@@ -25,13 +25,13 @@ export const site = {
   address: "Bengaluru, Karnataka, India" as string,
   replyTime: "1 business day",
   social: {
-    /** The parent company's page (footer link) until Avantra has its own company page. */
-    linkedin: "https://www.linkedin.com/company/sspmconsultants" as string,
+    /** Footer LinkedIn icon. Avantra's company page. */
+    linkedin: "https://www.linkedin.com/company/144056120/" as string,
   },
   /**
    * Avantra's own profiles, listed as Organization `sameAs` in structured data.
    * Partner-directory listings can be added here once they are live. The footer icon uses
-   * `social.linkedin` (the parent company page), not this list.
+   * `social.linkedin`, which is this same company page.
    */
   profiles: ["https://www.linkedin.com/company/144056120/"] as string[],
   /** Partner programme shown as a badge (footer + About). */
