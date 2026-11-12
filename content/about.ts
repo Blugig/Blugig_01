@@ -3,7 +3,7 @@ import type { IconName } from "@/components/icons/DrawIcon";
 /** About page copy. */
 export const aboutHero = {
   /** Opens the page's H1 (see PageHeading): the search phrase the page targets. */
-  chip: "About Avantra, Mitti implementation experts in Bengaluru",
+  chip: "About Avantra, Mitti experts in Bengaluru",
   titleLead: "Technology works best",
   titleAccent: "when people can use it well.",
   sub: "We help organizations put Mitti into practice—with thoughtful implementation, practical training, and ongoing improvement.",

@@ -1,6 +1,15 @@
 /** The production domain: the canonical host for every URL search engines see (next.config.ts redirects other hosts here). */
 export const PRODUCTION_URL = "https://www.avantratechnologies.com";
 
+/**
+ * The only booking page. Not read from the environment, so a stale
+ * NEXT_PUBLIC_CALENDLY_URL cannot point at the retired avantratechnologies-info event.
+ */
+export const CALENDLY_URL = "https://calendly.com/avantratechnologies/30min";
+
+/** Avantra's LinkedIn company page (footer icon and Organization sameAs). */
+export const LINKEDIN_URL = "https://www.linkedin.com/company/144056120/";
+
 /** Global site settings. Empty contact values are hidden on the site and tracked in TODO.md. */
 export const site = {
   name: "Avantra Technologies",
@@ -26,14 +35,14 @@ export const site = {
   replyTime: "1 business day",
   social: {
     /** Footer LinkedIn icon. Avantra's company page. */
-    linkedin: "https://www.linkedin.com/company/144056120/" as string,
+    linkedin: LINKEDIN_URL as string,
   },
   /**
    * Avantra's own profiles, listed as Organization `sameAs` in structured data.
    * Partner-directory listings can be added here once they are live. The footer icon uses
    * `social.linkedin`, which is this same company page.
    */
-  profiles: ["https://www.linkedin.com/company/144056120/"] as string[],
+  profiles: [LINKEDIN_URL] as string[],
   /** Partner programme shown as a badge (footer + About). */
   partner: {
     name: "Workato Automation League — Silver Partner",
@@ -49,8 +58,8 @@ export const site = {
   /** The parent company's profiles, credited to it (parentOrganization) in structured data, never to Avantra. */
   parentProfiles: ["https://www.linkedin.com/company/sspmconsultants"] as string[],
   copyright: "© 2026 Avantra Technologies. An SSPM IT SOLUTIONS PRIVATE LIMITED COMPANY. All rights reserved.",
-  /** Booking link (contact page, integration assessment); NEXT_PUBLIC_CALENDLY_URL overrides it. */
-  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/avantratechnologies/30min",
+  /** Booking link for every "Book a call", "Let's talk", and Calendly button. */
+  calendlyUrl: CALENDLY_URL,
 } as const;
 
 /** Contact lines that are set, with their link (footer + contact page). */

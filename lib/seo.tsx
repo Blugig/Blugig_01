@@ -50,6 +50,36 @@ export function asHttps(pathOrUrl: string) {
 }
 
 /**
+ * Rewrite links and images inside blog posts onto https://www.avantratechnologies.com.
+ * Relative and in-page links stay as written. http images on other hosts are upgraded
+ * to https so a post does not load mixed content. Other sites' article links are unchanged.
+ */
+export function rewriteOwnUrl(input: string, asset = false) {
+  const raw = input.trim();
+  if (!raw || raw.startsWith("#") || /^(mailto|tel):/i.test(raw)) return raw;
+  if (raw.startsWith("/") && !raw.startsWith("//")) return raw;
+  const withProtocol = raw.startsWith("//") ? `https:${raw}` : raw;
+  let url: URL;
+  try {
+    url = new URL(withProtocol);
+  } catch {
+    return raw;
+  }
+  const host = url.hostname.toLowerCase();
+  const ours = host === "www.avantratechnologies.com" || host === "avantratechnologies.com" || host.endsWith(".up.railway.app");
+  if (ours) {
+    url.protocol = "https:";
+    url.hostname = "www.avantratechnologies.com";
+    return url.toString();
+  }
+  if (asset && url.protocol === "http:") {
+    url.protocol = "https:";
+    return url.toString();
+  }
+  return raw.startsWith("//") ? url.toString() : raw;
+}
+
+/**
  * Organization (also a ProfessionalService) with one Service per offering.
  * `sameAs` lists only Avantra's own profiles; the parent's go on parentOrganization,
  * so the two aren't read as one company.

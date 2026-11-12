@@ -1,6 +1,6 @@
 # Avantra Technologies — website
 
-Marketing site for Avantra Technologies, a Mitti (by SafetyCulture) implementation partner.
+Marketing site for Avantra Technologies, a team of Mitti experts. Mitti is by SafetyCulture.
 Workato Automation League Silver Partner. An SSPM IT Solutions Private Limited company.
 
 Next.js 16 (App Router, Cache Components) · Tailwind CSS v4 · Motion · Lenis · three.js / R3F.
