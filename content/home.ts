@@ -15,7 +15,7 @@ export const hero = {
   stages: [
     {
       /** Small line that opens the H1: the search phrase the home page targets. */
-      kicker: "Mitti experts at Avantra",
+      kicker: "Mitti experts (SafetyCulture)",
       titleLead: "Every inspection,",
       titleAccent: "turned into action.",
       sub: "Avantra designs, deploys, and scales Mitti across your sites, so issues get fixed faster and every team stays audit-ready.",
@@ -79,7 +79,7 @@ export const gap = {
 };
 
 export const statement = {
-  accent: "Mitti experts at Avantra,",
+  accent: "Your Mitti experts,",
   rest: "from planning and configuration to adoption and rollout.",
 };
 

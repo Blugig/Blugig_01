@@ -11,7 +11,7 @@ import { blog } from "@/content/blog";
 import { analyzeMarkdown } from "@/lib/blog/markdown";
 import { formatDate, postExcerpt, postPath, readingMinutes } from "@/lib/blog/post";
 import { blogIndexIndexable, getLivePosts } from "@/lib/blog/queries";
-import { absoluteUrl, pageMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 
 /** The list changes whenever a post is published, so it renders per request, in full. */
 export const instant = false;
@@ -19,17 +19,14 @@ export const instant = false;
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getLivePosts();
   const base = pageMetadata({
-    title: "Mitti Rollout Notes and Guides | Avantra",
+    title: "Mitti by SafetyCulture Guides | Avantra Blog",
     description:
-      "Practical notes from Avantra on Mitti by SafetyCulture, digital inspections, and connecting Mitti to the systems you already use.",
+      "Guides from Avantra's Mitti experts on rollouts, digital inspections, corrective actions, and Workato integrations for operations teams.",
     path: "/blog",
   });
   return {
     ...base,
-    alternates: {
-      canonical: absoluteUrl("/blog"),
-      types: { "application/rss+xml": [{ url: absoluteUrl("/blog/rss.xml"), title: "Avantra Technologies blog" }] },
-    },
+    alternates: { canonical: "/blog", types: { "application/rss+xml": [{ url: "/blog/rss.xml", title: "Avantra Technologies blog" }] } },
     // An empty list has nothing to rank, so it stays out of search until the first post is live.
     ...(blogIndexIndexable(posts) ? {} : { robots: { index: false, follow: true } }),
   };

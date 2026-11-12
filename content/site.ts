@@ -25,7 +25,7 @@ export const site = {
    */
   url: PRODUCTION_URL,
   description:
-    "Avantra Technologies is a team of Mitti experts. We help operations teams plan, configure, and roll out Mitti by SafetyCulture, from the first setup to everyday use across sites.",
+    "Avantra Technologies is a team of Mitti experts. We help operations teams plan, set up, and run Mitti by SafetyCulture, from the first configuration through everyday use.",
   /** Each contact value is rendered only when set (footer, contact page, JSON-LD). */
   email: "info@avantratechnologies.com" as string,
   /** Listed in this order everywhere; the first is the primary (structured data). */
@@ -34,12 +34,13 @@ export const site = {
   address: "Bengaluru, Karnataka, India" as string,
   replyTime: "1 business day",
   social: {
-    /** Avantra's company page. The parent company's page stays on parentProfiles. */
+    /** Footer LinkedIn icon. Avantra's company page. */
     linkedin: LINKEDIN_URL as string,
   },
   /**
-   * Avantra's own profiles, listed as Organization `sameAs`. Add Mitti and Workato
-   * partner-directory listings here once they are live.
+   * Avantra's own profiles, listed as Organization `sameAs` in structured data.
+   * Partner-directory listings can be added here once they are live. The footer icon uses
+   * `social.linkedin`, which is this same company page.
    */
   profiles: [LINKEDIN_URL] as string[],
   /** Partner programme shown as a badge (footer + About). */

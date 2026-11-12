@@ -13,7 +13,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Mitti Solutions for Inspections and Actions | Avantra",
   description:
-    "Use Mitti for digital inspections, audits, issue reporting, and follow-up. Avantra configures the workflows your sites actually run.",
+    "Mitti experts set up inspections, audits, actions, and site standards in Mitti by SafetyCulture. Asset and maintenance checks are only one use case.",
   path: "/solutions",
 });
 

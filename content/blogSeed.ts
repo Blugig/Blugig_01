@@ -74,7 +74,7 @@ For the next few months, use both names wherever it helps people find things:
 
 ## Need a hand with the switch?
 
-The Mitti experts at Avantra help operations teams plan, configure, and roll out the platform, and connect it to the systems they already run. If you would like a second pair of eyes on your setup while you make the change, [talk to our team](/contact).
+Avantra Technologies is a team of Mitti experts. We help operations teams plan, configure and roll out the platform, and connect it to the systems they already run. If you'd like a second pair of eyes on your setup while you make the change, [talk to our team](/contact).
 `;
 
 export const seedPosts: Post[] = [

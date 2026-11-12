@@ -27,9 +27,9 @@ import {
 import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti Services and Training | Avantra",
+  title: "Mitti Setup, Training, and Support | Avantra",
   description:
-    "Mitti experts at Avantra handle discovery, setup, templates, reporting, training, launch, and ongoing support for Mitti by SafetyCulture.",
+    "Mitti experts handle discovery, account setup, inspection templates, reporting, training, launch, and ongoing improvement for Mitti by SafetyCulture.",
   path: "/services",
 });
 

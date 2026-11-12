@@ -9,7 +9,7 @@ import { blogPostingJsonLd, hasPersonAuthor } from "@/lib/blog/jsonld";
 import { analyzeMarkdown, renderMarkdown } from "@/lib/blog/markdown";
 import { formatDate, postExcerpt, postImagePath, postPath, postTitleTag, readingMinutes } from "@/lib/blog/post";
 import { findLivePost, relatedPosts } from "@/lib/blog/queries";
-import { absoluteUrl, breadcrumbJsonLd, faqJsonLd, JsonLd, pageCanonical, shareMetadata } from "@/lib/seo";
+import { asHttps, breadcrumbJsonLd, faqJsonLd, JsonLd } from "@/lib/seo";
 
 /**
  * A post renders per request with no static fallback. Crawlers (htmlLimitedBots in
@@ -25,24 +25,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!found || "movedTo" in found) return {};
   const { post } = found;
   const path = postPath(post.slug);
-  const canonical = pageCanonical(post.canonicalUrl, path);
-  const image = { url: absoluteUrl(postImagePath(post.slug)), width: 1200, height: 630, alt: post.title };
-  const share = shareMetadata({ title: post.title, description: post.description, url: canonical, image });
+  const image = { url: postImagePath(post.slug), width: 1200, height: 630, alt: post.title };
   return {
     title: { absolute: postTitleTag(post) },
     description: post.description,
-    alternates: { canonical },
+    alternates: { canonical: post.canonicalUrl ? asHttps(post.canonicalUrl) : path },
     ...(post.noindex ? { robots: { index: false, follow: true } } : {}),
     authors: [{ name: post.author.name, ...(post.author.url ? { url: post.author.url } : {}) }],
     openGraph: {
-      ...share.openGraph,
       type: "article",
+      siteName: site.name,
+      locale: "en_US",
+      url: path,
+      title: post.title,
+      description: post.description,
       publishedTime: post.publishedAt ?? undefined,
       modifiedTime: post.updatedAt,
       authors: [post.author.name],
       tags: post.tags,
+      images: [image],
     },
-    twitter: share.twitter,
+    twitter: { card: "summary_large_image", title: post.title, description: post.description, images: [image] },
   };
 }
 
@@ -153,7 +156,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {post.author.bio ||
                   (person
                     ? `${post.author.name} works on Mitti rollouts at ${site.name}.`
-                    : `${site.name} is a team of Mitti experts in Bengaluru. We help operations teams plan, configure, and roll out Mitti, and connect it to the systems they already run.`)}
+                    : `${site.name} is a team of Mitti experts in Bengaluru, helping operations teams plan, configure and roll out Mitti, and connect it to the systems they already run.`)}
               </p>
               {person && post.author.url ? (
                 <a href={post.author.url} target="_blank" rel="author noopener" className="text-s w-fit text-blue-700 hover:underline">
