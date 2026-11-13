@@ -97,9 +97,10 @@ export function organizationJsonLd() {
     alternateName: site.shortName,
     slogan: site.slogan,
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/brand/avantra-logo.png"),
+    logo: { "@type": "ImageObject", url: absoluteUrl("/brand/avantra-logo.png") },
     image: absoluteUrl("/brand/avantra-logo.png"),
-    description: site.description,
+    description:
+      "Avantra Technologies is a Bengaluru team of Mitti experts for Mitti by SafetyCulture. It is a different company from the SAP operations software vendor also named Avantra.",
     knowsAbout: ["Mitti", "SafetyCulture", "Workato", "Digital inspections", "Workplace operations"],
     parentOrganization: {
       "@type": "Organization",
@@ -126,6 +127,7 @@ export function websiteJsonLd() {
     "@id": absoluteUrl("/#website"),
     url: absoluteUrl("/"),
     name: site.name,
+    alternateName: site.shortName,
     publisher: { "@id": absoluteUrl("/#organization") },
     inLanguage: "en",
   };

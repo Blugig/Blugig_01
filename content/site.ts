@@ -10,6 +10,9 @@ export const CALENDLY_URL = "https://calendly.com/avantratechnologies/30min";
 /** Avantra's LinkedIn company page (footer icon and Organization sameAs). */
 export const LINKEDIN_URL = "https://www.linkedin.com/company/144056120/";
 
+/** Avantra's Facebook profile. Organization JSON-LD `sameAs` only; not a visible icon or link. */
+export const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61596705140345";
+
 /** Global site settings. Empty contact values are hidden on the site and tracked in TODO.md. */
 export const site = {
   name: "Avantra Technologies",
@@ -39,10 +42,9 @@ export const site = {
   },
   /**
    * Avantra's own profiles, listed as Organization `sameAs` in structured data.
-   * Partner-directory listings can be added here once they are live. The footer icon uses
-   * `social.linkedin`, which is this same company page.
+   * Nothing on the page renders this list. The footer icon uses `social.linkedin` only.
    */
-  profiles: [LINKEDIN_URL] as string[],
+  profiles: [LINKEDIN_URL, FACEBOOK_URL] as string[],
   /** Partner programme shown as a badge (footer + About). */
   partner: {
     name: "Workato Automation League — Silver Partner",
