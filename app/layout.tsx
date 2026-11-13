@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: "Mitti Experts for Operations Teams | Avantra Technologies",
-    template: `%s | ${site.shortName}`,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
