@@ -9,7 +9,7 @@ import { integrations } from "@/content/home";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Connect Mitti to ERP, IT, and HR Systems | Avantra",
+  title: "Connect Mitti to ERP, IT, and HR Systems | Avantra Technologies",
   description:
     "Mitti experts connect Mitti by SafetyCulture to SAP, ServiceNow, Salesforce, and HR tools with Workato, so a finding can open a ticket or work order on its own.",
   path: "/integrations",

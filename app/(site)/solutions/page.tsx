@@ -11,7 +11,7 @@ import { solutions, solutionsCta, solutionsHero, solutionsIndustries, solutionsI
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti Solutions for Inspections and Actions | Avantra",
+  title: "Mitti Solutions for Inspections and Actions | Avantra Technologies",
   description:
     "Mitti experts set up inspections, audits, actions, and site standards in Mitti by SafetyCulture. Asset and maintenance checks are only one use case.",
   path: "/solutions",
