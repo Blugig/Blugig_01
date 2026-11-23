@@ -18,7 +18,7 @@ const azeret = Azeret_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Avantra Technologies | Mitti Experts in Bengaluru",
+    default: "Avantra Technologies | Mitti (SafetyCulture) Experts",
     template: `%s | ${site.name}`,
   },
   description: site.description,
