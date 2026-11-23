@@ -23,7 +23,7 @@ import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Avantra Technologies | Mitti Experts in Bengaluru",
+  title: "About Us | Avantra Technologies",
   description:
     "Avantra Technologies is a Bengaluru team of Mitti experts. We help operations teams put Mitti by SafetyCulture into daily use, including Workato integrations.",
   path: "/about",

@@ -79,16 +79,40 @@ export function rewriteOwnUrl(input: string, asset = false) {
   return raw.startsWith("//") ? url.toString() : raw;
 }
 
+type ContactPointLd = {
+  "@type": "ContactPoint";
+  contactType: "customer service";
+  telephone?: string;
+  email?: string;
+};
+
+/** Contact points from the phone numbers and email already published on the site. */
+function contactPoints(): ContactPointLd[] {
+  const phones = site.phones.filter((phone) => phone.length > 0);
+  const points: ContactPointLd[] = phones.map((telephone, index) => ({
+    "@type": "ContactPoint",
+    telephone,
+    ...(index === 0 && site.email ? { email: site.email } : {}),
+    contactType: "customer service",
+  }));
+  if (!points.length && site.email) {
+    points.push({ "@type": "ContactPoint", email: site.email, contactType: "customer service" });
+  }
+  return points;
+}
+
 /**
- * Organization (also a ProfessionalService) with one Service per offering.
- * `sameAs` lists only Avantra's own profiles; the parent's go on parentOrganization,
- * so the two aren't read as one company.
+ * One Organization (also a ProfessionalService) with one Service per offering.
+ * `sameAs` is only Avantra's own LinkedIn and Facebook. The parent company is named
+ * without a profile URL, so a different company's LinkedIn is not attached to Avantra.
+ * YouTube is not a sameAs profile. Avantra is not described as an official Mitti or SafetyCulture partner.
  */
 export function organizationJsonLd() {
   const offers = [
     ...services.map((s) => ({ name: s.title, path: `/services#${s.slug}` })),
     { name: integrationService.lead, path: "/integrations" },
   ];
+  const contactPoint = contactPoints();
   return {
     "@context": "https://schema.org",
     "@type": ["Organization", "ProfessionalService"],
@@ -105,10 +129,10 @@ export function organizationJsonLd() {
     parentOrganization: {
       "@type": "Organization",
       name: site.parentCompany,
-      ...(site.parentProfiles.length ? { sameAs: site.parentProfiles } : {}),
     },
     ...(site.email ? { email: site.email } : {}),
     ...(site.phones[0] ? { telephone: site.phones[0] } : {}),
+    ...(contactPoint.length ? { contactPoint: contactPoint.length === 1 ? contactPoint[0] : contactPoint } : {}),
     ...(site.address
       ? { address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" } }
       : {}),
@@ -145,16 +169,26 @@ export function faqJsonLd(faqs: { q: string; a: string }[]) {
   };
 }
 
+/**
+ * BreadcrumbList where every item carries its name.
+ * `item` is a WebPage, not a bare URL: a URL string has no name of its own, and
+ * Google then reports the crumb as an unnamed item. The ListItem name is kept as well,
+ * which is the name Google reads when `item` is a URL.
+ */
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: item.name,
-      item: absoluteUrl(item.path),
-    })),
+    itemListElement: items.map((crumb, i) => {
+      const url = absoluteUrl(crumb.path);
+      const name = crumb.name.trim();
+      return {
+        "@type": "ListItem",
+        position: i + 1,
+        name,
+        item: { "@type": "WebPage", "@id": url, name, url },
+      };
+    }),
   };
 }
 

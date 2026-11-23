@@ -74,13 +74,13 @@ export default async function BlogPostPage({ params }: Props) {
                     Home
                   </Link>
                 </li>
-                <li aria-hidden>/</li>
+                <span aria-hidden>/</span>
                 <li>
                   <Link href="/blog" className="hover:text-blue-700">
                     Blog
                   </Link>
                 </li>
-                <li aria-hidden>/</li>
+                <span aria-hidden>/</span>
                 <li aria-current="page" className="line-clamp-1 text-gray-500">
                   {post.title}
                 </li>
