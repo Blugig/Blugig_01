@@ -55,7 +55,7 @@ export function MittiHero({
                     const last = i === crumbs.length - 1;
                     return (
                       <Fragment key={c.path}>
-                        {i > 0 ? <li aria-hidden>/</li> : null}
+                        {i > 0 ? <span aria-hidden>/</span> : null}
                         <li aria-current={last ? "page" : undefined} className={last ? "text-ink" : undefined}>
                           {last ? (
                             c.name

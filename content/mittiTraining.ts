@@ -1,7 +1,7 @@
 export const mittiTrainingMeta = {
-  title: "Mitti Training: Free Masterclass | Avantra Technologies",
+  title: "Mitti Training | Avantra Technologies",
   description:
-    "Free Mitti Masterclass on YouTube, plus Mitti training for your team. Avantra covers templates, inspections, actions, issues, assets, permissions, and Heads Up.",
+    "Free training for Mitti by SafetyCulture, including people who learned the app as iAuditor. Avantra's masterclass covers templates, inspections, actions, issues, assets, and permissions.",
   path: "/mitti-training",
 } as const;
 

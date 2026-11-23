@@ -57,8 +57,6 @@ export const site = {
   ],
   /** Parent company and the footer legal line (verbatim from the owner). */
   parentCompany: "SSPM IT SOLUTIONS PRIVATE LIMITED",
-  /** The parent company's profiles, credited to it (parentOrganization) in structured data, never to Avantra. */
-  parentProfiles: ["https://www.linkedin.com/company/sspmconsultants"] as string[],
   copyright: "© 2026 Avantra Technologies. An SSPM IT SOLUTIONS PRIVATE LIMITED COMPANY. All rights reserved.",
   /** Booking link for every "Book a call", "Let's talk", and Calendly button. */
   calendlyUrl: CALENDLY_URL,
