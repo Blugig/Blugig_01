@@ -18,7 +18,7 @@ import { services } from "@/content/services";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Avantra Technologies | Mitti Experts in Bengaluru",
+  title: "Avantra Technologies | Mitti (SafetyCulture) Experts",
   description:
     "Avantra Technologies is a Bengaluru team of Mitti experts. We help you plan, set up, and run Mitti by SafetyCulture, which many teams still call iAuditor.",
   path: "/",
