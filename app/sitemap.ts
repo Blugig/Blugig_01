@@ -28,6 +28,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/privacy",
     "/terms",
+    "/mitti-template-setup",
+    "/industries/hospitality",
+    "/industries/retail",
+    "/integrations/zapier",
+    "/integrations/power-bi",
+    "/integrations/maintainx",
   ];
   const posts = await getLivePosts();
   return [
