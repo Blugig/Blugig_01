@@ -3,13 +3,38 @@ import { postPath } from "@/lib/blog/post";
 import { blogIndexIndexable, getLivePosts, indexable } from "@/lib/blog/queries";
 import { absoluteUrl } from "@/lib/seo";
 
+/**
+ * Static pages change with a deploy, not per request. The sitemap is built per request
+ * because blog posts are, so this date stays fixed instead of `new Date()` (that would
+ * tell crawlers every static URL changed on every fetch). Bump it when those pages change.
+ */
+const STATIC_LAST_MODIFIED = new Date("2026-11-23T00:00:00.000Z");
+
 /** Site pages, plus every indexable blog post (with its real last-edited date) and /blog once it's indexable. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages = ["/", "/solutions", "/services", "/integrations", "/how-we-work", "/about", "/contact", "/privacy", "/terms"];
+  const pages = [
+    "/",
+    "/solutions",
+    "/services",
+    "/mitti-experts",
+    "/mitti-experts/construction",
+    "/mitti-experts/manufacturing",
+    "/mitti-experts/facilities",
+    "/mitti-experts/healthcare",
+    "/mitti-training",
+    "/integrations",
+    "/how-we-work",
+    "/about",
+    "/contact",
+    "/privacy",
+    "/terms",
+  ];
   const posts = await getLivePosts();
   return [
     ...pages.map((p) => ({
-      url: absoluteUrl(p),
+      // Homepage has no trailing slash, matching the canonical Next resolves from metadataBase.
+      url: absoluteUrl(p).replace(/\/$/, ""),
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "monthly" as const,
       priority: p === "/" ? 1 : p === "/privacy" || p === "/terms" ? 0.3 : 0.8,
     })),

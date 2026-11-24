@@ -17,7 +17,7 @@ const TONES = [
   { card: "bg-navy text-white", body: "text-gray-300", meta: "text-gray-400", flow: "text-white/80", tag: "bg-white/10 text-white" },
 ] as const;
 
-/** The assessment books straight into Calendly once NEXT_PUBLIC_CALENDLY_URL is set; the contact form until then. */
+/** The assessment books straight into Calendly. The contact form is the fallback if that URL is empty. */
 export function assessmentLink() {
   return site.calendlyUrl
     ? { href: site.calendlyUrl, external: true as const }
@@ -58,7 +58,7 @@ export function WorkatoPartnerCard({ className }: { className?: string }) {
         className,
       )}
     >
-      <Image src={workatoBadge} alt="" width={64} height={64} className="size-16" />
+      <Image src={workatoBadge} alt="Workato Silver Partner" width={64} height={64} className="size-16" />
       <p className="flex flex-col gap-1">
         <span className="text-base leading-tight font-semibold text-ink">{integrations.partner.title}</span>
         <span className="text-s text-gray-600">{integrations.partner.line}</span>

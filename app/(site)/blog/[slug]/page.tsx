@@ -9,7 +9,7 @@ import { blogPostingJsonLd, hasPersonAuthor } from "@/lib/blog/jsonld";
 import { analyzeMarkdown, renderMarkdown } from "@/lib/blog/markdown";
 import { formatDate, postExcerpt, postImagePath, postPath, postTitleTag, readingMinutes } from "@/lib/blog/post";
 import { findLivePost, relatedPosts } from "@/lib/blog/queries";
-import { breadcrumbJsonLd, faqJsonLd, JsonLd } from "@/lib/seo";
+import { asHttps, breadcrumbJsonLd, faqJsonLd, JsonLd } from "@/lib/seo";
 
 /**
  * A post renders per request with no static fallback. Crawlers (htmlLimitedBots in
@@ -25,10 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!found || "movedTo" in found) return {};
   const { post } = found;
   const path = postPath(post.slug);
+  const image = { url: postImagePath(post.slug), width: 1200, height: 630, alt: post.title };
   return {
     title: { absolute: postTitleTag(post) },
     description: post.description,
-    alternates: { canonical: post.canonicalUrl || path },
+    alternates: { canonical: post.canonicalUrl ? asHttps(post.canonicalUrl) : path },
     ...(post.noindex ? { robots: { index: false, follow: true } } : {}),
     authors: [{ name: post.author.name, ...(post.author.url ? { url: post.author.url } : {}) }],
     openGraph: {
@@ -42,8 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       modifiedTime: post.updatedAt,
       authors: [post.author.name],
       tags: post.tags,
-      images: [{ url: postImagePath(post.slug), width: 1200, height: 630, alt: post.title }],
+      images: [image],
     },
+    twitter: { card: "summary_large_image", title: post.title, description: post.description, images: [image] },
   };
 }
 
@@ -72,13 +74,13 @@ export default async function BlogPostPage({ params }: Props) {
                     Home
                   </Link>
                 </li>
-                <li aria-hidden>/</li>
+                <span aria-hidden>/</span>
                 <li>
                   <Link href="/blog" className="hover:text-blue-700">
                     Blog
                   </Link>
                 </li>
-                <li aria-hidden>/</li>
+                <span aria-hidden>/</span>
                 <li aria-current="page" className="line-clamp-1 text-gray-500">
                   {post.title}
                 </li>
@@ -154,7 +156,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {post.author.bio ||
                   (person
                     ? `${post.author.name} works on Mitti rollouts at ${site.name}.`
-                    : `${site.name} is a Mitti implementation partner in Bengaluru, helping operations teams plan, configure and roll out Mitti, and connect it to the systems they already run.`)}
+                    : `${site.name} is a team of Mitti experts in Bengaluru, helping operations teams plan, configure and roll out Mitti, and connect it to the systems they already run.`)}
               </p>
               {person && post.author.url ? (
                 <a href={post.author.url} target="_blank" rel="author noopener" className="text-s w-fit text-blue-700 hover:underline">

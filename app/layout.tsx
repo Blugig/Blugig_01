@@ -18,12 +18,14 @@ const azeret = Azeret_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Mitti (SafetyCulture) Implementation Partner | Avantra",
-    template: `%s | ${site.shortName}`,
+    default: "Avantra Technologies | Mitti (SafetyCulture) Experts",
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
-  alternates: { canonical: "/" },
+  // Do not set a canonical here. Layout metadata is inherited by every route that
+  // does not set its own, so a homepage canonical would be claimed by pages that
+  // should not have one. Each public page sets its own canonical.
   openGraph: {
     type: "website",
     siteName: site.name,

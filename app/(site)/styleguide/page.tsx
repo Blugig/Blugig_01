@@ -4,7 +4,11 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { Sparkles } from "lucide-react";
 
-export const metadata: Metadata = { title: "Styleguide", robots: { index: false, follow: false } };
+export const metadata: Metadata = {
+  title: "Styleguide",
+  description: "Internal style reference for the Avantra Technologies website. Not for search engines.",
+  robots: { index: false, follow: false },
+};
 
 const swatches = [
   ["canvas", "bg-canvas"],

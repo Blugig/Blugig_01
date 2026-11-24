@@ -22,9 +22,9 @@ import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Avantra | Mitti & Workato Partner, Bengaluru",
+  title: "About Us | Avantra Technologies",
   description:
-    "Avantra Technologies is a Mitti implementation partner and Workato Silver Partner in Bengaluru, helping operations teams put Mitti into practice.",
+    "Avantra Technologies is a Bengaluru team of Mitti experts. We help operations teams put Mitti by SafetyCulture into daily use, including Workato integrations.",
   path: "/about",
 });
 
@@ -133,7 +133,7 @@ export default function AboutPage() {
             </p>
             <ul className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
               <li className="flex items-center gap-4">
-                <Image src={partnerBadge} alt="" width={88} height={88} className="size-22" />
+                <Image src={partnerBadge} alt="Workato Silver Partner" width={88} height={88} className="size-22" />
                 <p className="text-m text-gray-600">
                   <span className="block font-medium text-ink">{site.partner.short}</span>
                   Silver tier · Workato Automation League

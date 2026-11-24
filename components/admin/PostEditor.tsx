@@ -219,6 +219,7 @@ export function PostEditor({
     >
       {/* ---------- Main column ---------- */}
       <div className="flex min-w-0 flex-col gap-5">
+        <h1 className="sr-only">{initial.id ? "Edit blog post" : "New blog post"}</h1>
         <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
           <Link href="/admin" className="flex items-center gap-1.5 text-gray-600 hover:text-ink">
             <ArrowLeft aria-hidden className="size-4" /> All posts

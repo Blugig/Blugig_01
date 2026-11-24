@@ -1,6 +1,7 @@
 import { Marked, type Token, type Tokens } from "marked";
 import { PRODUCTION_URL, site } from "@/content/site";
 import { slugify } from "@/lib/blog/post";
+import { rewriteOwnUrl } from "@/lib/seo";
 
 /**
  * Markdown for blog posts — the same code renders the public page and the
@@ -54,15 +55,16 @@ export function renderMarkdown(md: string): { html: string; toc: TocItem[] } {
         const inner = this.parser.parseInline(tokens);
         const url = safeUrl(href);
         if (!url) return inner;
-        const external = /^https?:\/\//i.test(url) && !isInternalHref(url);
+        const rewritten = rewriteOwnUrl(url);
+        const external = /^https?:\/\//i.test(rewritten) && !isInternalHref(rewritten);
         const titleAttr = title ? ` title="${escapeHtml(title)}"` : "";
-        return `<a href="${escapeHtml(url)}"${titleAttr}${external ? ' target="_blank" rel="noopener noreferrer"' : ""}>${inner}</a>`;
+        return `<a href="${escapeHtml(rewritten)}"${titleAttr}${external ? ' target="_blank" rel="noopener noreferrer"' : ""}>${inner}</a>`;
       },
       image({ href, title, text }: Tokens.Image) {
         const url = safeUrl(href, true);
         if (!url) return escapeHtml(text);
         const titleAttr = title ? ` title="${escapeHtml(title)}"` : "";
-        return `<img src="${escapeHtml(url)}" alt="${escapeHtml(text)}"${titleAttr} loading="lazy" decoding="async">`;
+        return `<img src="${escapeHtml(rewriteOwnUrl(url, true))}" alt="${escapeHtml(text)}"${titleAttr} loading="lazy" decoding="async">`;
       },
     },
   });

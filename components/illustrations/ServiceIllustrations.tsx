@@ -157,7 +157,7 @@ function PipelineMock() {
       </div>
       <Connector />
       <div className="flex flex-col items-center gap-1 rounded-xl bg-white px-3 py-3 shadow-[0_12px_30px_-8px_rgba(4,28,66,0.25)]">
-        <Image src={mittiLogo} alt="" width={60} height={23} className="h-auto w-15" />
+        <Image src={mittiLogo} alt="Mitti" width={60} height={23} className="h-auto w-15" />
         <span className="text-[10px] font-medium text-ink">Mitti account</span>
       </div>
       <Connector />

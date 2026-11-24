@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { ShapeLab } from "@/app/(site)/styleguide/3d/ShapeLab";
 
-export const metadata: Metadata = { title: "3D shapes", robots: { index: false, follow: false } };
+export const metadata: Metadata = {
+  title: "3D shapes",
+  description: "Internal preview of the Avantra website particle shapes. Not for search engines.",
+  robots: { index: false, follow: false },
+};
 
 export default function ThreeStyleguide() {
   return (

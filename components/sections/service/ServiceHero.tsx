@@ -66,7 +66,7 @@ export function ServiceHero({
                       Home
                     </Link>
                   </li>
-                  <li aria-hidden>/</li>
+                  <span aria-hidden>/</span>
                   <li aria-current="page" className="text-ink">
                     {crumb}
                   </li>

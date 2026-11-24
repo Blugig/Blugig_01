@@ -5,7 +5,10 @@ import { absoluteUrl } from "@/lib/seo";
 
 const xml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-/** RSS 2.0 feed of the 20 newest indexable posts (feed readers, aggregators and some AI crawlers pick posts up from it). */
+/**
+ * RSS 2.0 feed of the 20 newest indexable posts (feed readers, aggregators and some AI crawlers pick posts up from it).
+ * The Atom namespace below stays `http://www.w3.org/2005/Atom`. That string is the XML namespace id from the spec, not a request.
+ */
 export async function GET() {
   const posts = indexable(await getLivePosts()).slice(0, 20);
   const items = posts
