@@ -51,10 +51,7 @@ export const site = {
     short: "Workato Silver Partner",
   },
   /** Partner credentials shown as badges (hero, About). */
-  credentials: [
-    { kind: "mitti", name: "Mitti", line: "Certified Experts" },
-    { kind: "workato", name: "Workato", line: "Silver Partner" },
-  ],
+  credentials: [{ kind: "workato", name: "Workato", line: "Silver Partner" }],
   /** Parent company and the footer legal line (verbatim from the owner). */
   parentCompany: "SSPM IT SOLUTIONS PRIVATE LIMITED",
   copyright: "© 2026 Avantra Technologies. An SSPM IT SOLUTIONS PRIVATE LIMITED COMPANY. All rights reserved.",

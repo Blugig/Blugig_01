@@ -15,7 +15,6 @@ import sapLogo from "@/public/brand/apps/sap.png";
 import servicenowLogo from "@/public/brand/apps/servicenow.png";
 import slackLogo from "@/public/brand/apps/slack.png";
 import teamsLogo from "@/public/brand/apps/teams.png";
-import mittiLogo from "@/public/brand/mitti-logo.png";
 import workatoBadge from "@/public/brand/workato-silver-partner.png";
 
 const d = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
@@ -238,33 +237,20 @@ function ButtonIcon({ name }: { name?: keyof typeof BUTTON_ICONS }) {
   return <Icon aria-hidden className="size-5 shrink-0" strokeWidth={1.8} />;
 }
 
-/** Partner credentials as small cards: Mitti shows its wordmark, Workato its badge. */
+/** Partner credentials as small cards: the Workato badge with its name and tier. */
 function Badges({ badges }: { badges: typeof hero.badges }) {
   return (
     <ul className="flex flex-wrap gap-3 max-[992px]:justify-center">
       {badges.map((badge) => (
         <li
           key={badge.name}
-          className={cn(
-            "flex items-center gap-3 rounded-2xl bg-white py-2.5 pr-5 shadow-[0_14px_30px_-18px_rgba(6,69,148,0.28)]",
-            badge.kind === "mitti" ? "pl-5" : "pl-3",
-          )}
+          className="flex items-center gap-3 rounded-2xl bg-white py-2.5 pr-5 pl-3 shadow-[0_14px_30px_-18px_rgba(6,69,148,0.28)]"
         >
-          {badge.kind === "mitti" ? (
-            // The wordmark stands in for the name line.
-            <span className="flex flex-col items-start gap-1 text-left">
-              <Image src={mittiLogo} alt={badge.name} width={60} height={23} className="h-auto w-15" />
-              <span className="text-sm leading-[1.3] text-gray-600">{badge.line}</span>
-            </span>
-          ) : (
-            <>
-              <Image src={workatoBadge} alt="Workato Silver Partner" width={44} height={44} className="size-11" />
-              <span className="flex flex-col text-left">
-                <span className="text-base leading-[1.2] font-semibold text-ink">{badge.name}</span>
-                <span className="text-sm leading-[1.3] text-gray-600">{badge.line}</span>
-              </span>
-            </>
-          )}
+          <Image src={workatoBadge} alt="Workato Silver Partner" width={44} height={44} className="size-11" />
+          <span className="flex flex-col text-left">
+            <span className="text-base leading-[1.2] font-semibold text-ink">{badge.name}</span>
+            <span className="text-sm leading-[1.3] text-gray-600">{badge.line}</span>
+          </span>
         </li>
       ))}
     </ul>
