@@ -126,6 +126,7 @@ export function Footer() {
               alt={site.partner.name}
               width={112}
               height={112}
+              sizes="112px"
               className="size-28 drop-shadow-[0_12px_24px_rgba(4,28,66,0.18)]"
             />
           </li>

@@ -32,6 +32,7 @@ export function TrustedBy() {
                       alt={name}
                       width={Math.round(logo.width * fit)}
                       height={Math.round(logo.height * fit)}
+                      sizes={`${Math.round(logo.width * fit)}px`}
                       className="object-contain opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
                     />
                   </li>

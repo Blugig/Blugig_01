@@ -44,6 +44,7 @@ export function Logo({
     width: Math.round((height * art.light.width) / art.light.height),
     height,
     loading: eager ? ("eager" as const) : undefined,
+    sizes: `${Math.round((height * art.light.width) / art.light.height)}px`,
   };
 
   // An eager logo is the LCP element on inner pages: fetch the colourway that paints first ahead of the rest.

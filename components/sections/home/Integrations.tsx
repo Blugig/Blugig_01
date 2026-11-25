@@ -59,7 +59,7 @@ export function WorkatoPartnerCard({ className }: { className?: string }) {
         className,
       )}
     >
-      <Image src={workatoBadge} alt="Workato Silver Partner" width={64} height={64} className="size-16" />
+      <Image src={workatoBadge} alt="Workato Silver Partner" width={64} height={64} sizes="64px" className="size-16" />
       <p className="flex flex-col gap-1">
         <span className="text-base leading-tight font-semibold text-ink">{integrations.partner.title}</span>
         <span className="text-s text-gray-600">{integrations.partner.line}</span>
