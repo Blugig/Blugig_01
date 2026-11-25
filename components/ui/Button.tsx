@@ -46,9 +46,11 @@ type ButtonLinkProps = Omit<ComponentProps<typeof Link>, "className"> & {
   children: ReactNode;
 };
 
-export function ButtonLink({ variant, size, className, children, ...props }: ButtonLinkProps) {
+export function ButtonLink({ variant, size, className, children, href, prefetch, ...props }: ButtonLinkProps) {
+  // The contact page pulls in the form and Calendly. Don't prefetch that chunk from every page.
+  const contact = typeof href === "string" && (href === "/contact" || href.startsWith("/contact?") || href.startsWith("/contact#"));
   return (
-    <Link className={buttonClasses(variant, size, className)} {...props}>
+    <Link className={buttonClasses(variant, size, className)} href={href} prefetch={prefetch ?? (contact ? false : undefined)} {...props}>
       {children}
     </Link>
   );

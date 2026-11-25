@@ -1,14 +1,13 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
 import { ParticlePoster } from "@/components/three/ParticlePoster";
 import { detectTier, type RenderTier } from "@/lib/device";
 import type { ShapeName } from "@/lib/three/shapes";
 import { cn } from "@/lib/utils";
+import type { ParticleCanvasProps } from "@/components/three/ParticleCanvas";
 
-/** three + R3F + shaders live in their own chunk, never in the initial bundle. */
-const ParticleCanvas = dynamic(() => import("@/components/three/ParticleCanvas"), { ssr: false });
+/** three + R3F stay in their own chunk. Import only after idle or a tap, never via next/dynamic prefetch. */
 
 type Props = {
   shape: ShapeName;
@@ -57,6 +56,7 @@ export function ParticleField({
   const [tier, setTier] = useState<RenderTier | null>(null);
   const [near, setNear] = useState(false);
   const [ready, setReady] = useState(false);
+  const [Canvas, setCanvas] = useState<ComponentType<ParticleCanvasProps> | null>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -70,6 +70,14 @@ export function ParticleField({
       if ("requestIdleCallback" in window) idleId = window.requestIdleCallback(run, { timeout: 2000 });
       else timeoutId = setTimeout(run, 1200);
     };
+    const onInteract = () => {
+      if (!decided) {
+        decided = true;
+        run();
+      }
+    };
+    window.addEventListener("pointerdown", onInteract, { passive: true });
+    window.addEventListener("keydown", onInteract);
     // Never during page load: the canvas waits for the load event, then an idle moment.
     const start = () => (document.readyState === "complete" ? schedule() : window.addEventListener("load", schedule, { once: true }));
 
@@ -87,6 +95,8 @@ export function ParticleField({
     return () => {
       io.disconnect();
       window.removeEventListener("load", schedule);
+      window.removeEventListener("pointerdown", onInteract);
+      window.removeEventListener("keydown", onInteract);
       if (idleId !== undefined) window.cancelIdleCallback(idleId);
       if (timeoutId !== undefined) clearTimeout(timeoutId);
     };
@@ -95,6 +105,17 @@ export function ParticleField({
   const live = tier === "low" || tier === "high";
   const count = Math.round((tier === "high" ? 8000 : 2500) * density);
 
+  useEffect(() => {
+    if (!live || Canvas) return;
+    let cancel = false;
+    void import("@/components/three/ParticleCanvas").then((mod) => {
+      if (!cancel) setCanvas(() => mod.default);
+    });
+    return () => {
+      cancel = true;
+    };
+  }, [live, Canvas]);
+
   return (
     <div ref={ref} aria-hidden className={cn("relative", className)}>
       <ParticlePoster
@@ -102,9 +123,9 @@ export function ParticleField({
         color={colorA}
         className={cn("transition-opacity duration-700", ready ? "opacity-0" : "opacity-100", posterClassName)}
       />
-      {live ? (
+      {live && Canvas ? (
         <div className="absolute inset-0 transition-opacity duration-[800ms]" style={{ opacity: ready ? 1 : 0 }}>
-          <ParticleCanvas
+          <Canvas
             shape={shape}
             morphTo={morphTo}
             colorA={colorA}

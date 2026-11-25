@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { animate, useMotionValue, useMotionValueEvent } from "motion/react";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import { TABLET_DROP, VARIANTS } from "@/components/sections/home/heroWheelLayout";
 import { ParticleField } from "@/components/three/ParticleField";
 import { heroWheel } from "@/content/home";
 import { shade } from "@/lib/color";
@@ -56,12 +57,6 @@ const SPIN = { type: "spring", visualDuration: 1.15, bounce: 0.14 } as const;
 /** Entrance: cards settle in top → bottom on first paint. */
 const ENTER = { delay: 0.35, stagger: 0.08 };
 
-const VARIANTS = {
-  wide: { w: 2500, h: 887, nx: 1249.333, ny: 443.833, k: 1 },
-  desk: { w: 1280, h: 900, nx: 661.654, ny: 450.481, k: 0.8 },
-  tablet: { w: 820, h: 1200, nx: 24.741, ny: 860.432, k: 0.85 },
-  mobile: { w: 420, h: 1200, nx: -93.086, ny: 870.967, k: 0.8 },
-} as const;
 type Variant = keyof typeof VARIANTS;
 
 const TONES = {
@@ -94,24 +89,6 @@ const MUTED = "#626d81";
 
 const rad = (deg: number) => (deg * Math.PI) / 180;
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
-
-/** How far the tablet scene hangs below the hero's foot (px). */
-const TABLET_DROP = 8;
-
-/**
- * Stacked layouts (≤991px) pin the scene to the hero's foot at full width, so
- * the cards fill a band of fixed proportion there. The hero reserves that band
- * under its copy (the `--hero-zone` spacer) so the copy can never run into the
- * cards, however it wraps. Measured from the top resting card to the scene's
- * foot, in container-width units (`cqw`, the hero is the container).
- */
-function stackedZone(variant: "tablet" | "mobile") {
-  const V = VARIANTS[variant];
-  const top = V.ny + V.k * (C.y - R * Math.sin(rad(REST[0])) + BOX.t);
-  const cqw = (((V.h - top) / V.w) * 100).toFixed(2);
-  return variant === "tablet" ? `calc(${cqw}cqw - ${TABLET_DROP}px)` : `${cqw}cqw`;
-}
-export const STACKED_ZONE = { tablet: stackedZone("tablet"), mobile: stackedZone("mobile") } as const;
 
 /**
  * `lift` (px, stacked layouts only) raises the whole layer so the cards sit

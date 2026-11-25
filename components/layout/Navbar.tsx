@@ -62,7 +62,13 @@ export function Navbar() {
         className="relative mx-auto grid h-16 max-w-[85rem] grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[1fr_auto_1fr]"
       >
         <Link href="/" className="justify-self-start">
-          <Logo eager height={32} alt={site.name} className="h-7 w-auto lg:h-8" />
+          <Logo
+            eager
+            height={32}
+            sizes="(min-width: 1024px) 176px, 154px"
+            alt={site.name}
+            className="h-7 w-auto lg:h-8"
+          />
         </Link>
 
         <NavigationMenu.Root value={menu} onValueChange={setMenu} delayDuration={120} className="relative hidden lg:block">
@@ -109,7 +115,7 @@ export function Navbar() {
             ))}
             <NavigationMenu.Item>
               <NavigationMenu.Link asChild active={pathname === "/contact"}>
-                <Link href="/contact" className={navlink}>
+                <Link href="/contact" prefetch={false} className={navlink}>
                   Contact
                 </Link>
               </NavigationMenu.Link>

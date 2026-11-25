@@ -11,8 +11,9 @@ export function analyticsExcluded(pathname: string) {
 }
 
 /**
- * GA4 tag for the public site. Loaded after hydration, and only in production.
+ * GA4 tag for the public site. Loaded when the browser is idle, and only in production.
  * Admin and styleguide never receive the script or the click listener.
+ * Events fired earlier are queued on dataLayer by `track`.
  */
 export function GoogleAnalytics() {
   const pathname = usePathname() || "/";
@@ -40,8 +41,8 @@ export function GoogleAnalytics() {
 
   return (
     <>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
-      <Script id="ga4" strategy="afterInteractive">
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="lazyOnload" />
+      <Script id="ga4" strategy="lazyOnload">
         {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`}
       </Script>
     </>

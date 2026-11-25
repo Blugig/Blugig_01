@@ -30,6 +30,7 @@ export function Logo({
   height = 36,
   alt = "",
   eager = false,
+  sizes,
   className = "h-9 w-auto",
 }: {
   variant?: "auto" | "onLight" | "onDark" | "onBrand";
@@ -37,26 +38,28 @@ export function Logo({
   height?: number;
   alt?: string;
   eager?: boolean;
+  /** CSS width of the rendered logo. Defaults to the width implied by `height`. */
+  sizes?: string;
   className?: string;
 }) {
   const art = ART[kind];
+  const displayWidth = Math.round((height * art.light.width) / art.light.height);
   const size = {
-    width: Math.round((height * art.light.width) / art.light.height),
+    width: displayWidth,
     height,
-    loading: eager ? ("eager" as const) : undefined,
-    sizes: `${Math.round((height * art.light.width) / art.light.height)}px`,
+    sizes: sizes ?? `${displayWidth}px`,
   };
 
-  // An eager logo is the LCP element on inner pages: fetch the colourway that paints first ahead of the rest.
-  const first = eager ? { fetchPriority: "high" as const } : null;
+  // The light wordmark paints first and is the mobile LCP. Only that file is preloaded.
+  const lcp = eager ? { priority: true as const, fetchPriority: "high" as const } : null;
 
   if (variant !== "auto") {
     const src = variant === "onDark" ? art.dark : variant === "onBrand" ? art.brand : art.light;
-    return <Image src={src} alt={alt} className={cn("block", className)} {...size} {...first} />;
+    return <Image src={src} alt={alt} className={cn("block", className)} {...size} {...lcp} />;
   }
   return (
     <span className="block">
-      <Image src={art.light} alt={alt} className={cn("logo-auto logo-on-light block", className)} {...size} {...first} />
+      <Image src={art.light} alt={alt} className={cn("logo-auto logo-on-light block", className)} {...size} {...lcp} />
       <Image src={art.dark} alt="" aria-hidden className={cn("logo-auto logo-on-dark", className)} {...size} />
       <Image src={art.brand} alt="" aria-hidden className={cn("logo-auto logo-on-brand", className)} {...size} />
     </span>
