@@ -41,7 +41,7 @@ const powerBiLink = { label: "Mitti and Power BI", href: "/integrations/power-bi
 const maintainxLink = { label: "Mitti and MaintainX", href: "/integrations/maintainx" };
 
 const experts =
-  "Avantra is a team of Mitti experts. We do not make Mitti. Mitti is the new name for SafetyCulture. Many people still call the inspection app iAuditor.";
+  "Avantra is an Official Mitti Partner and a team of Mitti experts. We do not make Mitti. Mitti is the new name for SafetyCulture. Many people still call the inspection app iAuditor.";
 
 export const construction: IndustryPageContent = {
   slug: "construction",

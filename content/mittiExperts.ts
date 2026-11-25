@@ -9,7 +9,7 @@ const h1Accent = "for SafetyCulture's Mitti";
 export const mittiExpertsMeta = {
   title: "Mitti (SafetyCulture) Experts | Avantra",
   description:
-    "Avantra Technologies is a team of Mitti (SafetyCulture) experts. We set up inspections, checklists, training, and support for teams that still say iAuditor.",
+    "Official Mitti Partner and Mitti (SafetyCulture) experts. Avantra sets up inspections, checklists, training, and support for teams that still say iAuditor.",
   path: "/mitti-experts",
 } as const;
 
@@ -20,7 +20,7 @@ export const mittiExpertsHero = {
   /** Visible and accessible H1. Kept as one sentence so the heading does not pick up an eyebrow. */
   h1: `${h1Lead} ${h1Accent}`,
   summary:
-    "Avantra Technologies helps operations, safety, and facilities leaders in the United States put Mitti to work. Mitti is by SafetyCulture. SafetyCulture is now Mitti, and we are Mitti experts and Mitti consultants for that platform.",
+    "Avantra Technologies is an Official Mitti Partner and a team of Mitti (SafetyCulture) experts. We help operations, safety, and facilities leaders in the United States put Mitti to work. SafetyCulture is now Mitti, and many teams still say iAuditor.",
   primaryLabel: "Book a call",
   secondaryLabel: "Email us",
 } as const;

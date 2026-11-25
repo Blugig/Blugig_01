@@ -3,10 +3,10 @@ import type { IconName } from "@/components/icons/DrawIcon";
 /** About page copy. */
 export const aboutHero = {
   /** Opens the page's H1 (see PageHeading): the search phrase the page targets. */
-  chip: "About Avantra, Mitti experts in Bengaluru",
+  chip: "Mitti (SafetyCulture) Experts",
   titleLead: "Technology works best",
   titleAccent: "when people can use it well.",
-  sub: "We help organizations put Mitti into practice—with thoughtful implementation, practical training, and ongoing improvement.",
+  sub: "Avantra is an Official Mitti Partner and a team of Mitti (SafetyCulture) experts. We help organizations put Mitti into practice with practical training and ongoing improvement.",
 };
 
 /** Scroll-scrubbed statement + the rest of the story underneath. */
@@ -47,7 +47,7 @@ export const partnerBand = {
   lead: "Your",
   highlight: "Mitti",
   rest: "experts.",
-  sub: "From planning and configuration to adoption and rollout.",
+  sub: "Official Mitti Partner. From planning and configuration to adoption and rollout.",
 };
 
 export const aboutCta = {

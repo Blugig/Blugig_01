@@ -31,7 +31,7 @@ export const site = {
    */
   url: PRODUCTION_URL,
   description:
-    "Avantra Technologies is a team of Mitti experts. We help operations teams plan, set up, and run Mitti by SafetyCulture, from the first configuration through everyday use.",
+    "Official Mitti Partner and Mitti (SafetyCulture) experts. Avantra helps operations teams plan, set up, and run Mitti by SafetyCulture.",
   /** Each contact value is rendered only when set (footer, contact page, JSON-LD). */
   email: "info@avantratechnologies.com" as string,
   /** Listed in this order everywhere; the first is the primary (structured data). */
@@ -53,8 +53,11 @@ export const site = {
     name: "Workato Automation League — Silver Partner",
     short: "Workato Silver Partner",
   },
-  /** Partner credentials shown as badges (hero, About). */
-  credentials: [{ kind: "workato", name: "Workato", line: "Silver Partner" }],
+  /** Partner credentials shown as badges (hero, About). The Mitti badge is words only, not Mitti's logo. */
+  credentials: [
+    { kind: "workato" as const, name: "Workato", line: "Silver Partner" },
+    { kind: "text" as const, name: "Official Mitti Partner", line: "Mitti (SafetyCulture) Experts" },
+  ],
   /** Parent company and the footer legal line (verbatim from the owner). */
   parentCompany: "SSPM IT SOLUTIONS PRIVATE LIMITED",
   copyright: "© 2026 Avantra Technologies. An SSPM IT SOLUTIONS PRIVATE LIMITED COMPANY. All rights reserved.",
