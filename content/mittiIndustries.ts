@@ -23,7 +23,7 @@ export type MittiIndustry = {
 
 export const construction: MittiIndustry = {
   slug: "construction",
-  path: "/mitti-experts/construction",
+  path: "/industries/construction",
   crumb: "Construction",
   linkLabel: "Mitti for Construction",
   metaTitle: "Mitti for Construction | Avantra Technologies",
@@ -61,7 +61,7 @@ export const construction: MittiIndustry = {
 
 export const manufacturing: MittiIndustry = {
   slug: "manufacturing",
-  path: "/mitti-experts/manufacturing",
+  path: "/industries/manufacturing",
   crumb: "Manufacturing",
   linkLabel: "Mitti for Manufacturing",
   metaTitle: "Mitti for Manufacturing | Avantra Technologies",
@@ -99,7 +99,7 @@ export const manufacturing: MittiIndustry = {
 
 export const facilities: MittiIndustry = {
   slug: "facilities",
-  path: "/mitti-experts/facilities",
+  path: "/industries/facilities",
   crumb: "Facilities",
   linkLabel: "Mitti for Facilities Management",
   metaTitle: "Mitti for Facilities Management | Avantra Technologies",
@@ -137,7 +137,7 @@ export const facilities: MittiIndustry = {
 
 export const healthcare: MittiIndustry = {
   slug: "healthcare",
-  path: "/mitti-experts/healthcare",
+  path: "/industries/healthcare",
   crumb: "Healthcare",
   linkLabel: "Mitti for Healthcare",
   metaTitle: "Mitti for Healthcare | Avantra Technologies",
@@ -174,3 +174,22 @@ export const healthcare: MittiIndustry = {
 };
 
 export const mittiIndustries: MittiIndustry[] = [construction, manufacturing, facilities, healthcare];
+
+/** Every industry page, including hotels and retail, for pills, cards, and cross-links. */
+export const industryDirectory: Pick<MittiIndustry, "slug" | "path" | "linkLabel" | "icon" | "cardLine">[] = [
+  ...mittiIndustries,
+  {
+    slug: "hospitality",
+    path: "/industries/hospitality",
+    linkLabel: "Mitti for Hotels and Restaurants",
+    icon: "building",
+    cardLine: "Opening, closing, food temperatures, and guest rooms.",
+  },
+  {
+    slug: "retail",
+    path: "/industries/retail",
+    linkLabel: "Mitti for Retail",
+    icon: "store",
+    cardLine: "Store audits for opening, the sales floor, and close.",
+  },
+];

@@ -8,7 +8,7 @@ import { absoluteUrl } from "@/lib/seo";
  * because blog posts are, so this date stays fixed instead of `new Date()` (that would
  * tell crawlers every static URL changed on every fetch). Bump it when those pages change.
  */
-const STATIC_LAST_MODIFIED = new Date("2026-11-23T00:00:00.000Z");
+const STATIC_LAST_MODIFIED = new Date("2026-11-25T00:00:00.000Z");
 
 /** Site pages, plus every indexable blog post (with its real last-edited date) and /blog once it's indexable. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -17,10 +17,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/solutions",
     "/services",
     "/mitti-experts",
-    "/mitti-experts/construction",
-    "/mitti-experts/manufacturing",
-    "/mitti-experts/facilities",
-    "/mitti-experts/healthcare",
     "/mitti-training",
     "/integrations",
     "/how-we-work",
@@ -28,6 +24,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/privacy",
     "/terms",
+    "/industries",
+    "/industries/construction",
+    "/industries/manufacturing",
+    "/industries/facilities",
+    "/industries/healthcare",
     "/mitti-template-setup",
     "/industries/hospitality",
     "/industries/retail",

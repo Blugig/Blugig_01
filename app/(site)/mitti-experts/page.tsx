@@ -62,6 +62,7 @@ export default function MittiExpertsPage() {
         chip={mittiWhoWeHelp.chip}
         lead={mittiWhoWeHelp.title}
         sub={mittiWhoWeHelp.sub}
+        more={{ href: "/industries", label: "All industries" }}
       />
       <Delivery
         id={mittiHowWeWork.id}

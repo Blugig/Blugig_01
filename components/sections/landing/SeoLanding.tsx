@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { MittiHero } from "@/components/sections/mitti/MittiHero";
+import { IndustryLinks } from "@/components/sections/mitti/IndustryLinks";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import { Delivery } from "@/components/sections/service/Delivery";
@@ -36,6 +37,7 @@ export function SeoLanding({ page }: { page: SeoLandingPage }) {
       <MittiHero
         crumbs={[
           { name: "Home", path: "/" },
+          ...(page.parent ? [page.parent] : []),
           { name: page.crumb, path: page.path },
         ]}
         h1Lead={page.h1Lead}
@@ -71,6 +73,15 @@ export function SeoLanding({ page }: { page: SeoLandingPage }) {
         </div>
       </section>
       <Delivery id="how-we-do-it" chip="Four steps" title="How we do it" sub={page.stepsIntro} steps={page.steps} />
+      {page.industrySlug ? (
+        <IndustryLinks
+          chip="Industries"
+          lead="Other industries"
+          sub="The same kind of Mitti setup, shaped for a different operation."
+          omitSlug={page.industrySlug}
+          more={{ href: "/industries", label: "All industries" }}
+        />
+      ) : null}
       <FaqSection items={page.faqs} />
       <CtaBand
         title={page.ctaTitle}

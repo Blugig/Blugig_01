@@ -9,6 +9,10 @@ export type SeoLandingPage = {
   h1Accent: string;
   summary: string;
   shape: ShapeName;
+  /** When set, the breadcrumb is Home, this parent, then the page. */
+  parent?: { name: string; path: string };
+  /** When set, the page shows pills for the other industries. */
+  industrySlug?: string;
   serviceName: string;
   ctaTitle: string;
   stepsIntro: string;
@@ -99,6 +103,8 @@ export const hospitality: SeoLandingPage = {
   description:
     "Mitti for hotels and restaurants. Avantra sets up SafetyCulture checklists for opening, closing, food temps, and rooms your shift can finish.",
   crumb: "Hospitality",
+  parent: { name: "Industries", path: "/industries" },
+  industrySlug: "hospitality",
   h1Lead: "Mitti for hotels",
   h1Accent: "and restaurants",
   summary:
@@ -169,6 +175,8 @@ export const retail: SeoLandingPage = {
   description:
     "Mitti for retail store audits. Avantra turns SafetyCulture checks for shelves, opening, and safety into one list a manager can review.",
   crumb: "Retail",
+  parent: { name: "Industries", path: "/industries" },
+  industrySlug: "retail",
   h1Lead: "Mitti for",
   h1Accent: "retail store audits",
   summary:
@@ -239,6 +247,7 @@ export const zapier: SeoLandingPage = {
   description:
     "Connect Mitti by SafetyCulture to other apps with Zapier. Avantra sets up simple automations so a failed check can email, task, or log a row.",
   crumb: "Zapier",
+  parent: { name: "Integrations", path: "/integrations" },
   h1Lead: "Mitti and Zapier",
   h1Accent: "automations",
   summary:
@@ -309,6 +318,7 @@ export const powerBi: SeoLandingPage = {
   description:
     "Put Mitti by SafetyCulture inspection numbers into Power BI. Avantra helps you show the few reports leaders already ask for each week.",
   crumb: "Power BI",
+  parent: { name: "Integrations", path: "/integrations" },
   h1Lead: "Mitti reports",
   h1Accent: "in Power BI",
   summary:
@@ -379,6 +389,7 @@ export const maintainx: SeoLandingPage = {
   description:
     "Send a failed Mitti equipment check to MaintainX as a work order. Avantra maps SafetyCulture findings to the fields your technicians already use.",
   crumb: "MaintainX",
+  parent: { name: "Integrations", path: "/integrations" },
   h1Lead: "Mitti to MaintainX",
   h1Accent: "work orders",
   summary:
