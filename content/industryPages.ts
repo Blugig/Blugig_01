@@ -19,8 +19,8 @@ export type IndustryPageContent = {
   problemsLead: string;
   problemsSub: string;
   problems: { title: string; body: string }[];
-  /** Two or three paragraphs on how the work actually runs. */
-  dayInTheLife: string[];
+  /** Short stages of a real shift. One or two lines each. */
+  dayInTheLife: { stage: string; title: string; body: string }[];
   useCasesLead: string;
   useCasesAccent: string;
   useCasesSub: string;
@@ -68,9 +68,9 @@ export const construction: IndustryPageContent = {
     { title: "Audit week is a scramble", body: "When an owner or an insurer asks for records, someone spends a day photographing old sheets." },
   ],
   dayInTheLife: [
-    "A superintendent's morning is a walk, then a stack of calls. The walk finds a missing rail, a blocked stair, and a lift that failed its pre-start yesterday. Today those three things live in three different places: a notebook, a text, and a card in the cab. By lunch the notebook is in the truck and the text is buried.",
-    "We do not ask that person to become a data clerk. The phone list follows the walk they already take. When something fails, they pick the crew that owns it and move on. The project manager, who is not on that job, can open the same list without asking anyone to read it aloud.",
-    "Paper can stay as a backup for a week while people learn the form. After that, the phone version is the one that counts, because it is the only one that still has an owner on it the next day.",
+    { stage: "Morning", title: "The walk finds it", body: "A missing rail, a blocked stair, and yesterday's failed lift sit in a notebook, a text, and a card in the cab." },
+    { stage: "Midday", title: "Someone owns the fix", body: "The phone follows the same walk. A fail names the crew. The project manager opens that list without a call." },
+    { stage: "Next day", title: "The record is still there", body: "Paper can sit beside the phone for a week. After that, the phone copy is the one that still has an owner." },
   ],
   useCasesLead: "Where a jobsite",
   useCasesAccent: "actually uses Mitti",
@@ -174,9 +174,9 @@ export const manufacturing: IndustryPageContent = {
     { title: "Auditors want the history", body: "Customer or internal audits ask for the last month of checks. Someone pulls binders from three shifts." },
   ],
   dayInTheLife: [
-    "A line lead's first hour is the startup walk, a first-piece check, and whatever the night shift wrote on the board. The paper startup is signed because the schedule says the line has to run. A guard that was bypassed is a sentence nobody reads until quality stops the run later.",
-    "The useful change is small. The same walk, on a phone, in the same order, with a failed line that names maintenance or the lead before the line is released. Quality does not need a second copy of every answer. They need the defects that still matter this shift.",
-    "We start on one line. If that crew can finish startup without adding time they do not have, the form is ready for the next line. If they skip it, the form is wrong, not the crew.",
+    { stage: "Startup", title: "The sheet gets signed", body: "The line has to run, so the paper startup is initialed. A bypassed guard is a sentence nobody reads until quality stops the run." },
+    { stage: "This shift", title: "The fail has a name", body: "The same walk is on a phone, in the same order. A failed line names maintenance or the lead before the line is released." },
+    { stage: "Next line", title: "One form, then copy it", body: "We start on one line. If that crew can finish startup without extra time, the form is ready. If they skip it, the form is wrong." },
   ],
   useCasesLead: "Checks a plant",
   useCasesAccent: "can run every shift",
@@ -281,9 +281,9 @@ export const facilities: IndustryPageContent = {
     { title: "The same room fails twice", body: "A restroom or a plant room is written up, marked done, and written up again next week. Nobody kept the first note, so the repeat looks new." },
   ],
   dayInTheLife: [
-    "A facilities tech starts with a route: lobby, restrooms, plant rooms, roof. Exceptions are real. They are also easy to lose, because the notebook stays in the shop and the next shift walks the same rooms without it.",
-    "A portfolio lead covers buildings they will not visit this week. They find out about a repeat leak from a tenant or a vendor, not from the round. Life-safety sheets are complete until the month someone forgets, and then the gap is invisible until a client asks.",
-    "The phone does not replace the route. It keeps the exceptions with a name. A warm cooler or a dead emergency light can go to the person who fixes equipment. A messy closet stays with the crew still in the building. Those are different jobs, and the form should not pretend they are the same.",
+    { stage: "The route", title: "Exceptions get lost", body: "Lobby, restrooms, plant rooms, roof. The notes stay in a book in the shop. The next shift walks the same rooms without them." },
+    { stage: "This week", title: "The portfolio hears it late", body: "A lead who will not visit today finds out about a repeat leak from a tenant, not from the round." },
+    { stage: "The handoff", title: "Repair and mess stay separate", body: "A warm cooler goes to the person who fixes equipment. A messy closet stays with the crew still in the building." },
   ],
   useCasesLead: "Rounds and checks",
   useCasesAccent: "facilities already run",
@@ -389,9 +389,9 @@ export const healthcare: IndustryPageContent = {
     { title: "Several sites, several versions", body: "Each hospital or clinic edited the round. A system leader cannot tell which sites are late." },
   ],
   dayInTheLife: [
-    "A safety or facilities lead walks a unit with a tool they already know: exits, outlets, clutter, gas outlets, the items on their own round. The findings are discussed later, after the sheet is typed, if it is typed. Meanwhile the unit has changed shift.",
-    "Cleanliness and fridge logs fail in a different way. The number or the score exists. The room, the time, and the person who should go back do not. Weekend fridge logs are especially easy to complete on Monday from memory.",
-    "We keep this operational. We do not add clinical questions, and we do not tell a hospital it will pass a survey because the round is on a phone. The value is simpler: an open item still has a name when the next shift starts.",
+    { stage: "The round", title: "The sheet is typed later", body: "Exits, outlets, and clutter are on a paper tool. Findings wait for a meeting. The unit has already changed shift." },
+    { stage: "The log", title: "The number has no owner", body: "A cleanliness score or a fridge reading exists. The room, the time, and the person who should go back often do not." },
+    { stage: "Next shift", title: "The open item still has a name", body: "This is operations work, not a survey promise. The value is an owner on the item when the next shift starts." },
   ],
   useCasesLead: "Operational checks",
   useCasesAccent: "we configure",
@@ -495,9 +495,9 @@ export const hospitality: IndustryPageContent = {
     { title: "Multi-unit brands drift", body: "Each hotel or restaurant edits the list. A regional manager cannot tell a real miss from a local habit." },
   ],
   dayInTheLife: [
-    "A Saturday in a restaurant or a full hotel does not have spare minutes. Opening is whatever the manager remembers. Temperatures are written when the rush ends. Housekeeping and the kitchen are asked to share a checklist that fits neither of them, so both skip it. The list has to be short enough for that day, or it will not be used.",
-    "The guest is often the inspector. A room that missed an item, or a pan that sat in the danger zone, shows up as a complaint or a health visit. The shift that could have fixed it has already gone home.",
-    "Separate short lists match the way the building actually runs. The cook records temperatures at the station. The attendant finishes a room against a short list. The manager opens the building, not the line. A brand with many sites agrees those lists once, and adds a few local lines only where a property has a pool or a banquet kitchen. The point is a shift that can still finish the list when the house is full.",
+    { stage: "Open", title: "Saturday has no spare minutes", body: "Opening is whatever the manager remembers. Temperatures get written when the rush ends. A shared kitchen-and-rooms list gets skipped." },
+    { stage: "Service", title: "The guest finds it first", body: "A missed room item or a pan in the danger zone shows up as a complaint. The shift that could have fixed it has gone home." },
+    { stage: "Each role", title: "Short lists, not one long one", body: "The cook logs temps. The attendant finishes a room. The manager opens the building. A busy shift can still finish its own list." },
   ],
   useCasesLead: "Checks for",
   useCasesAccent: "the shift you already run",
@@ -600,9 +600,9 @@ export const retail: IndustryPageContent = {
     { title: "Safety items get buried", body: "A missing extinguisher tag sits in the same list as a promo sign, so it waits behind merchandising." },
   ],
   dayInTheLife: [
-    "A store manager's morning is alarms, lights, restrooms, and the floor before the doors open. The brand audit is a different animal. It is long, it happens when someone from the district is in the building, and the score does not say which aisle to fix before lunch.",
-    "Safety items lose that contest. A blocked stockroom exit sits on the same form as an endcap, so the endcap wins. Photos are either missing, and the district cannot see the shelf, or required on every line, and people stop taking the audit.",
-    "We split the day into walks a store can finish without a visitor from the office. Opening is its own list. The floor is a shorter walk with a photo only where a picture changes the decision. Close tells the next morning what was left. The brand questions stay shared so a district is not comparing different forms. A small store and a large store both have to be able to finish the walk, or the form is still too long.",
+    { stage: "Before open", title: "The audit is a visitor's job", body: "Alarms, lights, and exits are a mental list. The long brand audit happens when the district is in the store, and the score does not name the aisle." },
+    { stage: "On the floor", title: "Safety loses to the endcap", body: "A blocked stockroom exit sits on the same form as a promo sign, so the sign wins. Too many photos, and people stop the audit." },
+    { stage: "Close", title: "Three short walks", body: "Opening, the floor, and close are separate. A photo only where a picture changes the decision. A small store and a large store can both finish." },
   ],
   useCasesLead: "Walks a store",
   useCasesAccent: "can finish in the day",

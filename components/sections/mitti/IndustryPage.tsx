@@ -45,40 +45,60 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
       />
 
       <section id="day" className="section-y scroll-mt-20 bg-white">
-        <div className="shell">
+        <div className="shell grid items-start gap-12 lg:grid-cols-[minmax(16rem,22rem)_1fr] lg:gap-20">
           <Reveal>
-            <div className="prose-blog max-w-[46rem]">
-              <h2>How the day actually runs</h2>
-              {industry.dayInTheLife.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
+            <SectionHeading
+              chip="A real shift"
+              lead="How the day"
+              accent="actually runs"
+              sub="Three moments. Short enough to read on a phone."
+            />
           </Reveal>
+          <ol className="flex flex-col">
+            {industry.dayInTheLife.map((step, index) => {
+              const last = index === industry.dayInTheLife.length - 1;
+              return (
+                <li key={step.title} className="grid grid-cols-[2.75rem_1fr] gap-x-4 sm:grid-cols-[3rem_1fr] sm:gap-x-6">
+                  <div className="flex flex-col items-center">
+                    <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-blue-600 font-mono text-sm text-white">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    {last ? null : <span aria-hidden className="my-2 w-px flex-1 bg-gray-200" />}
+                  </div>
+                  <div className={last ? "pt-1" : "pt-1 pb-10"}>
+                    <p className="text-s font-medium tracking-wide text-gray-500 uppercase">{step.stage}</p>
+                    <h3 className="mt-2 text-xl leading-snug font-medium tracking-[-0.02em] text-ink sm:text-2xl">{step.title}</h3>
+                    <p className="mt-3 max-w-[36rem] text-base leading-7 text-gray-700">{step.body}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </section>
 
       <section id="use-cases" className="section-y scroll-mt-20">
-        <div className="shell flex flex-col gap-10">
+        <div className="shell flex flex-col gap-12">
           <Reveal>
             <SectionHeading chip="Use cases" lead={industry.useCasesLead} accent={industry.useCasesAccent} sub={industry.useCasesSub} className="max-w-[40rem]" />
           </Reveal>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-8">
             {industry.useCases.map((item) => (
               <Reveal key={item.title}>
                 <article className="rounded-[1.5rem] bg-white p-6 sm:p-10">
-                  <h3 className="title-s max-w-[40rem]">{item.title}</h3>
-                  <div className="mt-8 grid gap-8 lg:grid-cols-3">
-                    <div className="flex flex-col gap-2">
-                      <p className="eyebrow text-gray-500">What happens today</p>
-                      <p className="text-m text-gray-700">{item.scenario}</p>
+                  <h3 className="title-s max-w-[40rem] text-balance">{item.title}</h3>
+                  <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-3">
+                    <div className="flex h-full flex-col gap-3 rounded-2xl bg-canvas p-5 sm:p-6">
+                      <p className="text-s font-medium tracking-wide text-gray-500 uppercase">What happens today</p>
+                      <p className="text-base leading-7 text-gray-800">{item.scenario}</p>
                     </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="eyebrow text-gray-500">How we set it up in Mitti</p>
-                      <p className="text-m text-gray-700">{item.setup}</p>
+                    <div className="flex h-full flex-col gap-3 rounded-2xl bg-canvas p-5 sm:p-6">
+                      <p className="text-s font-medium tracking-wide text-gray-500 uppercase">How we set it up</p>
+                      <p className="text-base leading-7 text-gray-800">{item.setup}</p>
                     </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="eyebrow text-gray-500">What the team gets</p>
-                      <p className="text-m text-gray-700">{item.result}</p>
+                    <div className="flex h-full flex-col gap-3 rounded-2xl bg-canvas p-5 sm:p-6">
+                      <p className="text-s font-medium tracking-wide text-gray-500 uppercase">What the team gets</p>
+                      <p className="text-base leading-7 text-gray-800">{item.result}</p>
                     </div>
                   </div>
                 </article>
@@ -99,7 +119,7 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
           </Reveal>
           <ul className="flex flex-wrap content-start gap-3 lg:pt-16">
             {industry.templates.map((name) => (
-              <li key={name} className="rounded-full bg-white px-5 py-3 text-base font-medium text-ink">
+              <li key={name} className="flex min-h-12 items-center rounded-full bg-white px-5 py-3 text-base leading-snug font-medium text-ink">
                 {name}
               </li>
             ))}
@@ -120,9 +140,9 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
           <Reveal>
             <SectionHeading chip="After launch" lead="What changes" accent="for your team" sub="Qualitative changes we aim for. Not a promise of a score." />
           </Reveal>
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-3">
             {industry.outcomes.map((line) => (
-              <li key={line} className="rounded-[1.25rem] bg-white px-6 py-5 text-base leading-relaxed text-gray-800">
+              <li key={line} className="rounded-[1.25rem] bg-white px-6 py-5 text-base leading-7 text-gray-800">
                 {line}
               </li>
             ))}
@@ -130,7 +150,9 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
         </div>
       </section>
 
-      <FaqSection items={industry.faqs} />
+      <div id="faq">
+        <FaqSection items={industry.faqs} />
+      </div>
 
       <section id="related" className="pb-4">
         <div className="shell flex flex-col gap-4">
@@ -158,13 +180,15 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
         more={{ href: "/industries", label: "All industries" }}
       />
 
-      <CtaBand
-        title={industry.ctaTitle}
-        sub={`Book a 30-minute call, or email ${site.email}.`}
-        label="Book a call"
-        href={site.calendlyUrl}
-        secondary={{ label: "Mitti training", href: "/mitti-training" }}
-      />
+      <div id="cta">
+        <CtaBand
+          title={industry.ctaTitle}
+          sub={`Book a 30-minute call, or email ${site.email}.`}
+          label="Book a call"
+          href={site.calendlyUrl}
+          secondary={{ label: "Mitti training", href: "/mitti-training" }}
+        />
+      </div>
 
       <JsonLd
         data={serviceJsonLd({
