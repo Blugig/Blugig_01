@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Azeret_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${archivo.variable} ${azeret.variable}`}>
       <body className="min-h-dvh">{children}</body>
+      <GoogleAnalytics />
     </html>
   );
 }

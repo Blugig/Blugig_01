@@ -212,11 +212,11 @@ function HeroCopy({
           className="enter-fade flex flex-wrap items-center gap-3 max-[992px]:justify-center max-[480px]:w-full max-[480px]:flex-col max-[480px]:items-stretch"
           style={d(0.65)}
         >
-          <ButtonLink href={copy.primary.href}>
+          <ButtonLink href={copy.primary.href} data-cta-location={copy.primary.ctaLocation}>
             {copy.primary.label}
             <ButtonIcon name={"icon" in copy.primary ? copy.primary.icon : undefined} />
           </ButtonLink>
-          <ButtonLink href={copy.secondary.href} variant="outline">
+          <ButtonLink href={copy.secondary.href} variant="outline" data-cta-location={copy.secondary.ctaLocation}>
             {copy.secondary.label}
             <ButtonIcon name={"icon" in copy.secondary ? copy.secondary.icon : undefined} />
           </ButtonLink>

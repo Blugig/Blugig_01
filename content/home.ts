@@ -19,8 +19,8 @@ export const hero = {
       titleLead: "Every inspection,",
       titleAccent: "turned into action.",
       sub: "Avantra designs, deploys, and scales Mitti across your sites, so issues get fixed faster and every team stays audit-ready.",
-      primary: { label: "Book a free rollout plan", href: "/contact", icon: "arrow" },
-      secondary: { label: "See how it works", href: "/how-we-work", icon: "play" },
+      primary: { label: "Book a free rollout plan", href: "/contact", icon: "arrow", ctaLocation: "hero_rollout" },
+      secondary: { label: "See how it works", href: "/how-we-work", icon: "play", ctaLocation: "hero_how_it_works" },
       apps: [],
     },
     {
@@ -28,8 +28,8 @@ export const hero = {
       titleLead: "Connect Mitti",
       titleAccent: "to every system you run.",
       sub: "Avantra builds Workato automations that sync inspections, issues and actions with your ERP, CRM, HR and ticketing tools.",
-      primary: { label: "Plan my integration", href: "/contact" },
-      secondary: { label: "See integrations", href: "/integrations" },
+      primary: { label: "Plan my integration", href: "/contact", ctaLocation: "hero_integration" },
+      secondary: { label: "See integrations", href: "/integrations", ctaLocation: "hero_see_integrations" },
       apps: ["Salesforce", "SAP", "ServiceNow", "Slack", "Teams", "+more"],
     },
   ],
@@ -109,6 +109,7 @@ export const explore = {
       title: "Mitti (SafetyCulture) experts",
       line: "Mitti (SafetyCulture) Experts and an Official Mitti Partner for inspections, checklists, training, and support.",
       href: "/mitti-experts",
+      ctaLocation: "explore_experts",
     },
     {
       key: "training",
@@ -117,6 +118,7 @@ export const explore = {
       title: "Free Mitti training and Masterclass",
       line: "Learn inspections, checklists, and actions, including the app once called iAuditor.",
       href: "/mitti-training",
+      ctaLocation: "explore_training",
     },
     {
       key: "templates",
@@ -125,6 +127,7 @@ export const explore = {
       title: "Mitti template setup",
       line: "Checklists and inspection templates built around how your sites actually work.",
       href: "/mitti-template-setup",
+      ctaLocation: "explore_templates",
     },
     {
       key: "industries",
@@ -133,6 +136,7 @@ export const explore = {
       title: "Mitti by industry",
       line: "How construction, manufacturing, facilities, healthcare, hospitality, and retail run Mitti.",
       href: "/industries",
+      ctaLocation: "explore_industries",
     },
   ],
 } as const;

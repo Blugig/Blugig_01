@@ -50,8 +50,20 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
-          // Only framing for now; a full policy needs allowances for Calendly and the WebGL canvas.
-          { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+          // frame-ancestors stays limited to this site. The other directives name Google
+          // Analytics and still allow https so Calendly, Next, and the WebGL canvas keep working.
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "frame-ancestors 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://www.googletagmanager.com https://www.google-analytics.com https:",
+              "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https: wss:",
+              "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https:",
+              "style-src 'self' 'unsafe-inline' https:",
+              "font-src 'self' data: https:",
+              "frame-src 'self' https://calendly.com https://*.calendly.com https:",
+            ].join("; "),
+          },
         ],
       },
     ];
