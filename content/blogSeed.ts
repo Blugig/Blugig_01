@@ -84,9 +84,9 @@ export const seedPosts: Post[] = [
     previousSlugs: [],
     status: "published",
     title: "SafetyCulture is now Mitti: what the rename means for your teams",
-    seoTitle: "SafetyCulture Is Now Mitti: What It Means for Your Teams",
+    seoTitle: "SafetyCulture Is Now Mitti | Mitti Experts",
     description:
-      "SafetyCulture is now Mitti. What the rename means for teams already using the platform, plus a practical checklist to keep inspections on track.",
+      "SafetyCulture is now Mitti, and iAuditor was renamed in the rebrand. What changes for your teams, plus a checklist to keep inspections on track.",
     excerpt:
       "Same platform, new name. What changed, what didn't, and a six-step checklist so your frontline teams aren't left wondering which app to open.",
     focusKeyword: "SafetyCulture is now Mitti",

@@ -7,9 +7,9 @@ const h1Lead = "Mitti Experts and Consultants";
 const h1Accent = "for SafetyCulture's Mitti";
 
 export const mittiExpertsMeta = {
-  title: "Mitti Experts | Avantra Technologies",
+  title: "Mitti (SafetyCulture) Experts | Avantra",
   description:
-    "Mitti experts and consultants for SafetyCulture's Mitti, including teams who still say iAuditor. Avantra handles setup, training, and support for US operations, safety, and facilities teams.",
+    "Avantra Technologies is a team of Mitti (SafetyCulture) experts. We set up inspections, checklists, training, and support for teams that still say iAuditor.",
   path: "/mitti-experts",
 } as const;
 
