@@ -34,17 +34,15 @@ export function serviceJsonLd({
   };
 }
 
-/** Free Mitti Masterclass. No price, rating, or enrollment count. */
+/** Free Mitti training page. No price, rating, or enrollment count. */
 export function courseJsonLd({
   name,
   description,
   path,
-  playlistUrl,
 }: {
   name: string;
   description: string;
   path: string;
-  playlistUrl: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -64,7 +62,7 @@ export function courseJsonLd({
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      url: playlistUrl,
+      url: absoluteUrl(path),
     },
   };
 }

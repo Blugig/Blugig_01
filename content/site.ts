@@ -13,9 +13,6 @@ export const LINKEDIN_URL = "https://www.linkedin.com/company/144056120/";
 /** Avantra's Facebook profile. Organization JSON-LD `sameAs` only; not a visible icon or link. */
 export const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61596705140345";
 
-/** Avantra's YouTube channel. Organization JSON-LD `sameAs` only; not a visible icon or link. */
-export const YOUTUBE_URL = "https://www.youtube.com/@avantratech";
-
 /** Khasim Basha's LinkedIn profile. Person JSON-LD `sameAs`, and the article author link. */
 export const KHASIM_LINKEDIN_URL = "https://www.linkedin.com/in/khasim-basha-sk-b7584a46/";
 
@@ -34,7 +31,7 @@ export const site = {
    */
   url: PRODUCTION_URL,
   description:
-    "Official Mitti Partner and Mitti (SafetyCulture) experts. Avantra helps operations teams plan, set up, and run Mitti by SafetyCulture.",
+    "Avantra Technologies is a team of Mitti (SafetyCulture) experts. We help operations teams plan, set up, and run Mitti by SafetyCulture.",
   /** Each contact value is rendered only when set (footer, contact page, JSON-LD). */
   email: "info@avantratechnologies.com" as string,
   /** Listed in this order everywhere; the first is the primary (structured data). */
@@ -50,17 +47,14 @@ export const site = {
    * Avantra's own profiles, listed as Organization `sameAs` in structured data.
    * Nothing on the page renders this list. The footer icon uses `social.linkedin` only.
    */
-  profiles: [LINKEDIN_URL, FACEBOOK_URL, YOUTUBE_URL] as string[],
+  profiles: [LINKEDIN_URL, FACEBOOK_URL] as string[],
   /** Partner programme shown as a badge (footer + About). */
   partner: {
     name: "Workato Automation League — Silver Partner",
     short: "Workato Silver Partner",
   },
-  /** Partner credentials shown as badges (hero, About). The Mitti badge is words only, not Mitti's logo. */
-  credentials: [
-    { kind: "workato" as const, name: "Workato", line: "Silver Partner" },
-    { kind: "text" as const, name: "Official Mitti Partner", line: "Mitti (SafetyCulture) Experts" },
-  ],
+  /** Partner credentials shown as badges (hero, About). */
+  credentials: [{ kind: "workato" as const, name: "Workato", line: "Silver Partner" }],
   /** Parent company and the footer legal line (verbatim from the owner). */
   parentCompany: "SSPM IT SOLUTIONS PRIVATE LIMITED",
   copyright: "© 2026 Avantra Technologies. An SSPM IT SOLUTIONS PRIVATE LIMITED COMPANY. All rights reserved.",

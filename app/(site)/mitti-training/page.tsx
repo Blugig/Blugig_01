@@ -6,7 +6,6 @@ import { MittiHero } from "@/components/sections/mitti/MittiHero";
 import { Capabilities } from "@/components/sections/service/Capabilities";
 import { GuideLinks } from "@/components/sections/GuideLinks";
 import { CtaBand } from "@/components/sections/service/CtaBand";
-import { mittiMasterclassUrl } from "@/content/mittiExperts";
 import { mittiTrainingCta, mittiTrainingHero, mittiTrainingMeta, mittiTrainingSections } from "@/content/mittiTraining";
 import { site } from "@/content/site";
 import { courseJsonLd } from "@/lib/mittiJsonLd";
@@ -31,7 +30,7 @@ export default function MittiTrainingPage() {
         h1Accent={mittiTrainingHero.h1Accent}
         summary={mittiTrainingHero.summary}
         primary={{ label: mittiTrainingHero.primaryLabel, href: site.calendlyUrl, external: true }}
-        secondary={{ label: mittiTrainingHero.secondaryLabel, href: mittiMasterclassUrl, external: true }}
+        secondary={{ label: mittiTrainingHero.secondaryLabel, href: "#sections" }}
         shape="orbit"
       >
         <p className="text-s flex flex-wrap gap-x-4 gap-y-2 text-gray-600">
@@ -66,17 +65,16 @@ export default function MittiTrainingPage() {
       <GuideLinks omit={["/mitti-training"]} />
       <CtaBand
         title={mittiTrainingCta.title}
-        sub={`The masterclass is free. For training with your supervisors and crews, book a 30-minute call, or email ${site.email}.`}
+        sub={`For training with your supervisors and crews, book a 30-minute call, or email ${site.email}.`}
         label={mittiTrainingCta.label}
         href={site.calendlyUrl}
         secondary={{ label: "Mitti experts", href: "/mitti-experts" }}
       />
       <JsonLd
         data={courseJsonLd({
-          name: "Mitti Masterclass",
+          name: "Free Mitti training",
           description: mittiTrainingMeta.description,
           path: mittiTrainingMeta.path,
-          playlistUrl: mittiMasterclassUrl,
         })}
       />
     </>

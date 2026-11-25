@@ -27,7 +27,7 @@ export default function IndustriesPage() {
         ]}
         h1Lead="Mitti for"
         h1Accent="your industry"
-        summary="Pick the operation closest to yours. Each page is a practical setup for Mitti, the product many teams still call SafetyCulture or iAuditor. Avantra is an Official Mitti Partner and a team of Mitti (SafetyCulture) experts."
+        summary="Pick the operation closest to yours. Each page is a practical setup for Mitti, the product many teams still call SafetyCulture or iAuditor. Avantra is a team of Mitti (SafetyCulture) experts."
         primary={{ label: "Book a call", href: site.calendlyUrl, external: true }}
         secondary={{ label: "Mitti experts", href: "/mitti-experts" }}
         shape="mitti"

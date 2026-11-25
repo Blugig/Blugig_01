@@ -1,15 +1,12 @@
 import { site } from "@/content/site";
 
-/** Free Mitti Masterclass playlist (YouTube). */
-export const mittiMasterclassUrl = "https://www.youtube.com/playlist?list=PLLVH_1YJHHBM";
-
 const h1Lead = "Mitti Experts and Consultants";
 const h1Accent = "for SafetyCulture's Mitti";
 
 export const mittiExpertsMeta = {
   title: "Mitti (SafetyCulture) Experts | Avantra",
   description:
-    "Official Mitti Partner and Mitti (SafetyCulture) experts. Avantra sets up inspections, checklists, training, and support for teams that still say iAuditor.",
+    "Avantra Technologies is a team of Mitti (SafetyCulture) experts. We set up inspections, checklists, training, and support for teams that still say iAuditor.",
   path: "/mitti-experts",
 } as const;
 
@@ -20,7 +17,7 @@ export const mittiExpertsHero = {
   /** Visible and accessible H1. Kept as one sentence so the heading does not pick up an eyebrow. */
   h1: `${h1Lead} ${h1Accent}`,
   summary:
-    "Avantra Technologies is an Official Mitti Partner and a team of Mitti (SafetyCulture) experts. We help operations, safety, and facilities leaders in the United States put Mitti to work. SafetyCulture is now Mitti, and many teams still say iAuditor.",
+    "Avantra Technologies helps operations, safety, and facilities leaders in the United States put Mitti to work. Mitti is by SafetyCulture. SafetyCulture is now Mitti, and we are Mitti experts and Mitti consultants for that platform.",
   primaryLabel: "Book a call",
   secondaryLabel: "Email us",
 } as const;
@@ -98,19 +95,16 @@ export const mittiWhy = {
   id: "why-avantra",
   chip: "Three reasons",
   title: "Why Avantra",
-  sub: "Mitti experts, a free way to see the platform, and a rollout your team can run.",
+  sub: "Mitti experts, free training, and a rollout your team can run.",
   items: [
     {
       title: "Mitti experts",
       body: "We set up SafetyCulture's Mitti and teach your team to run it. Mitti is the work Avantra does.",
     },
     {
-      title: "A free Mitti Masterclass",
-      body: "The Mitti Masterclass is a free YouTube playlist. The training page lists what each section covers. You can watch it before you book a call.",
-      links: [
-        { href: mittiMasterclassUrl, label: "Watch the Mitti Masterclass", external: true },
-        { href: "/mitti-training", label: "See the Mitti training outline", external: false },
-      ],
+      title: "Free Mitti training",
+      body: "The training page lists what we cover, from the first inspection through actions and sites. You can read it before you book a call.",
+      links: [{ href: "/mitti-training", label: "See the Mitti training outline", external: false }],
     },
     {
       title: "Practical rollouts",

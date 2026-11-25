@@ -1,6 +1,6 @@
 # Avantra Technologies
 
-> Avantra Technologies is an Official Mitti Partner and a team of Mitti (SafetyCulture) experts. Mitti is the new name for SafetyCulture. Many people still call the inspection app iAuditor. Avantra does not make Mitti.
+> Avantra Technologies is a team of Mitti (SafetyCulture) experts. Mitti is the new name for SafetyCulture. Many people still call the inspection app iAuditor. Avantra does not make Mitti.
 
 Avantra helps operations teams plan, set up, and run Mitti. The work covers inspections, checklists, training, and connections to other systems.
 
@@ -19,7 +19,7 @@ Avantra helps operations teams plan, set up, and run Mitti. The work covers insp
 - Mitti experts: https://www.avantratechnologies.com/mitti-experts
 - Services: https://www.avantratechnologies.com/services
 - Template and checklist setup: https://www.avantratechnologies.com/mitti-template-setup
-- Mitti training and free Masterclass: https://www.avantratechnologies.com/mitti-training
+- Mitti training: https://www.avantratechnologies.com/mitti-training
 - How we work: https://www.avantratechnologies.com/how-we-work
 - Solutions: https://www.avantratechnologies.com/solutions
 - About: https://www.avantratechnologies.com/about
@@ -41,7 +41,3 @@ Avantra helps operations teams plan, set up, and run Mitti. The work covers insp
 - Mitti and Zapier: https://www.avantratechnologies.com/integrations/zapier
 - Mitti and Power BI: https://www.avantratechnologies.com/integrations/power-bi
 - Mitti and MaintainX: https://www.avantratechnologies.com/integrations/maintainx
-
-## YouTube
-
-- Channel: https://www.youtube.com/@avantratech

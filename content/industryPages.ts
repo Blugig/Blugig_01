@@ -35,7 +35,7 @@ export type IndustryPageContent = {
 };
 
 const templateLink = { label: "Mitti template setup", href: "/mitti-template-setup" };
-const trainingLink = { label: "Free Mitti training and Masterclass", href: "/mitti-training" };
+const trainingLink = { label: "Free Mitti training", href: "/mitti-training" };
 const servicesLink = { label: "Mitti services", href: "/services" };
 const contactLink = { label: "Contact Mitti experts", href: "/contact" };
 const rebrandLink = { label: "SafetyCulture is now Mitti", href: "/blog/safetyculture-is-now-mitti" };
@@ -45,7 +45,7 @@ const powerBiLink = { label: "Mitti and Power BI", href: "/integrations/power-bi
 const maintainxLink = { label: "Mitti and MaintainX", href: "/integrations/maintainx" };
 
 const experts =
-  "Avantra is an Official Mitti Partner and a team of Mitti experts. We do not make Mitti. Mitti is the new name for SafetyCulture. Many people still call the inspection app iAuditor.";
+  "Avantra is a team of Mitti experts. We do not make Mitti. Mitti is the new name for SafetyCulture. Many people still call the inspection app iAuditor.";
 
 export const construction: IndustryPageContent = {
   slug: "construction",

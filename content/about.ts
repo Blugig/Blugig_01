@@ -6,7 +6,7 @@ export const aboutHero = {
   chip: "Mitti (SafetyCulture) Experts",
   titleLead: "Technology works best",
   titleAccent: "when people can use it well.",
-  sub: "Avantra is an Official Mitti Partner and a team of Mitti (SafetyCulture) experts. We help organizations put Mitti into practice with practical training and ongoing improvement.",
+  sub: "Avantra is a team of Mitti (SafetyCulture) experts. We help organizations put Mitti into practice with practical training and ongoing improvement.",
 };
 
 /** Scroll-scrubbed statement + the rest of the story underneath. */
@@ -47,7 +47,7 @@ export const partnerBand = {
   lead: "Your",
   highlight: "Mitti",
   rest: "experts.",
-  sub: "Official Mitti Partner. From planning and configuration to adoption and rollout.",
+  sub: "From planning and configuration to adoption and rollout.",
 };
 
 export const aboutCta = {
