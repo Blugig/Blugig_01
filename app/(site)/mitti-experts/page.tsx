@@ -7,6 +7,7 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { IndustryLinks } from "@/components/sections/mitti/IndustryLinks";
 import { MittiHero } from "@/components/sections/mitti/MittiHero";
 import { Capabilities } from "@/components/sections/service/Capabilities";
+import { GuideLinks } from "@/components/sections/GuideLinks";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import { Delivery } from "@/components/sections/service/Delivery";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -116,6 +117,7 @@ export default function MittiExpertsPage() {
       <div id="faq">
         <FaqSection items={mittiFaqs} title="FAQ" />
       </div>
+      <GuideLinks omit={["/mitti-experts"]} />
       <CtaBand
         title={mittiCta.title}
         sub={mittiCta.sub}

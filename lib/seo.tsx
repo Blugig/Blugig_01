@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { integrationService, services } from "@/content/services";
-import { site } from "@/content/site";
+import { KHASIM_LINKEDIN_URL, site } from "@/content/site";
 
 export function absoluteUrl(path = "/") {
   return new URL(path, site.url).toString();
@@ -24,7 +24,10 @@ export function pageMetadata({ title, description, path }: { title: string; desc
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      languages: { "en-US": path, "x-default": path },
+    },
     openGraph: { type: "website", siteName: site.name, locale: "en_US", url: path, title, description, images: [OG_IMAGE] },
     twitter: { card: "summary_large_image", title, description, images: [OG_IMAGE] },
   };
@@ -137,6 +140,7 @@ export function organizationJsonLd() {
       ? { address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" } }
       : {}),
     ...(site.profiles.length ? { sameAs: site.profiles } : {}),
+    employee: { "@id": absoluteUrl("/#khasim-basha") },
     makesOffer: offers.map((o) => ({
       "@type": "Offer",
       itemOffered: { "@type": "Service", name: o.name, serviceType: "Mitti implementation", url: absoluteUrl(o.path) },
@@ -170,25 +174,38 @@ export function faqJsonLd(faqs: { q: string; a: string }[]) {
 }
 
 /**
- * BreadcrumbList where every item carries its name.
- * `item` is a WebPage, not a bare URL: a URL string has no name of its own, and
- * Google then reports the crumb as an unnamed item. The ListItem name is kept as well,
- * which is the name Google reads when `item` is a URL.
+ * BreadcrumbList in the shape Google reads: every ListItem has a `name` and an `item` URL.
+ * A nested WebPage (name only inside `item`) is what Search Console reported as an unnamed item
+ * on /mitti-experts. The homepage URL has no trailing slash, matching its canonical.
  */
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: items.map((crumb, i) => {
-      const url = absoluteUrl(crumb.path);
       const name = crumb.name.trim();
+      const item = crumb.path === "/" ? site.url : absoluteUrl(crumb.path);
       return {
         "@type": "ListItem",
         position: i + 1,
         name,
-        item: { "@type": "WebPage", "@id": url, name, url },
+        item,
       };
     }),
+  };
+}
+
+/** Khasim Basha, the named author of the site's articles. */
+export function personJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": absoluteUrl("/#khasim-basha"),
+    name: "Khasim Basha",
+    jobTitle: "Mitti Expert",
+    url: KHASIM_LINKEDIN_URL,
+    sameAs: [KHASIM_LINKEDIN_URL],
+    worksFor: { "@id": absoluteUrl("/#organization") },
   };
 }
 

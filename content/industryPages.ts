@@ -34,8 +34,12 @@ export type IndustryPageContent = {
   ctaTitle: string;
 };
 
-const templateLink = { label: "Template setup", href: "/mitti-template-setup" };
-const trainingLink = { label: "Mitti training", href: "/mitti-training" };
+const templateLink = { label: "Mitti template setup", href: "/mitti-template-setup" };
+const trainingLink = { label: "Free Mitti training and Masterclass", href: "/mitti-training" };
+const servicesLink = { label: "Mitti services", href: "/services" };
+const contactLink = { label: "Contact Mitti experts", href: "/contact" };
+const rebrandLink = { label: "SafetyCulture is now Mitti", href: "/blog/safetyculture-is-now-mitti" };
+const coreLinks = [templateLink, trainingLink, servicesLink, contactLink, rebrandLink];
 const zapierLink = { label: "Mitti and Zapier", href: "/integrations/zapier" };
 const powerBiLink = { label: "Mitti and Power BI", href: "/integrations/power-bi" };
 const maintainxLink = { label: "Mitti and MaintainX", href: "/integrations/maintainx" };
@@ -145,7 +149,7 @@ export const construction: IndustryPageContent = {
     { q: "What if the job has no phone signal?", a: "Mitti can save the inspection on the phone and send it when the phone has signal again. We test that on your job before we say the setup is done." },
     { q: "Do you replace our safety program?", a: `${experts} We put the checks you already do into one shared checklist. We do not write your safety program, and we do not sign off the job.` },
   ],
-  related: [templateLink, trainingLink, maintainxLink, powerBiLink],
+  related: [...coreLinks, maintainxLink, powerBiLink],
   ctaTitle: "Walk one jobsite with us",
 };
 
@@ -251,7 +255,7 @@ export const manufacturing: IndustryPageContent = {
     { q: "Who can change the questions?", a: "A small group. Everyone else fills out the checklist. If every supervisor can edit it, each line ends up with a different list." },
     { q: "Do you certify the plant or the process?", a: `${experts} We set up inspections and follow-up. We do not certify the plant, the product, or a quality standard.` },
   ],
-  related: [templateLink, trainingLink, maintainxLink, powerBiLink],
+  related: [...coreLinks, maintainxLink, powerBiLink],
   ctaTitle: "Walk one line with us",
 };
 
@@ -358,7 +362,7 @@ export const facilities: IndustryPageContent = {
     { q: "Who can change the round after it is in use?", a: "A small group of supervisors. Techs fill it out. If everyone can rewrite questions, each building ends up with a different list." },
     { q: "What if the problem is not a repair?", a: "It stays a task in Mitti for the crew or the lead. Only equipment that needs a technician becomes a work order. If both go to the same list, people ignore both." },
   ],
-  related: [templateLink, trainingLink, maintainxLink, powerBiLink],
+  related: [...coreLinks, maintainxLink, powerBiLink],
   ctaTitle: "Walk one building with us",
 };
 
@@ -466,7 +470,7 @@ export const healthcare: IndustryPageContent = {
     { q: "Is Mitti the same as SafetyCulture?", a: "Yes. Mitti is the new name. SafetyCulture is the old name. iAuditor is an older name for the inspection app." },
     { q: "Who can change the round?", a: "A small group. Everyone else fills it out. That is how the sites stay easy to compare." },
   ],
-  related: [templateLink, trainingLink, maintainxLink, powerBiLink],
+  related: [...coreLinks, maintainxLink, powerBiLink],
   ctaTitle: "Walk one unit with us",
 };
 
@@ -571,7 +575,7 @@ export const hospitality: IndustryPageContent = {
     { q: "We still say SafetyCulture or iAuditor. Is that a different app?", a: "No. Mitti is the current name. SafetyCulture is the earlier name, and iAuditor is an older name for the inspection app." },
     { q: "Can a regional manager get a note when something fails?", a: "Yes, for the few events you choose. A simple handoff can go through Zapier. We do not email every answer." },
   ],
-  related: [templateLink, trainingLink, zapierLink, powerBiLink],
+  related: [...coreLinks, zapierLink, powerBiLink],
   ctaTitle: "Walk one shift with us",
 };
 
@@ -676,7 +680,7 @@ export const retail: IndustryPageContent = {
     { q: "Can a district manager assign a fix from the inspection?", a: "Yes. A failed line should become a task for the store manager or a named lead, with a due date. A score by itself will still be there next week." },
     { q: "Do you rank our stores against each other?", a: "We can show missed inspections and open tasks. We do not make up a ranking. If you want a number, it has to be one your team will use." },
   ],
-  related: [templateLink, trainingLink, powerBiLink, zapierLink],
+  related: [...coreLinks, powerBiLink, zapierLink],
   ctaTitle: "Audit one store with us",
 };
 

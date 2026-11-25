@@ -2,10 +2,11 @@ import { ArrowRight, Clock, Newspaper } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
+import { GuideLinks } from "@/components/sections/GuideLinks";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import { Chip } from "@/components/ui/Chip";
 import { site } from "@/content/site";
-import { blogPostingJsonLd, hasPersonAuthor } from "@/lib/blog/jsonld";
+import { blogPostingJsonLd, displayAuthor, hasPersonAuthor } from "@/lib/blog/jsonld";
 import { analyzeMarkdown, renderMarkdown } from "@/lib/blog/markdown";
 import { formatDate, postExcerpt, postImagePath, postPath, postTitleTag, readingMinutes } from "@/lib/blog/post";
 import { findLivePost, relatedPosts } from "@/lib/blog/queries";
@@ -41,13 +42,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = searchMeta?.title ?? postTitleTag(post);
   const description = searchMeta?.description ?? post.description;
   const socialTitle = searchMeta?.title ?? post.title;
+  const author = displayAuthor(post);
+  const canonical = post.canonicalUrl ? asHttps(post.canonicalUrl) : path;
   const image = { url: postImagePath(post.slug), width: 1200, height: 630, alt: post.title };
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: post.canonicalUrl ? asHttps(post.canonicalUrl) : path },
+    alternates: { canonical, languages: { "en-US": canonical, "x-default": canonical } },
     ...(post.noindex ? { robots: { index: false, follow: true } } : {}),
-    authors: [{ name: post.author.name, ...(post.author.url ? { url: post.author.url } : {}) }],
+    authors: [{ name: author.name, ...(author.url ? { url: author.url } : {}) }],
     openGraph: {
       type: "article",
       siteName: site.name,
@@ -57,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       publishedTime: post.publishedAt ?? undefined,
       modifiedTime: post.updatedAt,
-      authors: [post.author.name],
+      authors: [author.name],
       tags: post.tags,
       images: [image],
     },
@@ -76,7 +79,8 @@ export default async function BlogPostPage({ params }: Props) {
   const minutes = readingMinutes(analyzeMarkdown(post.content).words);
   const related = relatedPosts(post, others);
   const updated = post.publishedAt && post.updatedAt.slice(0, 10) !== post.publishedAt.slice(0, 10);
-  const person = hasPersonAuthor(post);
+  const author = displayAuthor(post);
+  const person = hasPersonAuthor({ ...post, author });
 
   return (
     <>
@@ -90,15 +94,15 @@ export default async function BlogPostPage({ params }: Props) {
                     Home
                   </Link>
                 </li>
-                <span aria-hidden>/</span>
-                <li>
+                <li className="flex items-center gap-2">
+                  <span aria-hidden>/</span>
                   <Link href="/blog" className="hover:text-blue-700">
                     Blog
                   </Link>
                 </li>
-                <span aria-hidden>/</span>
-                <li aria-current="page" className="line-clamp-1 text-gray-500">
-                  {post.title}
+                <li aria-current="page" className="flex min-w-0 items-center gap-2 text-gray-500">
+                  <span aria-hidden>/</span>
+                  <span className="line-clamp-1">{post.title}</span>
                 </li>
               </ol>
             </nav>
@@ -108,14 +112,14 @@ export default async function BlogPostPage({ params }: Props) {
             <p className="text-s flex flex-wrap items-center gap-x-3 gap-y-1 text-gray-600">
               <span>
                 By{" "}
-                {person && post.author.url ? (
-                  <a href={post.author.url} rel="author noopener" target="_blank" className="font-medium text-ink hover:text-blue-700">
-                    {post.author.name}
+                {person && author.url ? (
+                  <a href={author.url} rel="author noopener" target="_blank" className="font-medium text-ink hover:text-blue-700">
+                    {author.name}
                   </a>
                 ) : (
-                  <span className="font-medium text-ink">{post.author.name}</span>
+                  <span className="font-medium text-ink">{author.name}</span>
                 )}
-                {post.author.role ? `, ${post.author.role}` : ""}
+                {author.role ? `, ${author.role}` : ""}
               </span>
               <span aria-hidden>·</span>
               <time dateTime={post.publishedAt ?? undefined}>{formatDate(post.publishedAt!)}</time>
@@ -165,17 +169,17 @@ export default async function BlogPostPage({ params }: Props) {
             <aside aria-label="About the author" className="flex flex-col gap-2 rounded-2xl bg-white p-6">
               <p className="eyebrow text-gray-500">Written by</p>
               <p className="title-xs">
-                {post.author.name}
-                {post.author.role ? <span className="font-normal text-gray-600"> · {post.author.role}</span> : null}
+                {author.name}
+                {author.role ? <span className="font-normal text-gray-600"> · {author.role}</span> : null}
               </p>
               <p className="text-s text-gray-700">
-                {post.author.bio ||
+                {author.bio ||
                   (person
-                    ? `${post.author.name} works on Mitti rollouts at ${site.name}.`
+                    ? `${author.name} works on Mitti rollouts at ${site.name}.`
                     : `${site.name} is a team of Mitti experts in Bengaluru, helping operations teams plan, configure and roll out Mitti, and connect it to the systems they already run.`)}
               </p>
-              {person && post.author.url ? (
-                <a href={post.author.url} target="_blank" rel="author noopener" className="text-s w-fit text-blue-700 hover:underline">
+              {person && author.url ? (
+                <a href={author.url} target="_blank" rel="author noopener" className="text-s w-fit text-blue-700 hover:underline">
                   Profile
                 </a>
               ) : (
@@ -194,6 +198,8 @@ export default async function BlogPostPage({ params }: Props) {
           ) : null}
         </div>
       </article>
+
+      <GuideLinks omit={[postPath(post.slug)]} heading="More from Avantra" />
 
       {related.length ? (
         <section aria-labelledby="related" className="pb-[clamp(4rem,7vw,6rem)]">

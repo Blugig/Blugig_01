@@ -25,13 +25,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = [
     "/",
     "/solutions",
-    "/services",
+    "/services", // indexable; also linked from the nav, footer, and guide rows
     "/mitti-experts",
     "/mitti-training",
     "/integrations",
     "/how-we-work",
     "/about",
-    "/contact",
+    "/contact", // indexable; linked from the nav, footer, and guide rows
     "/privacy",
     "/terms",
     "/industries",

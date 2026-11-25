@@ -26,7 +26,11 @@ export async function generateMetadata(): Promise<Metadata> {
   });
   return {
     ...base,
-    alternates: { canonical: "/blog", types: { "application/rss+xml": [{ url: "/blog/rss.xml", title: "Avantra Technologies blog" }] } },
+    alternates: {
+      canonical: "/blog",
+      languages: { "en-US": "/blog", "x-default": "/blog" },
+      types: { "application/rss+xml": [{ url: "/blog/rss.xml", title: "Avantra Technologies blog" }] },
+    },
     // An empty list has nothing to rank, so it stays out of search until the first post is live.
     ...(blogIndexIndexable(posts) ? {} : { robots: { index: false, follow: true } }),
   };
