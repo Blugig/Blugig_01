@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 type Card = { key: string; icon: IconName; eyebrow: string; title: string; line: string; href: string };
 
-/** Three linked cards (zig style): animated line icon, eyebrow, title, line. */
+/** Linked cards (zig style): animated line icon, eyebrow, title, line. Three columns by default. */
 export function Related({
   chip,
   lead,
@@ -15,6 +15,7 @@ export function Related({
   sub,
   cards,
   id,
+  columns = 3,
 }: {
   chip: string;
   lead: string;
@@ -22,6 +23,8 @@ export function Related({
   sub?: string;
   cards: Card[];
   id?: string;
+  /** 4 lays the cards out two-by-two, then four across on wide screens. */
+  columns?: 3 | 4;
 }) {
   return (
     <section id={id} className="section-y scroll-mt-20">
@@ -29,7 +32,7 @@ export function Related({
         <Reveal>
           <SectionHeading chip={chip} icon={Network} lead={lead} accent={accent} sub={sub} />
         </Reveal>
-        <div className="mt-[3.75rem] grid gap-5 md:grid-cols-3">
+        <div className={columns === 4 ? "mt-[3.75rem] grid gap-5 md:grid-cols-2 xl:grid-cols-4" : "mt-[3.75rem] grid gap-5 md:grid-cols-3"}>
           {cards.map((r) => (
             <CardZoom key={r.key}>
               <Link
