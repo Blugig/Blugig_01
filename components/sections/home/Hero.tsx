@@ -3,9 +3,9 @@
 import { ArrowRight, CirclePlay } from "lucide-react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import Image, { type StaticImageData } from "next/image";
-import { useLayoutEffect, useRef, useState, type CSSProperties, type Ref } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ComponentType, type Ref } from "react";
 import { SplitChars } from "@/components/motion/SplitChars";
-import { HeroWheel, STACKED_ZONE } from "@/components/sections/home/HeroWheel";
+import { STACKED_ZONE } from "@/components/sections/home/heroWheelLayout";
 import { ButtonLink } from "@/components/ui/Button";
 import { hero } from "@/content/home";
 import { useScrollChoreography } from "@/lib/hooks";
@@ -46,6 +46,41 @@ type Swap = "in" | "out" | "idle";
  * stay put. On desktop the hero pins for PIN of scroll so the swap plays in place.
  * Choreography (≤1.5s): badges 0s → letters 0.1s (+15ms each) → sub 0.5s → CTAs 0.65s.
  */
+type WheelProps = { stage: number; lift?: number; animateLift?: boolean };
+
+/**
+ * The wheel (and the Three.js mark inside it) is not part of the first paint.
+ * It loads on idle or the first tap, and it is not a prefetched route chunk.
+ */
+function DeferredHeroWheel(props: WheelProps) {
+  const [Wheel, setWheel] = useState<ComponentType<WheelProps> | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+    const load = () => {
+      void import("@/components/sections/home/HeroWheel").then((mod) => {
+        if (!cancelled) setWheel(() => mod.HeroWheel);
+      });
+    };
+    const idle = window.requestIdleCallback;
+    if (idle) idleId = idle(load, { timeout: 2000 });
+    else timeoutId = window.setTimeout(load, 1200);
+    const onInteract = () => load();
+    window.addEventListener("pointerdown", onInteract, { once: true, passive: true });
+    window.addEventListener("keydown", onInteract, { once: true });
+    return () => {
+      cancelled = true;
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      window.removeEventListener("pointerdown", onInteract);
+      window.removeEventListener("keydown", onInteract);
+    };
+  }, []);
+  if (!Wheel) return null;
+  return <Wheel {...props} />;
+}
+
 export function Hero() {
   const pinned = useScrollChoreography();
   const { scrollY } = useScroll();
@@ -101,7 +136,7 @@ export function Hero() {
           } as CSSProperties
         }
       >
-        <HeroWheel stage={stage} lift={lift[stage] ?? 0} animateLift={swapped} />
+        <DeferredHeroWheel stage={stage} lift={lift[stage] ?? 0} animateLift={swapped} />
         <div className="shell relative z-10">
           <div className="grid items-center gap-5 min-[992px]:h-screen min-[992px]:max-h-[56.25rem] min-[992px]:min-h-[54.375rem] min-[992px]:grid-cols-2 min-[1280px]:grid-cols-[1.4fr_1fr] max-[992px]:flex max-[992px]:flex-col max-[992px]:gap-0 max-[992px]:pt-[8.125rem] max-[480px]:pt-[7.25rem]">
             <div className="flex w-full max-w-[46.5rem] flex-col gap-6 max-[992px]:items-center max-[992px]:text-center">

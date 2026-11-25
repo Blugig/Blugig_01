@@ -12,6 +12,7 @@ const NON_CANONICAL_HOSTS = ["avantra-tech-production.up.railway.app", "avantrat
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
+  images: { formats: ["image/avif", "image/webp"] },
   /** Don't advertise the framework (`x-powered-by: Next.js`). */
   poweredByHeader: false,
   /**
