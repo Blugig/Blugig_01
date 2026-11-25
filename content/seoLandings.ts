@@ -36,7 +36,7 @@ export const templateSetup: SeoLandingPage = {
   h1Lead: "Mitti template",
   h1Accent: "and checklist setup",
   summary:
-    "We turn the paper forms your teams already trust into shared Mitti templates. Mitti is the product many people still call SafetyCulture or iAuditor. Avantra is an independent team of Mitti experts. We do not make the product.",
+    "We turn the paper forms your teams already trust into shared Mitti templates. Mitti is the product many people still call SafetyCulture or iAuditor. Avantra is an Official Mitti Partner and a team of Mitti experts. We do not make the product.",
   shape: "mitti",
   serviceName: "Mitti template and checklist setup",
   ctaTitle: "Bring us the form you use today",
@@ -280,7 +280,7 @@ export const maintainx: SeoLandingPage = {
       paragraphs: [
         "We run it on one family of equipment for a week. Walk-in coolers, or HVAC, or the lift trucks. Real failures only, plus one test everyone can recognize. If the work order is missing the photo or the location, we fix the map before a second asset type is added.",
         `Closing the loop matters as much as opening the ticket. ${adoption} often means the inspection system and the maintenance system each think the other one finished the job. We write down who closes the action in Mitti after MaintainX shows the work is done.`,
-        `Avantra is an independent team of Mitti experts. We do not make Mitti or MaintainX. See ${services} if you also need templates and training, or ${contact} and tell us which equipment check should have become a work order last month.`,
+        `Avantra is an Official Mitti Partner and a team of Mitti experts. We do not make Mitti or MaintainX. See ${services} if you also need templates and training, or ${contact} and tell us which equipment check should have become a work order last month.`,
       ],
     },
   ],

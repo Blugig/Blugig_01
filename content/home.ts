@@ -15,7 +15,7 @@ export const hero = {
   stages: [
     {
       /** Small line that opens the H1: the search phrase the home page targets. */
-      kicker: "Mitti experts (SafetyCulture)",
+      kicker: "Mitti (SafetyCulture) Experts",
       titleLead: "Every inspection,",
       titleAccent: "turned into action.",
       sub: "Avantra designs, deploys, and scales Mitti across your sites, so issues get fixed faster and every team stays audit-ready.",
@@ -107,7 +107,7 @@ export const explore = {
       icon: "team",
       eyebrow: "Experts",
       title: "Mitti (SafetyCulture) experts",
-      line: "An independent team that sets up inspections, checklists, training, and support.",
+      line: "Mitti (SafetyCulture) Experts and an Official Mitti Partner for inspections, checklists, training, and support.",
       href: "/mitti-experts",
     },
     {

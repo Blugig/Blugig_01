@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = pageMetadata({
   title: "About Us | Avantra Technologies",
   description:
-    "Avantra Technologies is a Bengaluru team of Mitti experts. We help operations teams put Mitti by SafetyCulture into daily use, including Workato integrations.",
+    "Avantra Technologies is an Official Mitti Partner and a Bengaluru team of Mitti (SafetyCulture) experts. We help teams put Mitti into daily use.",
   path: "/about",
 });
 
@@ -138,6 +138,10 @@ export default function AboutPage() {
                   <span className="block font-medium text-ink">{site.partner.short}</span>
                   Silver tier · Workato Automation League
                 </p>
+              </li>
+              <li className="flex max-w-[16rem] flex-col justify-center gap-1">
+                <span className="text-m font-medium text-ink">Official Mitti Partner</span>
+                <span className="text-m text-gray-600">Mitti (SafetyCulture) Experts. Avantra does not make Mitti.</span>
               </li>
             </ul>
           </div>
