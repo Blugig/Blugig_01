@@ -60,7 +60,7 @@ export default function MittiTrainingPage() {
         id="industries"
         chip="Industries"
         lead="Mitti for your operation"
-        sub="Construction, manufacturing, facilities management, and healthcare. Each page is a practical setup, not a client list."
+        sub="Construction, manufacturing, facilities, healthcare, hotels, and retail. Each page is a practical setup, not a client list."
       />
       <CtaBand
         title={mittiTrainingCta.title}

@@ -4,14 +4,14 @@ import { Capabilities } from "@/components/sections/service/Capabilities";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import { Related } from "@/components/sections/service/Related";
 import type { MittiIndustry } from "@/content/mittiIndustries";
-import { mittiIndustries } from "@/content/mittiIndustries";
+import { industryDirectory } from "@/content/mittiIndustries";
 import { site } from "@/content/site";
 import { serviceJsonLd } from "@/lib/mittiJsonLd";
 import { JsonLd } from "@/lib/seo";
 
-/** One industry landing page. Links back to Mitti experts, the other industries, and Mitti training. */
+/** One industry landing page. Breadcrumb is Home, Industries, then this industry. */
 export function IndustryPage({ industry }: { industry: MittiIndustry }) {
-  const siblings = mittiIndustries.filter((item) => item.slug !== industry.slug);
+  const siblings = industryDirectory.filter((item) => item.slug !== industry.slug);
 
   return (
     <>
@@ -19,7 +19,7 @@ export function IndustryPage({ industry }: { industry: MittiIndustry }) {
       <MittiHero
         crumbs={[
           { name: "Home", path: "/" },
-          { name: "Mitti experts", path: "/mitti-experts" },
+          { name: "Industries", path: "/industries" },
           { name: industry.crumb, path: industry.path },
         ]}
         h1Lead="Mitti for"

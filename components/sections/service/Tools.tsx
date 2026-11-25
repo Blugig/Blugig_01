@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Plug } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -14,7 +15,7 @@ export function Tools({
   lead: string;
   accent: string;
   sub?: string;
-  tools: string[];
+  tools: { label: string; href: string }[];
 }) {
   return (
     <section className="section-y bg-white text-ink">
@@ -24,8 +25,13 @@ export function Tools({
         </Reveal>
         <RevealGroup as="ul" className="flex flex-wrap content-start gap-3 lg:pt-12">
           {tools.map((t) => (
-            <RevealItem key={t} as="li" className="rounded-full bg-canvas px-6 py-3 text-base font-medium text-ink">
-              {t}
+            <RevealItem key={t.href} as="li">
+              <Link
+                href={t.href}
+                className="block rounded-full bg-canvas px-6 py-3 text-base font-medium text-ink transition-colors duration-300 hover:text-blue-700"
+              >
+                {t.label}
+              </Link>
             </RevealItem>
           ))}
         </RevealGroup>

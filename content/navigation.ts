@@ -19,6 +19,7 @@ export const primaryCta = { label: "Talk to our team", href: "/contact" } as con
 
 export const footerNav = {
   company: [
+    { label: "Industries", href: "/industries" },
     { label: "How we work", href: "/how-we-work" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },

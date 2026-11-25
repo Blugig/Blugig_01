@@ -146,6 +146,12 @@ export const integrations = {
     },
   ],
   systemsNote: "Example systems",
+  /** Named guides linked from the homepage block and the /integrations page. */
+  guides: [
+    { label: "Mitti and Zapier", href: "/integrations/zapier" },
+    { label: "Mitti and Power BI", href: "/integrations/power-bi" },
+    { label: "Mitti and MaintainX", href: "/integrations/maintainx" },
+  ],
   process: {
     label: "How a Workato project runs",
     steps: [
