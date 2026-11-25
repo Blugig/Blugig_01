@@ -48,10 +48,10 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
         <div className="shell grid items-start gap-12 lg:grid-cols-[minmax(16rem,22rem)_1fr] lg:gap-20">
           <Reveal>
             <SectionHeading
-              chip="A real shift"
+              chip="A normal day"
               lead="How the day"
               accent="actually runs"
-              sub="Three moments. Short enough to read on a phone."
+              sub="Three parts of the day. Each one says what goes wrong now, and what your team gets with Mitti."
             />
           </Reveal>
           <ol className="flex flex-col">
@@ -114,7 +114,7 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
             <SectionHeading
               chip="Example templates"
               lead="Templates we build"
-              sub="Named checklists for this work. We start from the forms you already use, then share one version."
+              sub="These are checklists we build for this kind of work. We start from the forms you already use, then share one version."
             />
           </Reveal>
           <ul className="flex flex-wrap content-start gap-3 lg:pt-16">
@@ -138,7 +138,7 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
       <section id="outcomes" className="section-y scroll-mt-20">
         <div className="shell grid gap-10 lg:grid-cols-[1fr_1.3fr]">
           <Reveal>
-            <SectionHeading chip="After launch" lead="What changes" accent="for your team" sub="Qualitative changes we aim for. Not a promise of a score." />
+            <SectionHeading chip="After launch" lead="What changes" accent="for your team" sub="What gets easier for the people doing the work. We do not promise a score." />
           </Reveal>
           <ul className="flex flex-col gap-3">
             {industry.outcomes.map((line) => (
