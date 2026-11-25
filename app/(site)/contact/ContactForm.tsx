@@ -9,6 +9,7 @@ import { useForm, type FieldError } from "react-hook-form";
 import { submitContact, type ContactResult } from "@/app/(site)/contact/actions";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/content/site";
+import { track } from "@/lib/analytics";
 import { contactSchema, topicGroups, topicOptions, type ContactInput } from "@/lib/contact-schema";
 import { cn } from "@/lib/utils";
 
@@ -43,6 +44,7 @@ export function ContactForm() {
           if (msg) setError(k as keyof ContactInput, { message: msg });
         }
       }
+      if (res.ok) track("generate_lead");
       setResult(res);
     });
   });

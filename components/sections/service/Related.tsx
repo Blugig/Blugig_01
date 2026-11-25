@@ -5,7 +5,7 @@ import { CardZoom } from "@/components/motion/CardZoom";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-type Card = { key: string; icon: IconName; eyebrow: string; title: string; line: string; href: string };
+type Card = { key: string; icon: IconName; eyebrow: string; title: string; line: string; href: string; ctaLocation?: string };
 
 /** Linked cards (zig style): animated line icon, eyebrow, title, line. Three columns by default. */
 export function Related({
@@ -37,6 +37,7 @@ export function Related({
             <CardZoom key={r.key}>
               <Link
                 href={r.href}
+                data-cta-location={r.ctaLocation}
                 className="group flex h-full min-h-[18rem] flex-col justify-between gap-10 rounded-[1.5rem] bg-white p-8 transition-colors duration-300 hover:bg-sky-50"
               >
                 <div className="flex items-start justify-between">
