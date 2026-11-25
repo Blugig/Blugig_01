@@ -3,7 +3,7 @@ import Link from "next/link";
 /** Descriptive links between the pages search engines should connect. */
 export const guideLinks = [
   { label: "Mitti (SafetyCulture) experts", href: "/mitti-experts" },
-  { label: "Free Mitti training and Masterclass", href: "/mitti-training" },
+  { label: "Free Mitti training", href: "/mitti-training" },
   { label: "Mitti template setup", href: "/mitti-template-setup" },
   { label: "Mitti by industry", href: "/industries" },
   { label: "Mitti services", href: "/services" },

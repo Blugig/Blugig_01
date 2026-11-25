@@ -1,24 +1,24 @@
 export const mittiTrainingMeta = {
   title: "Mitti Training | Mitti (SafetyCulture) Experts",
   description:
-    "Free Mitti training and a Masterclass from Mitti (SafetyCulture) experts. Learn inspections, checklists, and actions, including the app once called iAuditor.",
+    "Free Mitti training from Mitti (SafetyCulture) experts. Learn inspections, checklists, and actions, including the app once called iAuditor.",
   path: "/mitti-training",
 } as const;
 
 export const mittiTrainingHero = {
   crumb: "Mitti training",
   h1Lead: "Free Mitti",
-  h1Accent: "Masterclass",
+  h1Accent: "training",
   summary:
-    "Avantra's free Mitti Masterclass is a YouTube playlist for people learning Mitti by SafetyCulture. SafetyCulture is now Mitti. Watch it on your own, or book a call if you want Mitti training for a whole team.",
+    "Free Mitti training from Mitti (SafetyCulture) experts. SafetyCulture is now Mitti. Read what the training covers, or book a call if you want it for a whole team.",
   primaryLabel: "Book a call",
-  secondaryLabel: "Watch the Masterclass",
+  secondaryLabel: "See the outline",
 } as const;
 
 export const mittiTrainingSections = {
-  chip: "The playlist",
-  heading: "What the masterclass covers",
-  sub: "Eight sections, from the first login through training and Heads Up. Watch them in the YouTube playlist.",
+  chip: "The outline",
+  heading: "What the training covers",
+  sub: "Eight sections, from the first login through training and Heads Up.",
   items: [
     {
       title: "Getting started",
