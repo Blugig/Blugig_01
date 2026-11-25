@@ -103,9 +103,9 @@ function contactPoints(): ContactPointLd[] {
 
 /**
  * One Organization (also a ProfessionalService) with one Service per offering.
- * `sameAs` is only Avantra's own LinkedIn and Facebook. The parent company is named
+ * `sameAs` is Avantra's own LinkedIn, Facebook, and YouTube channel. The parent company is named
  * without a profile URL, so a different company's LinkedIn is not attached to Avantra.
- * YouTube is not a sameAs profile. Avantra is not described as an official Mitti or SafetyCulture partner.
+ * Avantra is not described as an official Mitti or SafetyCulture partner.
  */
 export function organizationJsonLd() {
   const offers = [

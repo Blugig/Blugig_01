@@ -20,15 +20,31 @@ export const instant = false;
 
 type Props = { params: Promise<{ slug: string }> };
 
+/**
+ * Title tag and meta description only. The visible H1 and intro stay the post's own title and excerpt.
+ * Open Graph and Twitter use the same strings so the share card matches the search result.
+ */
+const POST_SEARCH_META: Record<string, { title: string; description: string }> = {
+  "safetyculture-is-now-mitti": {
+    title: "SafetyCulture Is Now Mitti | Mitti Experts",
+    description:
+      "SafetyCulture is now Mitti, and iAuditor was renamed in the rebrand. What changes for your teams, plus a checklist to keep inspections on track.",
+  },
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const found = await findLivePost((await params).slug);
   if (!found || "movedTo" in found) return {};
   const { post } = found;
   const path = postPath(post.slug);
+  const searchMeta = POST_SEARCH_META[post.slug];
+  const title = searchMeta?.title ?? postTitleTag(post);
+  const description = searchMeta?.description ?? post.description;
+  const socialTitle = searchMeta?.title ?? post.title;
   const image = { url: postImagePath(post.slug), width: 1200, height: 630, alt: post.title };
   return {
-    title: { absolute: postTitleTag(post) },
-    description: post.description,
+    title: { absolute: title },
+    description,
     alternates: { canonical: post.canonicalUrl ? asHttps(post.canonicalUrl) : path },
     ...(post.noindex ? { robots: { index: false, follow: true } } : {}),
     authors: [{ name: post.author.name, ...(post.author.url ? { url: post.author.url } : {}) }],
@@ -37,15 +53,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: site.name,
       locale: "en_US",
       url: path,
-      title: post.title,
-      description: post.description,
+      title: socialTitle,
+      description,
       publishedTime: post.publishedAt ?? undefined,
       modifiedTime: post.updatedAt,
       authors: [post.author.name],
       tags: post.tags,
       images: [image],
     },
-    twitter: { card: "summary_large_image", title: post.title, description: post.description, images: [image] },
+    twitter: { card: "summary_large_image", title: socialTitle, description, images: [image] },
   };
 }
 
