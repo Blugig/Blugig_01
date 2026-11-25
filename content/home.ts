@@ -95,6 +95,48 @@ export const expertise = {
   sub: "We translate your operational needs into a practical Mitti rollout.",
 };
 
+/** Homepage links into the pages Google should find from the home page. The card title is the anchor text. */
+export const explore = {
+  chip: "Explore",
+  titleLead: "Start with the",
+  titleAccent: "page that fits.",
+  sub: "Guides for Mitti experts, free training, template setup, and how different industries use the platform.",
+  cards: [
+    {
+      key: "experts",
+      icon: "team",
+      eyebrow: "Experts",
+      title: "Mitti (SafetyCulture) experts",
+      line: "Mitti (SafetyCulture) Experts and an Official Mitti Partner for inspections, checklists, training, and support.",
+      href: "/mitti-experts",
+    },
+    {
+      key: "training",
+      icon: "tablet",
+      eyebrow: "Training",
+      title: "Free Mitti training and Masterclass",
+      line: "Learn inspections, checklists, and actions, including the app once called iAuditor.",
+      href: "/mitti-training",
+    },
+    {
+      key: "templates",
+      icon: "settings",
+      eyebrow: "Templates",
+      title: "Mitti template setup",
+      line: "Checklists and inspection templates built around how your sites actually work.",
+      href: "/mitti-template-setup",
+    },
+    {
+      key: "industries",
+      icon: "factory",
+      eyebrow: "Industries",
+      title: "Mitti by industry",
+      line: "How construction, manufacturing, facilities, healthcare, hospitality, and retail run Mitti.",
+      href: "/industries",
+    },
+  ],
+} as const;
+
 export const impact = {
   chip: "Why it works",
   titleAccent: "How Avantra",

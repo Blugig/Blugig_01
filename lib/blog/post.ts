@@ -65,8 +65,13 @@ export function toEditable(p: Post): EditablePost {
 /** The blog index joins search (and the sitemap) once this many posts are live; with none it's an empty page. */
 export const MIN_POSTS_TO_INDEX = 1;
 
-/** Default byline: the company, until a named person writes the post (named authors are better for E-E-A-T). */
-export const DEFAULT_AUTHOR: PostAuthor = { name: "Avantra Technologies", role: "", url: "", bio: "" };
+/** Default byline. Articles are written by Khasim Basha, a Mitti Expert. */
+export const DEFAULT_AUTHOR: PostAuthor = {
+  name: "Khasim Basha",
+  role: "Mitti Expert",
+  url: "https://www.linkedin.com/in/khasim-basha-sk-b7584a46/",
+  bio: "Khasim Basha is a Mitti Expert at Avantra Technologies. He helps teams set up inspections, checklists, and training in Mitti, the platform many people still call SafetyCulture or iAuditor.",
+};
 
 export const NEW_POST: EditablePost = {
   id: null,

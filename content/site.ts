@@ -16,6 +16,9 @@ export const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61596705140
 /** Avantra's YouTube channel. Organization JSON-LD `sameAs` only; not a visible icon or link. */
 export const YOUTUBE_URL = "https://www.youtube.com/@avantratech";
 
+/** Khasim Basha's LinkedIn profile. Person JSON-LD `sameAs`, and the article author link. */
+export const KHASIM_LINKEDIN_URL = "https://www.linkedin.com/in/khasim-basha-sk-b7584a46/";
+
 /** Global site settings. Empty contact values are hidden on the site and tracked in TODO.md. */
 export const site = {
   name: "Avantra Technologies",

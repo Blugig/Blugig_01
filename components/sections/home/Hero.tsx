@@ -247,7 +247,7 @@ function Badges({ badges }: { badges: typeof hero.badges }) {
           className="flex items-center gap-3 rounded-2xl bg-white py-2.5 pr-5 pl-3 shadow-[0_14px_30px_-18px_rgba(6,69,148,0.28)]"
         >
           {badge.kind === "workato" ? (
-            <Image src={workatoBadge} alt="Workato Silver Partner" width={44} height={44} className="size-11" />
+            <Image src={workatoBadge} alt="Workato Silver Partner" width={44} height={44} sizes="44px" className="size-11" />
           ) : null}
           <span className="flex flex-col text-left">
             <span className="text-base leading-[1.2] font-semibold text-ink">{badge.name}</span>
@@ -292,6 +292,7 @@ function AppChips({ apps, visible = true, className }: { apps: readonly string[]
                 alt={app}
                 height={logo.h}
                 width={Math.round((logo.h * logo.src.width) / logo.src.height)}
+                sizes={`${Math.round((logo.h * logo.src.width) / logo.src.height)}px`}
               />
             ) : (
               app

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import { Fragment } from "react";
 import { SplitWords } from "@/components/motion/SplitWords";
 import { HeroMotion } from "@/components/sections/home/HeroMotion";
 import { HeroBackdrop, HeroParticles } from "@/components/sections/service/ServiceHero";
@@ -54,18 +53,16 @@ export function MittiHero({
                   {crumbs.map((c, i) => {
                     const last = i === crumbs.length - 1;
                     return (
-                      <Fragment key={c.path}>
+                      <li key={c.path} aria-current={last ? "page" : undefined} className={last ? "flex items-center gap-2 text-ink" : "flex items-center gap-2"}>
                         {i > 0 ? <span aria-hidden>/</span> : null}
-                        <li aria-current={last ? "page" : undefined} className={last ? "text-ink" : undefined}>
-                          {last ? (
-                            c.name
-                          ) : (
-                            <Link href={c.path} className="hover:text-ink">
-                              {c.name}
-                            </Link>
-                          )}
-                        </li>
-                      </Fragment>
+                        {last ? (
+                          c.name
+                        ) : (
+                          <Link href={c.path} className="hover:text-ink">
+                            {c.name}
+                          </Link>
+                        )}
+                      </li>
                     );
                   })}
                 </ol>

@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { PageBackground } from "@/components/layout/PageBackground";
 import { Providers } from "@/components/layout/Providers";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
-import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { JsonLd, organizationJsonLd, personJsonLd, websiteJsonLd } from "@/lib/seo";
 
 /**
  * The public site's frame: skip link, smooth scroll, page background, navbar,
@@ -31,6 +31,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         <BackToTop />
       </Providers>
       <JsonLd data={organizationJsonLd()} />
+      <JsonLd data={personJsonLd()} />
       <JsonLd data={websiteJsonLd()} />
     </>
   );

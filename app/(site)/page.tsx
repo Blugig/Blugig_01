@@ -11,9 +11,10 @@ import { Integrations } from "@/components/sections/home/Integrations";
 import { Momentum } from "@/components/sections/home/Momentum";
 import { TrustedBy } from "@/components/sections/home/TrustedBy";
 import { Statement } from "@/components/sections/home/Statement";
+import { Related } from "@/components/sections/service/Related";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { Wins } from "@/components/sections/home/Wins";
-import { approach, expertise, gap, homeFaqs } from "@/content/home";
+import { approach, expertise, explore, gap, homeFaqs } from "@/content/home";
 import { services } from "@/content/services";
 import { pageMetadata } from "@/lib/seo";
 
@@ -58,6 +59,15 @@ export default function HomePage() {
           body: s.cardLine,
           illustration: s.illustration,
         }))}
+      />
+      <Related
+        id="explore"
+        chip={explore.chip}
+        lead={explore.titleLead}
+        accent={explore.titleAccent}
+        sub={explore.sub}
+        columns={4}
+        cards={explore.cards.map((card) => ({ ...card }))}
       />
       <Impact />
       <Integrations />

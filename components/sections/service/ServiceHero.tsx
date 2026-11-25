@@ -66,8 +66,8 @@ export function ServiceHero({
                       Home
                     </Link>
                   </li>
-                  <span aria-hidden>/</span>
-                  <li aria-current="page" className="text-ink">
+                  <li aria-current="page" className="flex items-center gap-2 text-ink">
+                    <span aria-hidden>/</span>
                     {crumb}
                   </li>
                 </ol>

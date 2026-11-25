@@ -4,6 +4,7 @@ import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { MittiHero } from "@/components/sections/mitti/MittiHero";
 import { IndustryLinks } from "@/components/sections/mitti/IndustryLinks";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { GuideLinks } from "@/components/sections/GuideLinks";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import { Delivery } from "@/components/sections/service/Delivery";
 import type { SeoLandingPage } from "@/content/seoLandings";
@@ -83,6 +84,7 @@ export function SeoLanding({ page }: { page: SeoLandingPage }) {
         />
       ) : null}
       <FaqSection items={page.faqs} />
+      <GuideLinks omit={[page.path]} />
       <CtaBand
         title={page.ctaTitle}
         sub={`Book a 30-minute call, or email ${site.email}.`}

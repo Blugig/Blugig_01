@@ -64,7 +64,8 @@ export function renderMarkdown(md: string): { html: string; toc: TocItem[] } {
         const url = safeUrl(href, true);
         if (!url) return escapeHtml(text);
         const titleAttr = title ? ` title="${escapeHtml(title)}"` : "";
-        return `<img src="${escapeHtml(rewriteOwnUrl(url, true))}" alt="${escapeHtml(text)}"${titleAttr} loading="lazy" decoding="async">`;
+        const alt = text.trim() || "Mitti screenshot";
+        return `<img src="${escapeHtml(rewriteOwnUrl(url, true))}" alt="${escapeHtml(alt)}"${titleAttr} loading="lazy" decoding="async" style="max-width:100%;height:auto">`;
       },
     },
   });
