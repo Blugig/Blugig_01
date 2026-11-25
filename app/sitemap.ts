@@ -9,6 +9,16 @@ import { absoluteUrl } from "@/lib/seo";
  * tell crawlers every static URL changed on every fetch). Bump it when those pages change.
  */
 const STATIC_LAST_MODIFIED = new Date("2026-11-25T00:00:00.000Z");
+/** The six industry pages were rewritten on this date. Other static URLs keep the earlier date. */
+const INDUSTRY_LAST_MODIFIED = new Date("2026-11-25T00:00:00.000Z");
+const industryPaths = new Set([
+  "/industries/construction",
+  "/industries/manufacturing",
+  "/industries/facilities",
+  "/industries/healthcare",
+  "/industries/hospitality",
+  "/industries/retail",
+]);
 
 /** Site pages, plus every indexable blog post (with its real last-edited date) and /blog once it's indexable. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -41,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...pages.map((p) => ({
       // Homepage has no trailing slash, matching the canonical Next resolves from metadataBase.
       url: absoluteUrl(p).replace(/\/$/, ""),
-      lastModified: STATIC_LAST_MODIFIED,
+      lastModified: industryPaths.has(p) ? INDUSTRY_LAST_MODIFIED : STATIC_LAST_MODIFIED,
       changeFrequency: "monthly" as const,
       priority: p === "/" ? 1 : p === "/privacy" || p === "/terms" ? 0.3 : 0.8,
     })),

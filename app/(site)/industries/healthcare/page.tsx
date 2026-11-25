@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IndustryPage } from "@/components/sections/mitti/IndustryPage";
-import { healthcare } from "@/content/mittiIndustries";
+import { healthcare } from "@/content/industryPages";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
