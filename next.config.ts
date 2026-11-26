@@ -16,12 +16,11 @@ const nextConfig: NextConfig = {
   /** Don't advertise the framework (`x-powered-by: Next.js`). */
   poweredByHeader: false,
   /**
-   * Crawlers get dynamic pages (the blog) rendered in full before the response starts: a real 404 for
-   * unknown posts, a real 308 from old slugs, metadata in <head>. Next's default list leaves out Googlebot
-   * and AI crawlers (GPTBot, ClaudeBot, PerplexityBot…), which would get a streamed 200. Browsers still stream.
+   * Wait for the full HTML before sending headers for every client. With Cache Components,
+   * a streamed shell is already a 200, so a later notFound() cannot change the status.
+   * Blocking the response lets missing URLs return a real 404.
    */
-  htmlLimitedBots:
-    /bot|crawl|spider|slurp|preview|lighthouse|facebookexternalhit|facebookcatalog|whatsapp|vkshare|tumblr|yeti|ia_archiver|googleweblight|google-|-google|yandex|baidu|sogou|chatgpt|perplexity|claude|anthropic|cohere|ccbot/i,
+  htmlLimitedBots: /.*/,
   async redirects() {
     return [
       /** Other hosts → the same path on www (308, which search engines treat as permanent). */

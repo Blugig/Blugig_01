@@ -13,9 +13,9 @@ import { findLivePost, relatedPosts } from "@/lib/blog/queries";
 import { asHttps, breadcrumbJsonLd, faqJsonLd, JsonLd } from "@/lib/seo";
 
 /**
- * A post renders per request with no static fallback. Crawlers (htmlLimitedBots in
- * next.config.ts) get it in full before the response starts: the article, a real 404
- * for unknown slugs and a 308 from old slugs, with the metadata in <head>.
+ * A post renders per request with no static fallback. The response waits for this
+ * render (htmlLimitedBots matches every client) so a missing slug is a real 404
+ * from notFound(), and an old slug is a real 308, before any bytes are sent.
  */
 export const instant = false;
 
