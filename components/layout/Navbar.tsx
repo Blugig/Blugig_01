@@ -10,7 +10,7 @@ import { DrawIcon, type IconName } from "@/components/icons/DrawIcon";
 import { Logo } from "@/components/layout/Logo";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { ButtonLink } from "@/components/ui/Button";
-import { integrationsMenu, mainNav, primaryCta } from "@/content/navigation";
+import { implementationMenu, integrationsMenu, mainNav, primaryCta } from "@/content/navigation";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import { solutions } from "@/content/solutions";
@@ -91,6 +91,14 @@ export function Navbar() {
             <MenuItem label="Services" href="/services" open={menu === "/services"} onOpen={setMenu}>
               <MegaMenu
                 items={[
+                  {
+                    key: "implementation",
+                    href: implementationMenu.href,
+                    number: "",
+                    icon: "plan" as IconName,
+                    title: implementationMenu.title,
+                    line: implementationMenu.line,
+                  },
                   ...services.map((s) => ({
                     key: s.slug,
                     href: `/services#${s.slug}`,

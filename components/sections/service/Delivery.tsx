@@ -2,6 +2,7 @@
 
 import { Route } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { Chip } from "@/components/ui/Chip";
 import { easeInOut, power4Out } from "@/lib/motion";
@@ -16,12 +17,14 @@ export function Delivery({
   chip = "Delivery",
   sub,
   id,
+  more,
 }: {
   steps: { title: string; body: string }[];
   title?: string;
   chip?: string;
   sub?: string;
   id?: string;
+  more?: { href: string; label: string };
 }) {
   return (
     <section id={id} className="section-y scroll-mt-16 bg-sky-500 text-ink">
@@ -32,6 +35,17 @@ export function Delivery({
           </Chip>
           <h2 className="title-l">{title}</h2>
           {sub ? <p className="text-l max-w-[32rem]">{sub}</p> : null}
+          {more ? (
+            more.href.startsWith("http") ? (
+              <a href={more.href} className="w-fit text-base font-medium underline decoration-ink decoration-2 underline-offset-4">
+                {more.label}
+              </a>
+            ) : (
+              <Link href={more.href} className="w-fit text-base font-medium underline decoration-ink decoration-2 underline-offset-4">
+                {more.label}
+              </Link>
+            )
+          ) : null}
         </Reveal>
         <motion.ol
           className="relative grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"

@@ -7,17 +7,20 @@ export function serviceJsonLd({
   description,
   path,
   serviceType,
+  alternateName,
 }: {
   name: string;
   description: string;
   path: string;
   serviceType?: string;
+  alternateName?: readonly string[];
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name,
     serviceType: serviceType ?? name,
+    ...(alternateName?.length ? { alternateName: [...alternateName] } : {}),
     description,
     url: absoluteUrl(path),
     provider: {

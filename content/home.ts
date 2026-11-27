@@ -100,13 +100,22 @@ export const explore = {
   chip: "Explore",
   titleLead: "Start with the",
   titleAccent: "page that fits.",
-  sub: "Guides for Mitti experts, free training, template setup, and how different industries use the platform.",
+  sub: "Guides for implementation, experts, free training, template setup, and how different industries use the platform.",
   cards: [
+    {
+      key: "implementation",
+      icon: "plan",
+      eyebrow: "Implementation",
+      title: "Mitti implementation",
+      line: "How we plan, set up, train and launch Mitti with your team.",
+      href: "/mitti-implementation",
+      ctaLocation: "explore_implementation",
+    },
     {
       key: "experts",
       icon: "team",
       eyebrow: "Experts",
-      title: "Mitti (SafetyCulture) experts",
+      title: "Mitti experts and consultants",
       line: "Mitti (SafetyCulture) experts for inspections, checklists, training, and support.",
       href: "/mitti-experts",
       ctaLocation: "explore_experts",
@@ -145,13 +154,13 @@ export const impact = {
   chip: "Why it works",
   titleAccent: "How Avantra",
   titleRest: "makes a Mitti rollout stick",
-  sub: "Not the platform alone — the details that make it useful, delivered by one partner from setup to adoption.",
+  sub: "Not the platform alone — the details that make it useful, delivered by one team from setup to adoption.",
   /** Factual counts derived from the offer itself (not performance claims). */
   items: [
     { value: 6, suffix: "", label: "Solutions for everyday operations." },
     { value: 6, suffix: "", label: "Implementation services, clear deliverables." },
     { value: 4, suffix: "", label: "Steps from discovery to everyday use." },
-    { value: 1, suffix: "", label: "Partner from setup to site-wide adoption." },
+    { value: 1, suffix: "", label: "Team from setup to site-wide adoption." },
   ],
   accent:
     "Clear workflows, practical templates, defined responsibilities — and people who feel ready to use the platform.",
@@ -227,10 +236,10 @@ export const integrations = {
 };
 
 export const wins = {
-  chip: "One partner. Every stage",
+  chip: "One team. Every stage",
   titleA: "New rollouts start strong.",
   titleB: "Existing setups get better.",
-  sub: "Same partner. Different needs at different stages of your Mitti journey.",
+  sub: "Same team. Different needs at different stages of your Mitti journey.",
   left: {
     title: "New to Mitti",
     tips: [
@@ -254,6 +263,7 @@ export const approach = {
   title: "A clear path from plan to practice.",
   sub: "We keep implementation focused, practical and aligned to your operational goals.",
   cta: { label: "See how we work", href: "/how-we-work" },
+  secondary: { label: "Mitti implementation process", href: "/mitti-implementation" },
   steps: [
     { title: "Discover", body: "Understand your processes, use cases and goals." },
     { title: "Configure", body: "Set up Mitti to fit your structure and workflows." },

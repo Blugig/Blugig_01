@@ -9,7 +9,7 @@ export function FaqSection({
   title = "FAQ",
   className,
 }: {
-  items: { q: string; a: string }[];
+  items: { q: string; a: string; link?: { href: string; label: string } }[];
   title?: string;
   className?: string;
 }) {
@@ -25,7 +25,9 @@ export function FaqSection({
             </Link>
           </p>
         </Reveal>
-        <FaqAccordion items={items.map((f) => ({ q: f.q, a: f.a.replace(/\s*\(draft\)\s*$/, "") }))} />
+        <FaqAccordion
+          items={items.map((f) => ({ q: f.q, a: f.a.replace(/\s*\(draft\)\s*$/, ""), link: f.link }))}
+        />
       </div>
       <JsonLd data={faqJsonLd(items)} />
     </section>

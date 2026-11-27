@@ -78,7 +78,7 @@ export const services: Service[] = [
 
 export const servicesHero = {
   /** Opens the page's H1 (see PageHeading): the search phrase the page targets. */
-  chip: "Mitti implementation services, from discovery to ongoing support",
+  chip: "Mitti services, from setup and training to ongoing support",
   titleLead: "Expert support.",
   titleAccent: "Every step of your Mitti journey.",
   sub: "From initial planning to ongoing improvement, we help you put Mitti to work.",

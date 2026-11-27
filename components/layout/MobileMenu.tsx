@@ -7,7 +7,7 @@ import { Accordion, Dialog, VisuallyHidden } from "radix-ui";
 import { useState } from "react";
 import { Logo } from "@/components/layout/Logo";
 import { ButtonLink } from "@/components/ui/Button";
-import { integrationsMenu, mainNav, primaryCta } from "@/content/navigation";
+import { implementationMenu, integrationsMenu, mainNav, primaryCta } from "@/content/navigation";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import { solutions } from "@/content/solutions";
@@ -42,6 +42,7 @@ export function MobileMenu() {
       label: "Services",
       all: { label: "All services", href: "/services" },
       links: [
+        { href: implementationMenu.href, number: "→", label: implementationMenu.title },
         ...services.map((s) => ({ href: `/services#${s.slug}`, number: s.number, label: s.title })),
         { href: integrationsMenu.href, number: "→", label: integrationsMenu.title },
       ],

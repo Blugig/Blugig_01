@@ -29,9 +29,9 @@ import {
 import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti Services | Mitti (SafetyCulture) Experts",
+  title: "Mitti Services: Setup, Training & Support | Avantra",
   description:
-    "Mitti (SafetyCulture) experts for setup, inspections, checklists, training, and support. Avantra helps teams move from paper or iAuditor into daily use.",
+    "Mitti services from Mitti (SafetyCulture) experts: discovery, account setup, inspections, reporting, training, integrations and support after launch.",
   path: "/services",
 });
 
@@ -64,7 +64,15 @@ export default function ServicesPage() {
                   className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
                 >
                   We set up the templates and checklists your teams fill out.
+                </Link>{" "}
+                New to Mitti? Start with our{" "}
+                <Link
+                  href="/mitti-implementation"
+                  className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
+                >
+                  Mitti implementation process
                 </Link>
+                .
               </p>
             </div>
             <div className="enter-fade flex flex-wrap gap-3" style={d(0.65)}>
