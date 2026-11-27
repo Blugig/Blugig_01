@@ -1,6 +1,13 @@
 /** The Integrations page (top-level nav link and the Services-menu entry). */
 export const integrationsHref = "/integrations";
 
+/** Services-menu entry for the implementation page. Shown first. */
+export const implementationMenu = {
+  title: "Mitti implementation",
+  line: "Plan, set up, train and launch Mitti with your team.",
+  href: "/mitti-implementation",
+} as const;
+
 /** Services-menu entry for the Integrations page. */
 export const integrationsMenu = {
   title: "Integrations",
@@ -20,6 +27,7 @@ export const primaryCta = { label: "Talk to our team", href: "/contact" } as con
 export const footerNav = {
   company: [
     { label: "Mitti (SafetyCulture) experts", href: "/mitti-experts" },
+    { label: "Mitti implementation", href: "/mitti-implementation" },
     { label: "Free Mitti training", href: "/mitti-training" },
     { label: "Mitti template setup", href: "/mitti-template-setup" },
     { label: "Mitti by industry", href: "/industries" },

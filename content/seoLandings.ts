@@ -16,6 +16,8 @@ export type SeoLandingPage = {
   serviceName: string;
   ctaTitle: string;
   stepsIntro: string;
+  /** Link shown under the “How we do it” steps. */
+  stepsMore?: { href: string; label: string };
   sections: { heading: string; paragraphs?: string[]; list?: string[] }[];
   steps: { title: string; body: string }[];
   faqs: { q: string; a: string }[];
@@ -41,6 +43,7 @@ export const templateSetup: SeoLandingPage = {
   serviceName: "Mitti template and checklist setup",
   ctaTitle: "Bring us the form you use today",
   stepsIntro: "A short path from the form in the binder to a template people will open on a phone.",
+  stepsMore: { href: "/mitti-implementation", label: "part of a full Mitti implementation" },
   sections: [
     {
       heading: "Start from the form people already use",

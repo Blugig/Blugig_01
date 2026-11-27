@@ -23,6 +23,7 @@ export function Capabilities({
   id,
   feature = true,
   toneOffset = 0,
+  more,
 }: {
   chip: string;
   lead: string;
@@ -32,12 +33,25 @@ export function Capabilities({
   id?: string;
   feature?: boolean;
   toneOffset?: number;
+  more?: { href: string; label: string; before?: string; after?: string };
 }) {
   return (
     <section id={id} className="section-y scroll-mt-20">
       <div className="shell">
         <Reveal>
           <SectionHeading chip={chip} icon={Layers} lead={lead} accent={accent} sub={sub} />
+          {more ? (
+            <p className="mt-4 text-base text-gray-800">
+              {more.before}
+              <Link
+                href={more.href}
+                className="font-medium text-blue-600 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-700"
+              >
+                {more.label}
+              </Link>
+              {more.after}
+            </p>
+          ) : null}
         </Reveal>
         <div className="mt-[3.75rem] grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {items.map((c, i) => {

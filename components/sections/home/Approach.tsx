@@ -2,6 +2,7 @@
 
 import { Maximize2 } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
+import Link from "next/link";
 import { useRef } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -19,7 +20,14 @@ type Step = { title: string; body: string; deliverable?: string };
 export function Approach({
   data,
 }: {
-  data: { chip: string; title: string; sub: string; cta: { label: string; href: string }; steps: Step[] };
+  data: {
+    chip: string;
+    title: string;
+    sub: string;
+    cta: { label: string; href: string };
+    secondary?: { label: string; href: string };
+    steps: Step[];
+  };
 }) {
   const track = useRef<HTMLDivElement>(null);
   const choreo = useScrollChoreography();
@@ -49,9 +57,16 @@ export function Approach({
               <h2 className={cn("title-l", choreo && "text-[clamp(2rem,min(4.2vw,6.2vh),3.625rem)]")}>{data.title}</h2>
               <p className={cn("text-l max-w-[32rem]", choreo && "[@media(max-height:780px)]:hidden")}>{data.sub}</p>
             </div>
-            <ButtonLink href={data.cta.href} className="w-fit">
-              {data.cta.label}
-            </ButtonLink>
+            <div className="flex flex-wrap items-center gap-6">
+              <ButtonLink href={data.cta.href} className="w-fit">
+                {data.cta.label}
+              </ButtonLink>
+              {data.secondary ? (
+                <Link href={data.secondary.href} className="text-base font-medium underline decoration-ink decoration-2 underline-offset-4">
+                  {data.secondary.label}
+                </Link>
+              ) : null}
+            </div>
           </Reveal>
         </div>
 

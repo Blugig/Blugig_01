@@ -1,5 +1,6 @@
 import { Landmark } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { CardRow } from "@/components/sections/CardRow";
 import { Approach } from "@/components/sections/home/Approach";
@@ -34,6 +35,14 @@ export default function HowWeWorkPage() {
         shape="stream"
       />
       <Approach data={phases} />
+      <p className="shell pb-16 text-l text-gray-800">
+        <Link
+          href="/mitti-implementation"
+          className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
+        >
+          What&apos;s included in a Mitti implementation
+        </Link>
+      </p>
       <Gap
         id="ownership"
         chip={ownership.chip}

@@ -4,9 +4,9 @@ const h1Lead = "Mitti Experts and Consultants";
 const h1Accent = "for SafetyCulture's Mitti";
 
 export const mittiExpertsMeta = {
-  title: "Mitti (SafetyCulture) Experts | Avantra",
+  title: "Mitti Experts & Consultants (SafetyCulture) | Avantra",
   description:
-    "Avantra Technologies is a team of Mitti (SafetyCulture) experts. We set up inspections, checklists, training, and support for teams that still say iAuditor.",
+    "Mitti (SafetyCulture) experts and consultants. We set up inspections, templates, training and support for Mitti, formerly iAuditor. Book a 30-min call.",
   path: "/mitti-experts",
 } as const;
 
@@ -27,6 +27,7 @@ export const mittiWhatWeDo = {
   chip: "Our work",
   title: "What we do",
   sub: "Mitti consultants run the implementation with your team, from Mitti setup through training and support. A maintenance system such as MaintainX is one integration, not the whole job.",
+  more: { before: "See our full ", href: "/mitti-implementation", label: "Mitti implementation process", after: "." },
   items: [
     {
       title: "Setup and rollout",
@@ -60,6 +61,11 @@ export const mittiWhatWeDo = {
   ],
 } as const;
 
+export const mittiSameJob = {
+  title: "Mitti consultant, SafetyCulture consultant or iAuditor consultant?",
+  body: "Same job, three names. SafetyCulture is now Mitti, and many teams still say iAuditor. Whichever name you search, a good consultant does three things: learns how your sites really work, sets Mitti up around that, and trains your people until they can change it themselves. That's what our Mitti experts do.",
+} as const;
+
 export const mittiWhoWeHelp = {
   chip: "Industries",
   title: "Who we help",
@@ -71,6 +77,7 @@ export const mittiHowWeWork = {
   chip: "Four steps",
   title: "How we work",
   sub: "A simple four-step process. We agree on the scope before anything is configured, and your team stays involved at each step.",
+  more: { href: "/mitti-implementation", label: "See the full Mitti implementation process" },
   steps: [
     {
       title: "Discover",
@@ -113,8 +120,8 @@ export const mittiWhy = {
   ],
 } as const;
 
-/** Visible FAQ copy. JSON-LD repeats these strings exactly. */
-export const mittiFaqs: { q: string; a: string }[] = [
+/** Visible FAQ copy. JSON-LD uses `a` (no link). `link` turns that phrase into an anchor in the accordion. */
+export const mittiFaqs: { q: string; a: string; link?: { href: string; label: string } }[] = [
   {
     q: "What is Mitti?",
     a: "Mitti (by SafetyCulture) is the operations system for frontline work. Mitti's website describes it as one place for inspections, training, issue reporting, and asset management. Teams use it for checklists, inspections, actions, and assets.",
@@ -142,6 +149,15 @@ export const mittiFaqs: { q: string; a: string }[] = [
   {
     q: "What does a Mitti consultant do?",
     a: "A Mitti consultant at Avantra learns how your sites work, sets up the account and templates, trains your team, and stays through the rollout. If you need Mitti connected to another system, that is scoped with the same work.",
+  },
+  {
+    q: "Can you implement Mitti for us?",
+    a: "Yes. We plan, set up, pilot, train and launch Mitti with your team. See our Mitti implementation process for every step.",
+    link: { href: "/mitti-implementation", label: "Mitti implementation process" },
+  },
+  {
+    q: "Is a SafetyCulture consultant the same as a Mitti consultant?",
+    a: "Yes. SafetyCulture rebranded as Mitti in August 2026, and the app was long called iAuditor. A SafetyCulture or iAuditor consultant does the same work as a Mitti consultant.",
   },
 ];
 

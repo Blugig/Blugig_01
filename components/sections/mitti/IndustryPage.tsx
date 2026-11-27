@@ -134,6 +134,16 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
         sub={industry.stepsSub}
         steps={industry.steps}
       />
+      <p className="shell pb-10 text-l text-gray-800">
+        See{" "}
+        <Link
+          href="/mitti-implementation"
+          className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
+        >
+          our Mitti implementation process
+        </Link>
+        .
+      </p>
 
       <section id="outcomes" className="section-y scroll-mt-20">
         <div className="shell grid gap-10 lg:grid-cols-[1fr_1.3fr]">

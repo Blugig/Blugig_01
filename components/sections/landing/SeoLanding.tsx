@@ -73,7 +73,14 @@ export function SeoLanding({ page }: { page: SeoLandingPage }) {
           </div>
         </div>
       </section>
-      <Delivery id="how-we-do-it" chip="Four steps" title="How we do it" sub={page.stepsIntro} steps={page.steps} />
+      <Delivery
+        id="how-we-do-it"
+        chip="Four steps"
+        title="How we do it"
+        sub={page.stepsIntro}
+        steps={page.steps}
+        more={page.stepsMore}
+      />
       {page.industrySlug ? (
         <IndustryLinks
           chip="Industries"

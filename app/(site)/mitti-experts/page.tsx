@@ -17,6 +17,7 @@ import {
   mittiExpertsMeta,
   mittiFaqs,
   mittiHowWeWork,
+  mittiSameJob,
   mittiWhatWeDo,
   mittiWhoWeHelp,
   mittiWhy,
@@ -57,6 +58,7 @@ export default function MittiExpertsPage() {
         sub={mittiWhatWeDo.sub}
         items={[...mittiWhatWeDo.items]}
         feature={false}
+        more={mittiWhatWeDo.more}
       />
       <IndustryLinks
         id="who-we-help"
@@ -65,12 +67,19 @@ export default function MittiExpertsPage() {
         sub={mittiWhoWeHelp.sub}
         more={{ href: "/industries", label: "All industries" }}
       />
+      <section id="same-job" className="section-y scroll-mt-20">
+        <div className="shell flex max-w-[46rem] flex-col gap-6">
+          <h2 className="title-l">{mittiSameJob.title}</h2>
+          <p className="text-l text-gray-800">{mittiSameJob.body}</p>
+        </div>
+      </section>
       <Delivery
         id={mittiHowWeWork.id}
         steps={[...mittiHowWeWork.steps]}
         title={mittiHowWeWork.title}
         chip={mittiHowWeWork.chip}
         sub={mittiHowWeWork.sub}
+        more={mittiHowWeWork.more}
       />
 
       <section id={mittiWhy.id} className="section-y scroll-mt-20">
