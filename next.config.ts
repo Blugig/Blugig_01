@@ -41,6 +41,8 @@ const nextConfig: NextConfig = {
       { source: "/mitti-experts/manufacturing", destination: "/industries/manufacturing", statusCode: 301 },
       { source: "/mitti-experts/facilities", destination: "/industries/facilities", statusCode: 301 },
       { source: "/mitti-experts/healthcare", destination: "/industries/healthcare", statusCode: 301 },
+      { source: "/mitti-experts/hospitality", destination: "/industries/hospitality", statusCode: 301 },
+      { source: "/mitti-experts/retail", destination: "/industries/retail", statusCode: 301 },
     ];
   },
   async headers() {

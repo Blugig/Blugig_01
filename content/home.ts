@@ -100,7 +100,7 @@ export const explore = {
   chip: "Explore",
   titleLead: "Start with the",
   titleAccent: "page that fits.",
-  sub: "Guides for Mitti experts, free training, template setup, and how different industries use the platform.",
+  sub: "Guides for Mitti experts, training, template setup, and how different industries use the platform.",
   cards: [
     {
       key: "experts",
@@ -115,8 +115,8 @@ export const explore = {
       key: "training",
       icon: "tablet",
       eyebrow: "Training",
-      title: "Free Mitti training",
-      line: "Learn inspections, checklists, and actions, including the app once called iAuditor.",
+      title: "Mitti training",
+      line: "Hands-on practice for inspections, checklists, and actions, on the templates your sites will use.",
       href: "/mitti-training",
       ctaLocation: "explore_training",
     },
