@@ -1,7 +1,7 @@
 export const mittiTrainingMeta = {
-  title: "Mitti Training | Avantra",
+  title: "Mitti Training for Teams | Avantra",
   description:
-    "Hands-on Mitti training from Avantra. We teach inspectors, supervisors, and admins on your own templates. Mitti's help docs are theirs, not this service.",
+    "Hands-on Mitti (SafetyCulture) training from Avantra. We train your inspectors, supervisors and admins on your templates, so your team uses Mitti from day one.",
   path: "/mitti-training",
 } as const;
 
@@ -10,7 +10,7 @@ export const mittiTrainingHero = {
   h1Lead: "Mitti training",
   h1Accent: "for your team",
   summary:
-    "We sit with the people who will use Mitti and practice the real tasks: start an inspection, assign an action, and name who owns it. This is not a free course from us. Mitti publishes its own help docs, and those belong to Mitti.",
+    "We sit with the people who will use Mitti and practice the real work: start an inspection, assign an action, and make sure someone owns it. Training runs on your own account and templates, not a generic demo.",
   primaryLabel: "Book a call",
   secondaryLabel: "See what we cover",
 } as const;
@@ -50,7 +50,7 @@ export const mittiTrainingSections = {
     },
     {
       title: "Training and Heads Up",
-      body: "Mitti has its own Training feature and a tool called Heads Up. We show an admin how to assign a lesson inside Mitti, and how Heads Up shares an update people can acknowledge. Those features are Mitti's. The walkthrough with your people is ours.",
+      body: "We show your admins how to assign lessons with Mitti's built-in Training feature and share updates with Heads Up, so people can acknowledge what changed.",
     },
   ],
 } as const;
