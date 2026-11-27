@@ -100,22 +100,13 @@ export const explore = {
   chip: "Explore",
   titleLead: "Start with the",
   titleAccent: "page that fits.",
-  sub: "Guides for implementation, experts, free training, template setup, and how different industries use the platform.",
+  sub: "Guides for Mitti experts, free training, template setup, and how different industries use the platform.",
   cards: [
-    {
-      key: "implementation",
-      icon: "plan",
-      eyebrow: "Implementation",
-      title: "Mitti implementation",
-      line: "How we plan, set up, train and launch Mitti with your team.",
-      href: "/mitti-implementation",
-      ctaLocation: "explore_implementation",
-    },
     {
       key: "experts",
       icon: "team",
       eyebrow: "Experts",
-      title: "Mitti experts and consultants",
+      title: "Mitti (SafetyCulture) experts",
       line: "Mitti (SafetyCulture) experts for inspections, checklists, training, and support.",
       href: "/mitti-experts",
       ctaLocation: "explore_experts",
@@ -263,7 +254,6 @@ export const approach = {
   title: "A clear path from plan to practice.",
   sub: "We keep implementation focused, practical and aligned to your operational goals.",
   cta: { label: "See how we work", href: "/how-we-work" },
-  secondary: { label: "Mitti implementation process", href: "/mitti-implementation" },
   steps: [
     { title: "Discover", body: "Understand your processes, use cases and goals." },
     { title: "Configure", body: "Set up Mitti to fit your structure and workflows." },

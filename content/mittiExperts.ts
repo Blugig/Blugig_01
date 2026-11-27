@@ -1,12 +1,12 @@
 import { site } from "@/content/site";
 
-const h1Lead = "Mitti Experts and Consultants";
-const h1Accent = "for SafetyCulture's Mitti";
+const h1Lead = "Mitti (SafetyCulture) Experts";
+const h1Accent = "for implementation and setup";
 
 export const mittiExpertsMeta = {
-  title: "Mitti Experts & Consultants (SafetyCulture) | Avantra",
+  title: "Mitti (SafetyCulture) Implementation Experts & Consultants | Avantra",
   description:
-    "Mitti (SafetyCulture) experts and consultants. We set up inspections, templates, training and support for Mitti, formerly iAuditor. Book a 30-min call.",
+    "Mitti (SafetyCulture) experts for implementation, consulting, and setup. We plan, pilot, train, and launch Mitti, formerly iAuditor, with your team.",
   path: "/mitti-experts",
 } as const;
 
@@ -14,155 +14,245 @@ export const mittiExpertsHero = {
   crumb: "Mitti experts",
   h1Lead,
   h1Accent,
-  /** Visible and accessible H1. Kept as one sentence so the heading does not pick up an eyebrow. */
+  /** Visible H1: lead plus accent, with a space between them. */
   h1: `${h1Lead} ${h1Accent}`,
   summary:
-    "Avantra Technologies helps operations, safety, and facilities leaders in the United States put Mitti to work. Mitti is by SafetyCulture. SafetyCulture is now Mitti, and we are Mitti experts and Mitti consultants for that platform.",
+    "The licenses are paid. People have logins. Then a supervisor walks a site and finds last week's paper checklist still on the clipboard, while the new one on the phone was never opened. That is usually when someone starts looking for help. We implement Mitti with your team: plan the account, build the templates, try them on one real site, train each role, and roll the rest out at a pace people can keep.",
   primaryLabel: "Book a call",
   secondaryLabel: "Email us",
 } as const;
 
-export const mittiWhatWeDo = {
-  id: "what-we-do",
-  chip: "Our work",
-  title: "What we do",
-  sub: "Mitti consultants run the implementation with your team, from Mitti setup through training and support. A maintenance system such as MaintainX is one integration, not the whole job.",
-  more: { before: "See our full ", href: "/mitti-implementation", label: "Mitti implementation process", after: "." },
-  items: [
+export const mittiTheWork = {
+  id: "the-work",
+  title: "What a Mitti implementation actually is",
+  paragraphs: [
     {
-      title: "Setup and rollout",
-      body: "We plan the account, the sites, and the order of the rollout, then configure Mitti to match how your teams are organized.",
+      text: "People look this up under a few names. Mitti implementation. SafetyCulture consultant. iAuditor setup. Mitti onboarding. The job is the same. You want someone who has set Mitti up before, who will build it around how your sites really work, and who will stay until the checks get done.",
     },
     {
-      title: "Templates and checklists",
-      body: "We turn the forms your crews already use into shared Mitti templates and checklists, so each site is not inventing its own.",
+      text: "We don't hand you a login and a PDF. We sit with your team, turn the forms you use today into shared templates, and decide who sees which site. A failed check gets an owner. Then we try that on a real shift before anyone talks about the other sites.",
     },
     {
-      title: "Inspections",
-      body: "We set up inspections so the right people complete the right checks, on a schedule, with a record leaders can review.",
-    },
-    {
-      title: "Actions and assets",
-      body: "Findings become actions with an owner. Asset checks sit in the same account when your sites need them.",
-    },
-    {
-      title: "Training your team",
-      body: "Mitti training is hands-on. Supervisors, inspectors, and account admins practice the tasks they will own.",
-    },
-    {
-      title: "Integrations",
-      body: "When a finding should create work in another system, we connect Mitti to that system. A maintenance system such as MaintainX is one example.",
-    },
-    {
-      title: "Ongoing support",
-      body: "After launch we help you adjust templates, clear friction, and add sites without starting over.",
-      span: true,
+      text: "A rollout often starts the other way. Mitti goes live everywhere in the same week. Some people use it. Others rebuild the same checklist their own way. A problem flagged midweek still has no owner. The setup skipped the boring parts. Get those right on one site first, and the next sites go faster.",
     },
   ],
 } as const;
 
-export const mittiSameJob = {
-  title: "Mitti consultant, SafetyCulture consultant or iAuditor consultant?",
-  body: "Same job, three names. SafetyCulture is now Mitti, and many teams still say iAuditor. Whichever name you search, a good consultant does three things: learns how your sites really work, sets Mitti up around that, and trains your people until they can change it themselves. That's what our Mitti experts do.",
+export const mittiRename = {
+  id: "iauditor",
+  title: "iAuditor is now Mitti",
+  paragraphs: [
+    {
+      text: "SafetyCulture rebranded as Mitti on August 11, 2026. For years before that, the inspection app was called iAuditor. Mitti's own announcement said the name change did not change logins, data, integrations, settings, permissions, or contracts.",
+    },
+    {
+      text: "If you are searching for SafetyCulture implementation or iAuditor implementation, this is the same work. A consultant still learns how your sites run, sets Mitti up around that, and trains people until they can change it themselves.",
+    },
+  ],
+} as const;
+
+export const mittiProcess = {
+  id: "process",
+  chip: "The process",
+  title: "How we implement Mitti",
+  sub: "A small team setup, one site and a short list of checklists, usually takes about 2 to 4 weeks from the first working session to a live account. A multi-site rollout, with more templates, more roles, and a pilot before the other sites, usually takes about 8 to 16 weeks. We agree the milestones after we see your forms and your site list. We don't pick a date before that.",
+  steps: [
+    {
+      title: "Discovery call",
+      body: "A 30-minute call. You share the sites, the forms, and what is going wrong. We say honestly if you need us.",
+    },
+    {
+      title: "Scope the work",
+      body: "We map sites, roles, the checks you run, and who acts when something fails. You get an agreed scope and a rollout order.",
+    },
+    {
+      title: "Set up the account",
+      body: "Sites, groups, permissions, templates, schedules, and an owner on every action. A workspace people can open.",
+    },
+    {
+      title: "Pilot on one real site",
+      body: "One site, real shifts. We watch where people get stuck and fix the template, not the person.",
+    },
+    {
+      title: "Train, then add sites",
+      body: "Inspectors, supervisors, and admins practice on your templates. Then we add sites in groups, not all at once.",
+    },
+    {
+      title: "Stay for the first changes",
+      body: "After launch we clean up what people skipped, add sites, and connect another system only when that helps.",
+    },
+  ],
+} as const;
+
+export const mittiIncluded = {
+  id: "included",
+  chip: "What you get",
+  title: "What's included",
+  items: [
+    {
+      title: "Rollout plan",
+      body: "Which sites go first, who owns the project on your side, and what done looks like.",
+    },
+    {
+      title: "Account structure",
+      body: "Sites, groups, roles, and permissions that match how your teams are organized.",
+    },
+    {
+      title: "Templates and checklists",
+      body: "The forms you use today, turned into one shared template. A photo is required only when it changes the next step.",
+      href: "/mitti-template-setup",
+    },
+    {
+      title: "Inspection schedules",
+      body: "The right check, for the right people, on the days they actually do the work.",
+    },
+    {
+      title: "Actions and issues",
+      body: "A failed check becomes an action with an owner and a due date.",
+    },
+    {
+      title: "Reporting",
+      body: "A few views leaders will open. Power BI can be part of the same work if you want the numbers there.",
+      href: "/integrations/power-bi",
+    },
+    {
+      title: "Training for each role",
+      body: "Hands-on practice for inspectors, supervisors, and the person who administers the account.",
+      href: "/mitti-training",
+    },
+    {
+      title: "Support after launch",
+      body: "Template fixes, new sites, and a connection to another system when a finding should create work elsewhere.",
+      href: "/integrations",
+    },
+  ],
+} as const;
+
+export const mittiSituations = {
+  id: "where-you-are",
+  title: "Starting fresh, leaving paper, or stuck",
+  cards: [
+    {
+      title: "Starting fresh",
+      body: "You just bought Mitti, or you are about to. We set up the first site before people invent their own versions of the same checklist.",
+      href: site.calendlyUrl,
+      anchor: "Book a call",
+      external: true,
+    },
+    {
+      title: "Moving from paper or an old iAuditor setup",
+      body: "Copied templates and old permissions are normal. We sort which form is the real one and move you onto a single shared setup.",
+      href: "/blog/safetyculture-is-now-mitti",
+      anchor: "What the SafetyCulture to Mitti rename means",
+      external: false,
+    },
+    {
+      title: "Rollout stalled",
+      body: "People stopped opening the app. We find the friction, usually a template, a permission, or a missing owner, and start again from one site.",
+      href: "/blog/mitti-adoption-stalls-get-teams-using-it",
+      anchor: "Why Mitti adoption stalls",
+      external: false,
+    },
+  ],
+} as const;
+
+export const mittiOnboarding = {
+  id: "onboarding",
+  title: "Mitti's free onboarding vs hands-on expert help",
+  paragraphs: [
+    {
+      text: "Mitti publishes free onboarding guides and courses. A small team with one site and one checklist can often set itself up with those. If that is you, we will say so on the call.",
+    },
+    {
+      text: "Hands-on help is worth it when you have several sites, more than a handful of forms, people who need different access, or a first rollout that didn't stick. Permissions get copied. Templates fork. Later, nobody is sure which checklist is the real one.",
+    },
+    {
+      text: "Free onboarding shows you the product. It does not know your sites, your shift pattern, or which failed check should wake a supervisor. That is the part we do with your team. If you want to try a multi-site rollout yourself first, read How to roll out Mitti across multiple sites.",
+      link: { href: "/blog/how-to-roll-out-mitti-multiple-sites", label: "How to roll out Mitti across multiple sites" },
+    },
+  ],
+} as const;
+
+export const mittiTeam = {
+  id: "who-we-are",
+  title: "Who we are",
+  paragraphs: [
+    {
+      text: "Avantra Technologies is a team in Bengaluru, India. We are Mitti (SafetyCulture) experts and consultants. We do not make Mitti. Khasim Basha is a Mitti Expert on the team. The same people who scope a project build the templates and run the training.",
+    },
+    {
+      text: "We work with teams in the US, UK, and Australia, remotely. Discovery, setup, training, and support all happen online. You do not need us in the building to run a pilot. You do need a project owner who can get us the forms and a few people for the first site.",
+    },
+    {
+      text: "When a finding should create work in another system, we can connect the two, including a maintenance system such as MaintainX. Most projects start with setup and training. The connection comes after the checks are getting done.",
+    },
+  ],
 } as const;
 
 export const mittiWhoWeHelp = {
   chip: "Industries",
-  title: "Who we help",
-  sub: "Leaders who own safety, daily operations, and the sites their teams run. We set Mitti up around the checks those teams already do.",
+  title: "Mitti implementation for your industry",
+  sub: "We set Mitti up around the checks your sites already do.",
 } as const;
 
-export const mittiHowWeWork = {
-  id: "how-we-work",
-  chip: "Four steps",
-  title: "How we work",
-  sub: "A simple four-step process. We agree on the scope before anything is configured, and your team stays involved at each step.",
-  more: { href: "/mitti-implementation", label: "See the full Mitti implementation process" },
-  steps: [
-    {
-      title: "Discover",
-      body: "Map the inspections, actions, and handoffs your sites already run.",
-    },
-    {
-      title: "Set up",
-      body: "Configure Mitti, then test that setup with a pilot group.",
-    },
-    {
-      title: "Train",
-      body: "Teach each role the Mitti tasks they will own.",
-    },
-    {
-      title: "Support",
-      body: "Stay through launch and the first changes after go-live.",
-    },
-  ],
-} as const;
+export type MittiFaq = { q: string; a: string; link?: { href: string; label: string } };
 
-export const mittiWhy = {
-  id: "why-avantra",
-  chip: "Three reasons",
-  title: "Why Avantra",
-  sub: "Mitti experts, free training, and a rollout your team can run.",
-  items: [
-    {
-      title: "Mitti experts",
-      body: "We set up SafetyCulture's Mitti and teach your team to run it. Mitti is the work Avantra does.",
-    },
-    {
-      title: "Free Mitti training",
-      body: "The training page lists what we cover, from the first inspection through actions and sites. You can read it before you book a call.",
-      links: [{ href: "/mitti-training", label: "See the Mitti training outline", external: false }],
-    },
-    {
-      title: "Practical rollouts",
-      body: "We configure the account your people will open on Monday, and we train them to change it as the work changes.",
-    },
-  ],
-} as const;
-
-/** Visible FAQ copy. JSON-LD uses `a` (no link). `link` turns that phrase into an anchor in the accordion. */
-export const mittiFaqs: { q: string; a: string; link?: { href: string; label: string } }[] = [
+/** Visible FAQ copy. JSON-LD uses `a`. `link` turns that phrase into an anchor in the accordion. */
+export const mittiFaqs: MittiFaq[] = [
   {
-    q: "What is Mitti?",
-    a: "Mitti (by SafetyCulture) is the operations system for frontline work. Mitti's website describes it as one place for inspections, training, issue reporting, and asset management. Teams use it for checklists, inspections, actions, and assets.",
+    q: "How much does a Mitti implementation cost?",
+    a: "We don't publish a price. It depends on how many sites and templates are in the first phase, how different the roles are, whether we are cleaning up an old iAuditor account, and whether Mitti has to talk to another system. We agree the scope after a short conversation, before any work starts. Email info@avantratechnologies.com or book a call.",
   },
   {
-    q: "Is SafetyCulture now Mitti?",
-    a: "Yes. Mitti's website says SafetyCulture is now Mitti, and that Mitti was formerly SafetyCulture. The product is also written Mitti (by SafetyCulture). Mitti's 11 August 2026 announcement says SafetyCulture rebranded as Mitti. Mitti said that name change did not change logins, data, integrations, settings, permissions, or contracts.",
+    q: "How long does a Mitti implementation take?",
+    a: "A small team setup, one site and a short list of checklists, usually takes about 2 to 4 weeks. A multi-site rollout usually takes about 8 to 16 weeks, including a pilot and training. We set the milestones after we have seen your forms.",
   },
   {
-    q: "How long does Mitti setup take?",
-    a: "It depends on the scope. Setup for one team is shorter than a rollout across many sites. We agree on timing after we understand your templates, your sites, and who needs to be involved. A pilot group goes first, then a wider rollout.",
+    q: "How do I choose a Mitti consultant?",
+    a: "Ask who will do the work, and whether that person stays through training. A useful consultant wants your current forms, even the messy ones, and will tell you if you don't need help. Be careful with a plan that turns every site on at once.",
   },
   {
-    q: "Do you train our team?",
-    a: "Yes. Mitti training is part of the engagement. We train the people who run inspections, manage actions, and administer the account. Training uses your templates, not a generic demo.",
+    q: "Can you move us off paper or an old iAuditor setup?",
+    a: "Yes. Paper, spreadsheets, PDFs, and old iAuditor or SafetyCulture templates are fine. We keep the questions that still matter, drop the ones nobody uses, and put the rest in one shared template. Old permissions get a review too.",
   },
   {
-    q: "Do you integrate Mitti with maintenance software?",
-    a: "Yes, when you want that connection. A finding in Mitti can be sent to the maintenance system that owns the repair. MaintainX is one example of that kind of system. It is one use case. Most engagements start with Mitti setup, templates, inspections, and training.",
+    q: "Can you connect Mitti to our other systems?",
+    a: "Yes, when it helps. A failed inspection can open a ticket or a work order, and the status can come back to Mitti. We connect Mitti with tools such as Workato, Zapier, Power BI, and MaintainX, and with ERP or HR systems when that is the next step. Most projects start with setup and training.",
   },
   {
-    q: "Do you work with US teams?",
-    a: "Yes. We work with operations, safety, and facilities teams in the United States. Avantra is based in Bengaluru, India, and the work is remote. Discovery, setup, training, and support happen with your team.",
+    q: "Do you train the people who will use it?",
+    a: "Yes. Inspectors, supervisors, and the account admin practice on your templates, not a generic demo. You can read the free Mitti training outline before you book. The sessions use your sites and your forms.",
+    link: { href: "/mitti-training", label: "free Mitti training outline" },
   },
   {
-    q: "What does a Mitti consultant do?",
-    a: "A Mitti consultant at Avantra learns how your sites work, sets up the account and templates, trains your team, and stays through the rollout. If you need Mitti connected to another system, that is scoped with the same work.",
+    q: "How does a multi-site rollout work?",
+    a: "One site pilots the templates on real shifts. We fix what confused people, then add sites in groups your supervisors can support. Each site gets the shared templates and a short training, not a new design. Read about rolling Mitti out across multiple sites if you want the same idea in a guide.",
+    link: { href: "/blog/how-to-roll-out-mitti-multiple-sites", label: "rolling Mitti out across multiple sites" },
   },
   {
-    q: "Can you implement Mitti for us?",
-    a: "Yes. We plan, set up, pilot, train and launch Mitti with your team. See our Mitti implementation process for every step.",
-    link: { href: "/mitti-implementation", label: "Mitti implementation process" },
+    q: "What does a Mitti implementation consultant do?",
+    a: "They learn how your sites work, set up the account and templates, train each role, and stay through launch. That covers permissions, schedules, actions, and a pilot. A connection to another system is scoped with the same team.",
   },
   {
     q: "Is a SafetyCulture consultant the same as a Mitti consultant?",
-    a: "Yes. SafetyCulture rebranded as Mitti in August 2026, and the app was long called iAuditor. A SafetyCulture or iAuditor consultant does the same work as a Mitti consultant.",
+    a: "Yes. SafetyCulture rebranded as Mitti in August 2026, and the app was called iAuditor before that. A SafetyCulture or iAuditor consultant is doing the same job. The platform did not change when the name did.",
+  },
+  {
+    q: "Do you work with teams in the US, UK, and Australia?",
+    a: "Yes. We work with operations, safety, and facilities teams in the US, UK, and Australia, remotely. Avantra is based in Bengaluru, India. Discovery, setup, training, and support happen online.",
+  },
+  {
+    q: "What do we need to have ready?",
+    a: "A project owner, a few people for the pilot site, and the forms you use today. Paper or spreadsheets are fine. You don't need a finished process map. You do need someone who knows who fixes a failed check.",
+  },
+  {
+    q: "Can you fix a Mitti setup we already have?",
+    a: "Yes. Teams come to us with copied templates, permissions nobody can explain, or a rollout that stalled. We review the setup, fix what gets in people's way, and plan the next sites from something that works.",
   },
 ];
 
 export const mittiCta = {
-  title: "Talk with a Mitti expert",
+  title: "Plan your Mitti implementation",
   sub: `Book a 30-minute call, or email ${site.email}.`,
   label: "Book a call",
   secondaryLabel: "Email us",

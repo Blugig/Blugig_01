@@ -1,26 +1,27 @@
-import { Users } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
-import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { GuideLinks } from "@/components/sections/GuideLinks";
 import { IndustryLinks } from "@/components/sections/mitti/IndustryLinks";
 import { MittiHero } from "@/components/sections/mitti/MittiHero";
 import { Capabilities } from "@/components/sections/service/Capabilities";
-import { GuideLinks } from "@/components/sections/GuideLinks";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import { Delivery } from "@/components/sections/service/Delivery";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   mittiCta,
   mittiExpertsHero,
   mittiExpertsMeta,
   mittiFaqs,
-  mittiHowWeWork,
-  mittiSameJob,
-  mittiWhatWeDo,
+  mittiIncluded,
+  mittiOnboarding,
+  mittiProcess,
+  mittiRename,
+  mittiSituations,
+  mittiTeam,
+  mittiTheWork,
   mittiWhoWeHelp,
-  mittiWhy,
 } from "@/content/mittiExperts";
 import { site } from "@/content/site";
 import { serviceJsonLd } from "@/lib/mittiJsonLd";
@@ -33,7 +34,59 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const textLink =
-  "mt-2 w-fit text-m font-medium text-blue-600 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-700";
+  "font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800";
+
+function Paragraph({
+  text,
+  link,
+}: {
+  text: string;
+  link?: { href: string; label: string; external?: boolean };
+}) {
+  if (!link) return <p className="text-l text-gray-800">{text}</p>;
+  const at = text.indexOf(link.label);
+  if (at < 0) return <p className="text-l text-gray-800">{text}</p>;
+  const linked = link.external ? (
+    <a href={link.href} className={textLink} target="_blank" rel="noopener noreferrer">
+      {link.label}
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
+  ) : (
+    <Link href={link.href} className={textLink}>
+      {link.label}
+    </Link>
+  );
+  return (
+    <p className="text-l text-gray-800">
+      {text.slice(0, at)}
+      {linked}
+      {text.slice(at + link.label.length)}
+    </p>
+  );
+}
+
+function Prose({
+  id,
+  title,
+  paragraphs,
+  className = "section-y scroll-mt-20",
+}: {
+  id: string;
+  title: string;
+  paragraphs: readonly { text: string; link?: { href: string; label: string; external?: boolean } }[];
+  className?: string;
+}) {
+  return (
+    <section id={id} className={className}>
+      <div className="shell flex max-w-[46rem] flex-col gap-6">
+        <h2 className="title-l">{title}</h2>
+        {paragraphs.map((paragraph) => (
+          <Paragraph key={paragraph.text} text={paragraph.text} link={paragraph.link} />
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default function MittiExpertsPage() {
   return (
@@ -51,15 +104,54 @@ export default function MittiExpertsPage() {
         secondary={{ label: mittiExpertsHero.secondaryLabel, href: `mailto:${site.email}` }}
       />
 
-      <Capabilities
-        id={mittiWhatWeDo.id}
-        chip={mittiWhatWeDo.chip}
-        lead={mittiWhatWeDo.title}
-        sub={mittiWhatWeDo.sub}
-        items={[...mittiWhatWeDo.items]}
-        feature={false}
-        more={mittiWhatWeDo.more}
+      <Prose id={mittiTheWork.id} title={mittiTheWork.title} paragraphs={mittiTheWork.paragraphs} />
+
+      <Delivery
+        id={mittiProcess.id}
+        chip={mittiProcess.chip}
+        title={mittiProcess.title}
+        sub={mittiProcess.sub}
+        steps={mittiProcess.steps.map((step) => ({ ...step }))}
       />
+
+      <Capabilities
+        id={mittiIncluded.id}
+        chip={mittiIncluded.chip}
+        lead={mittiIncluded.title}
+        items={mittiIncluded.items.map((item) => ({ ...item }))}
+        feature={false}
+      />
+
+      <Prose id={mittiRename.id} title={mittiRename.title} paragraphs={mittiRename.paragraphs} className="section-y scroll-mt-20 bg-white" />
+
+      <Prose id={mittiOnboarding.id} title={mittiOnboarding.title} paragraphs={mittiOnboarding.paragraphs} />
+
+      <Prose id={mittiTeam.id} title={mittiTeam.title} paragraphs={mittiTeam.paragraphs} className="section-y scroll-mt-20 bg-white" />
+
+      <section id={mittiSituations.id} className="section-y scroll-mt-20">
+        <div className="shell flex flex-col gap-10">
+          <h2 className="title-l max-w-[40rem]">{mittiSituations.title}</h2>
+          <RevealGroup className="grid gap-4 lg:grid-cols-3">
+            {mittiSituations.cards.map((card) => (
+              <RevealItem key={card.title} className="flex flex-col gap-4 rounded-[1.25rem] bg-white px-6 py-7">
+                <h3 className="title-s">{card.title}</h3>
+                <p className="text-m text-gray-800">{card.body}</p>
+                {card.external ? (
+                  <a href={card.href} className={textLink} target="_blank" rel="noopener noreferrer">
+                    {card.anchor}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ) : (
+                  <Link href={card.href} className={textLink}>
+                    {card.anchor}
+                  </Link>
+                )}
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
+
       <IndustryLinks
         id="who-we-help"
         chip={mittiWhoWeHelp.chip}
@@ -67,64 +159,9 @@ export default function MittiExpertsPage() {
         sub={mittiWhoWeHelp.sub}
         more={{ href: "/industries", label: "All industries" }}
       />
-      <section id="same-job" className="section-y scroll-mt-20">
-        <div className="shell flex max-w-[46rem] flex-col gap-6">
-          <h2 className="title-l">{mittiSameJob.title}</h2>
-          <p className="text-l text-gray-800">{mittiSameJob.body}</p>
-        </div>
-      </section>
-      <Delivery
-        id={mittiHowWeWork.id}
-        steps={[...mittiHowWeWork.steps]}
-        title={mittiHowWeWork.title}
-        chip={mittiHowWeWork.chip}
-        sub={mittiHowWeWork.sub}
-        more={mittiHowWeWork.more}
-      />
-
-      <section id={mittiWhy.id} className="section-y scroll-mt-20">
-        <div className="shell">
-          <Reveal>
-            <SectionHeading
-              chip={mittiWhy.chip}
-              icon={Users}
-              lead={mittiWhy.title}
-              sub={mittiWhy.sub}
-              className="max-w-[36rem]"
-            />
-          </Reveal>
-          <RevealGroup as="ul" className="mt-[3.75rem] grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {mittiWhy.items.map((item, i) => (
-              <RevealItem as="li" key={item.title}>
-                <article className="flex h-full flex-col rounded-[1.5rem] bg-white p-6 sm:p-8">
-                  <span className="text-mono text-gray-400">/ {String(i + 1).padStart(2, "0")}</span>
-                  <div className="mt-10 flex flex-col gap-3">
-                    <h3 className="title-s">{item.title}</h3>
-                    <p className="text-m text-gray-600">{item.body}</p>
-                    {"links" in item
-                      ? item.links.map((link) =>
-                          link.external ? (
-                            <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={textLink}>
-                              {link.label}
-                              <span className="sr-only"> (opens in a new tab)</span>
-                            </a>
-                          ) : (
-                            <Link key={link.href} href={link.href} className={textLink}>
-                              {link.label}
-                            </Link>
-                          ),
-                        )
-                      : null}
-                  </div>
-                </article>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
-      </section>
 
       <div id="faq">
-        <FaqSection items={mittiFaqs} title="FAQ" />
+        <FaqSection items={mittiFaqs} title="Mitti implementation questions" />
       </div>
       <GuideLinks omit={["/mitti-experts"]} />
       <CtaBand
@@ -137,10 +174,16 @@ export default function MittiExpertsPage() {
 
       <JsonLd
         data={serviceJsonLd({
-          name: "Mitti experts and consultants",
-          serviceType: "Mitti consulting",
+          name: "Mitti (SafetyCulture) implementation and consulting",
+          serviceType: "Mitti implementation",
           description: mittiExpertsMeta.description,
           path: mittiExpertsMeta.path,
+          alternateName: ["SafetyCulture implementation", "iAuditor implementation", "Mitti setup", "Mitti consultant"],
+          areaServed: [
+            { name: "United States", alternateName: "US" },
+            { name: "United Kingdom", alternateName: "GB" },
+            { name: "Australia", alternateName: "AU" },
+          ],
         })}
       />
     </>
