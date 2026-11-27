@@ -8,7 +8,7 @@ import { absoluteUrl } from "@/lib/seo";
  * because blog posts are, so this date stays fixed instead of `new Date()` (that would
  * tell crawlers every static URL changed on every fetch). Bump it when those pages change.
  */
-const STATIC_LAST_MODIFIED = new Date("2026-11-27T18:00:00.000Z");
+const STATIC_LAST_MODIFIED = new Date("2026-11-27T21:00:00.000Z");
 /** The six industry pages were rewritten on this date. Other static URLs keep the earlier date. */
 const INDUSTRY_LAST_MODIFIED = new Date("2026-11-25T00:00:00.000Z");
 const industryPaths = new Set([

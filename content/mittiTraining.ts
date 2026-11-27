@@ -1,56 +1,56 @@
 export const mittiTrainingMeta = {
-  title: "Mitti Training | Mitti (SafetyCulture) Experts",
+  title: "Mitti Training | Avantra",
   description:
-    "Free Mitti training from Mitti (SafetyCulture) experts. Learn inspections, checklists, and actions, including the app once called iAuditor.",
+    "Hands-on Mitti training from Avantra. We teach inspectors, supervisors, and admins on your own templates. Mitti's help docs are theirs, not this service.",
   path: "/mitti-training",
 } as const;
 
 export const mittiTrainingHero = {
   crumb: "Mitti training",
-  h1Lead: "Free Mitti",
-  h1Accent: "training",
+  h1Lead: "Mitti training",
+  h1Accent: "for your team",
   summary:
-    "Free Mitti training from Mitti (SafetyCulture) experts. SafetyCulture is now Mitti. Read what the training covers, or book a call if you want it for a whole team.",
+    "We sit with the people who will use Mitti and practice the real tasks: start an inspection, assign an action, and name who owns it. This is not a free course from us. Mitti publishes its own help docs, and those belong to Mitti.",
   primaryLabel: "Book a call",
-  secondaryLabel: "See the outline",
+  secondaryLabel: "See what we cover",
 } as const;
 
 export const mittiTrainingSections = {
-  chip: "The outline",
-  heading: "What the training covers",
-  sub: "Eight sections, from the first login through training and Heads Up.",
+  chip: "What we cover",
+  heading: "What a training session covers",
+  sub: "Eight parts we walk through with your team, on your account, not a generic demo.",
   items: [
     {
       title: "Getting started",
-      body: "How to open the account, invite the first people, and finish one real inspection before you roll Mitti out to every site.",
+      body: "We open the account with your admin, invite the first people, and finish one real inspection before anyone talks about every site.",
     },
     {
       title: "Templates",
-      body: "How a paper form becomes a shared Mitti template, so sites follow one checklist instead of keeping their own copies.",
+      body: "We turn a paper form into one shared Mitti template, so sites follow that checklist instead of keeping their own copies.",
     },
     {
       title: "Inspections",
-      body: "How someone in the field starts an inspection, answers it on a phone, and leaves a record a manager can review.",
+      body: "Someone on the team starts an inspection, answers it on a phone, and leaves a record a manager can review. We stay for that first one.",
     },
     {
       title: "Actions",
-      body: "How a failed response becomes an action with an owner and a due date, and how that action gets closed.",
+      body: "A failed answer becomes an action with an owner and a due date. We practice closing it, so the follow-up does not sit in a report.",
     },
     {
       title: "Issues",
-      body: "How a person reports a hazard or a defect so it reaches the person who should respond. In Mitti, issue reporting is how someone flags what they see.",
+      body: "We practice reporting a hazard or a defect so it reaches the person who should respond. In Mitti, issue reporting is how someone flags what they see.",
     },
     {
       title: "Assets",
-      body: "How a machine or other asset keeps its inspection history, so the next check starts from the asset instead of a blank form.",
+      body: "We set up one machine or other asset so the next check starts from that asset, with its inspection history, instead of a blank form.",
     },
     {
       title: "Sites, groups, users, and permissions",
-      body: "How you organize locations, crews, and people, and how you decide who can edit templates, run inspections, or manage the account.",
+      body: "We set locations, crews, and people with you, and decide who can edit templates, run inspections, or manage the account.",
     },
     {
       title: "Training and Heads Up",
-      body: "How you assign a short course, and how Heads Up sends a timely update people can acknowledge. Mitti's help center describes Heads Up as a way to share an update and see who has acknowledged it.",
+      body: "Mitti has its own Training feature and a tool called Heads Up. We show an admin how to assign a lesson inside Mitti, and how Heads Up shares an update people can acknowledge. Those features are Mitti's. The walkthrough with your people is ours.",
     },
   ],
 } as const;

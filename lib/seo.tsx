@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import { integrationService, services } from "@/content/services";
 import { KHASIM_LINKEDIN_URL, site } from "@/content/site";
 
+/**
+ * Absolute https URL. The homepage is the bare origin, with no trailing slash,
+ * matching the canonical and the sitemap. `new URL("/", origin)` would add one.
+ */
 export function absoluteUrl(path = "/") {
-  return new URL(path, site.url).toString();
+  const url = new URL(path || "/", site.url);
+  if (url.pathname === "/" && url.search === "" && url.hash === "") return site.url;
+  return url.toString();
 }
 
 /** The site-wide share image (app/opengraph-image.tsx, 1200×630). Relative URL; metadataBase makes it https. */
@@ -18,17 +24,22 @@ const OG_IMAGE = {
  * A page's title, description, canonical, Open Graph, and Twitter card, all for the same URL.
  * The title is absolute (it names the brand itself). openGraph and twitter repeat the shared
  * fields and image because a page's social metadata replaces the inherited object whole.
- * Paths stay relative so metadataBase (https://www.avantratechnologies.com) resolves them.
+ * The homepage uses the bare origin. Other paths stay relative so metadataBase resolves them.
  */
+function pageUrl(path: string) {
+  return path === "/" ? site.url : path;
+}
+
 export function pageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {
+  const url = pageUrl(path);
   return {
     title: { absolute: title },
     description,
     alternates: {
-      canonical: path,
-      languages: { "en-US": path, "x-default": path },
+      canonical: url,
+      languages: { "en-US": url, "x-default": url },
     },
-    openGraph: { type: "website", siteName: site.name, locale: "en_US", url: path, title, description, images: [OG_IMAGE] },
+    openGraph: { type: "website", siteName: site.name, locale: "en_US", url, title, description, images: [OG_IMAGE] },
     twitter: { card: "summary_large_image", title, description, images: [OG_IMAGE] },
   };
 }
@@ -183,12 +194,11 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
     "@type": "BreadcrumbList",
     itemListElement: items.map((crumb, i) => {
       const name = crumb.name.trim();
-      const item = crumb.path === "/" ? site.url : absoluteUrl(crumb.path);
       return {
         "@type": "ListItem",
         position: i + 1,
         name,
-        item,
+        item: absoluteUrl(crumb.path),
       };
     }),
   };

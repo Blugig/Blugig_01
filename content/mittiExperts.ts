@@ -221,8 +221,8 @@ export const mittiFaqs: MittiFaq[] = [
   },
   {
     q: "Do you train the people who will use it?",
-    a: "Yes. Inspectors, supervisors, and the account admin practice on your templates, not a generic demo. You can read the free Mitti training outline before you book. The sessions use your sites and your forms.",
-    link: { href: "/mitti-training", label: "free Mitti training outline" },
+    a: "Yes. Inspectors, supervisors, and the account admin practice on your templates, not a generic demo. The sessions use your sites and your forms. Read what our Mitti training covers before you book.",
+    link: { href: "/mitti-training", label: "Mitti training" },
   },
   {
     q: "How does a multi-site rollout work?",

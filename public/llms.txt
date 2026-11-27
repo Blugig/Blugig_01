@@ -15,11 +15,11 @@ Avantra helps operations teams plan, set up, and run Mitti. The work covers insp
 
 ## Main pages
 
-- Home: https://www.avantratechnologies.com/
+- Home: https://www.avantratechnologies.com
 - Mitti experts: https://www.avantratechnologies.com/mitti-experts
 - Services: https://www.avantratechnologies.com/services
 - Template and checklist setup: https://www.avantratechnologies.com/mitti-template-setup
-- Mitti training: https://www.avantratechnologies.com/mitti-training
+- Mitti training (hands-on service, not a free course): https://www.avantratechnologies.com/mitti-training
 - How we work: https://www.avantratechnologies.com/how-we-work
 - Solutions: https://www.avantratechnologies.com/solutions
 - About: https://www.avantratechnologies.com/about

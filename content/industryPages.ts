@@ -35,7 +35,7 @@ export type IndustryPageContent = {
 };
 
 const templateLink = { label: "Mitti template setup", href: "/mitti-template-setup" };
-const trainingLink = { label: "Free Mitti training", href: "/mitti-training" };
+const trainingLink = { label: "Mitti training", href: "/mitti-training" };
 const servicesLink = { label: "Mitti services", href: "/services" };
 const contactLink = { label: "Contact Mitti experts", href: "/contact" };
 const rebrandLink = { label: "SafetyCulture is now Mitti", href: "/blog/safetyculture-is-now-mitti" };

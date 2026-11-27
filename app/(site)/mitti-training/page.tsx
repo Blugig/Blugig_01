@@ -8,7 +8,7 @@ import { GuideLinks } from "@/components/sections/GuideLinks";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import { mittiTrainingCta, mittiTrainingHero, mittiTrainingMeta, mittiTrainingSections } from "@/content/mittiTraining";
 import { site } from "@/content/site";
-import { courseJsonLd } from "@/lib/mittiJsonLd";
+import { serviceJsonLd } from "@/lib/mittiJsonLd";
 import { JsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -71,8 +71,9 @@ export default function MittiTrainingPage() {
         secondary={{ label: "Mitti experts", href: "/mitti-experts" }}
       />
       <JsonLd
-        data={courseJsonLd({
-          name: "Free Mitti training",
+        data={serviceJsonLd({
+          name: "Mitti training",
+          serviceType: "Mitti training",
           description: mittiTrainingMeta.description,
           path: mittiTrainingMeta.path,
         })}

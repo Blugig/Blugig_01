@@ -42,36 +42,3 @@ export function serviceJsonLd({
     areaServed: areas.length === 1 ? country(areas[0]) : areas.map(country),
   };
 }
-
-/** Free Mitti training page. No price, rating, or enrollment count. */
-export function courseJsonLd({
-  name,
-  description,
-  path,
-}: {
-  name: string;
-  description: string;
-  path: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    name,
-    description,
-    url: absoluteUrl(path),
-    inLanguage: "en",
-    isAccessibleForFree: true,
-    provider: {
-      "@type": "Organization",
-      "@id": absoluteUrl("/#organization"),
-      name: site.name,
-      url: absoluteUrl("/"),
-    },
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      url: absoluteUrl(path),
-    },
-  };
-}
