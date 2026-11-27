@@ -3,9 +3,9 @@ import { NotFoundPage, notFoundMetadata } from "@/components/layout/NotFoundPage
 export const metadata = notFoundMetadata;
 
 /**
- * Unknown /blog/<slug> is rewritten here with status 404.
- * Calling notFound() under cache components sends the bare Next.js error shell,
- * which has no <title> until JavaScript runs. This page is the branded 404 instead.
+ * Branded 404 document. proxy.ts reads the built HTML of this page and returns
+ * it with status 404 for unknown /blog/<slug> addresses. Calling notFound()
+ * sends the bare Next.js error shell, which has no <title> until JavaScript runs.
  */
 export default function BlogNotFound() {
   return <NotFoundPage />;
