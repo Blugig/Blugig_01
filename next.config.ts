@@ -34,6 +34,8 @@ const nextConfig: NextConfig = {
       })),
       /** Old Blugig service pages → the Avantra services overview. */
       { source: "/services/:slug", destination: "/services", permanent: true },
+      /** The implementation guide now lives on the experts page. */
+      { source: "/mitti-implementation", destination: "/mitti-experts", statusCode: 301 },
       /** Industry pages now live under /industries. /mitti-experts stays the experts page. */
       { source: "/mitti-experts/construction", destination: "/industries/construction", statusCode: 301 },
       { source: "/mitti-experts/manufacturing", destination: "/industries/manufacturing", statusCode: 301 },

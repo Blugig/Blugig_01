@@ -1,5 +1,6 @@
 import { ArrowUpRight, Network } from "lucide-react";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { DrawIcon, type IconName } from "@/components/icons/DrawIcon";
 import { CardZoom } from "@/components/motion/CardZoom";
 import { Reveal } from "@/components/motion/Reveal";
@@ -16,6 +17,7 @@ export function Related({
   cards,
   id,
   columns = 3,
+  footer,
 }: {
   chip: string;
   lead: string;
@@ -23,6 +25,7 @@ export function Related({
   sub?: string;
   cards: Card[];
   id?: string;
+  footer?: ReactNode;
   /** 4 lays the cards out two-by-two, then four across on wide screens. */
   columns?: 3 | 4;
 }) {
@@ -55,6 +58,7 @@ export function Related({
             </CardZoom>
           ))}
         </div>
+        {footer}
       </div>
     </section>
   );

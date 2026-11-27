@@ -17,7 +17,6 @@ Avantra helps operations teams plan, set up, and run Mitti. The work covers insp
 
 - Home: https://www.avantratechnologies.com/
 - Mitti experts: https://www.avantratechnologies.com/mitti-experts
-- [Mitti implementation](https://www.avantratechnologies.com/mitti-implementation): How Avantra's Mitti (SafetyCulture) implementation experts plan, set up, pilot, train and launch Mitti.
 - Services: https://www.avantratechnologies.com/services
 - Template and checklist setup: https://www.avantratechnologies.com/mitti-template-setup
 - Mitti training: https://www.avantratechnologies.com/mitti-training
