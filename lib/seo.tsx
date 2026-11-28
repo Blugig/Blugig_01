@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { integrationService, services } from "@/content/services";
-import { KHASIM_LINKEDIN_URL, site } from "@/content/site";
+import { KHASIM_LINKEDIN_URL, LINKEDIN_URL, site } from "@/content/site";
 
 /**
  * Absolute https URL. The homepage is the bare origin, with no trailing slash,
@@ -117,7 +117,7 @@ function contactPoints(): ContactPointLd[] {
 
 /**
  * One Organization (also a ProfessionalService) with one Service per offering.
- * `sameAs` is Avantra's own LinkedIn and Facebook. The parent company is named
+ * `sameAs` is Avantra's LinkedIn company page only. The parent company is named
  * without a profile URL, so a different company's LinkedIn is not attached to Avantra.
  */
 export function organizationJsonLd() {
@@ -136,8 +136,7 @@ export function organizationJsonLd() {
     url: absoluteUrl("/"),
     logo: { "@type": "ImageObject", url: absoluteUrl("/brand/avantra-logo.png") },
     image: absoluteUrl("/brand/avantra-logo.png"),
-    description:
-      "Avantra Technologies is a Bengaluru team of Mitti (SafetyCulture) experts. It is a different company from the SAP operations software vendor also named Avantra.",
+    description: "Avantra Technologies is a global Mitti (by SafetyCulture) implementation partner serving teams worldwide.",
     knowsAbout: ["Mitti", "SafetyCulture", "Workato", "Digital inspections", "Workplace operations"],
     parentOrganization: {
       "@type": "Organization",
@@ -146,10 +145,17 @@ export function organizationJsonLd() {
     ...(site.email ? { email: site.email } : {}),
     ...(site.phones[0] ? { telephone: site.phones[0] } : {}),
     ...(contactPoint.length ? { contactPoint: contactPoint.length === 1 ? contactPoint[0] : contactPoint } : {}),
+    areaServed: [
+      { "@type": "Place", name: "Worldwide" },
+      { "@type": "Country", name: "United States", alternateName: "US" },
+      { "@type": "Country", name: "United Kingdom", alternateName: "GB" },
+      { "@type": "Country", name: "Australia", alternateName: "AU" },
+      { "@type": "Country", name: "Canada", alternateName: "CA" },
+    ],
     ...(site.address
       ? { address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" } }
       : {}),
-    ...(site.profiles.length ? { sameAs: site.profiles } : {}),
+    sameAs: [LINKEDIN_URL],
     employee: { "@id": absoluteUrl("/#khasim-basha") },
     makesOffer: offers.map((o) => ({
       "@type": "Offer",

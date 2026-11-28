@@ -1,12 +1,12 @@
 import { site } from "@/content/site";
 
-const h1Lead = "Mitti (SafetyCulture) Experts";
-const h1Accent = "for implementation and setup";
+const h1Lead = "Global Mitti (by SafetyCulture)";
+const h1Accent = "Implementation Partner";
 
 export const mittiExpertsMeta = {
-  title: "Mitti (SafetyCulture) Implementation Experts & Consultants | Avantra",
+  title: "Mitti (by SafetyCulture) Implementation Partner & Experts | Avantra",
   description:
-    "Mitti (SafetyCulture) experts for implementation, consulting, and setup. We plan, pilot, train, and launch Mitti, formerly iAuditor, with your team.",
+    "Need Mitti set up right? Avantra's global team handles Mitti implementation, integrations and rollout for multi-site teams in the US, UK, Australia and beyond.",
   path: "/mitti-experts",
 } as const;
 
@@ -178,7 +178,7 @@ export const mittiTeam = {
   title: "Who we are",
   paragraphs: [
     {
-      text: "Avantra Technologies is a team in Bengaluru, India. We are Mitti (SafetyCulture) experts and consultants. We do not make Mitti. Khasim Basha is a Mitti Expert on the team. The same people who scope a project build the templates and run the training.",
+      text: "Avantra Technologies is a global Mitti (by SafetyCulture) implementation partner. We do not make Mitti. Khasim Basha is a Mitti Expert on the team. The same people who scope a project build the templates and run the training.",
     },
     {
       text: "We work with teams in the US, UK, and Australia, remotely. Discovery, setup, training, and support all happen online. You do not need us in the building to run a pilot. You do need a project owner who can get us the forms and a few people for the first site.",
@@ -239,7 +239,7 @@ export const mittiFaqs: MittiFaq[] = [
   },
   {
     q: "Do you work with teams in the US, UK, and Australia?",
-    a: "Yes. We work with operations, safety, and facilities teams in the US, UK, and Australia, remotely. Avantra is based in Bengaluru, India. Discovery, setup, training, and support happen online.",
+    a: "Yes. We work with operations, safety, and facilities teams in the US, UK, Australia, and worldwide, remotely. Discovery, setup, training, and support happen online.",
   },
   {
     q: "What do we need to have ready?",

@@ -19,7 +19,8 @@ export const primaryCta = { label: "Talk to our team", href: "/contact" } as con
 
 export const footerNav = {
   company: [
-    { label: "Mitti (SafetyCulture) experts", href: "/mitti-experts" },
+    { label: "Mitti services", href: "/services" },
+    { label: "Mitti implementation partner", href: "/mitti-experts" },
     { label: "Mitti training", href: "/mitti-training" },
     { label: "Mitti template setup", href: "/mitti-template-setup" },
     { label: "Mitti by industry", href: "/industries" },

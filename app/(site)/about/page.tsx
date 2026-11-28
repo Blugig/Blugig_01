@@ -22,9 +22,9 @@ import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Us | Avantra Technologies",
+  title: "About Avantra Technologies | Global Mitti (by SafetyCulture) Implementation Partner",
   description:
-    "Avantra Technologies is a Bengaluru team of Mitti (SafetyCulture) experts. We help teams put Mitti into daily use.",
+    "Meet Avantra, the global Mitti (by SafetyCulture) implementation partner helping operations teams worldwide turn Mitti into daily habit, with setup, integrations, templates and training.",
   path: "/about",
 });
 

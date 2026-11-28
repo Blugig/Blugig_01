@@ -12,8 +12,8 @@ import { contactDetails, site } from "@/content/site";
 import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact | Mitti (SafetyCulture) Experts",
-  description: `Contact Avantra Technologies, Mitti (SafetyCulture) experts, about a Mitti or iAuditor setup, training, or integration. We reply within ${site.replyTime}.`,
+  title: "Contact Avantra | Global Mitti (by SafetyCulture) Implementation Partner",
+  description: `Contact Avantra, a global Mitti (by SafetyCulture) implementation partner, about setup, training, or an integration. We reply within ${site.replyTime}.`,
   path: "/contact",
 });
 
