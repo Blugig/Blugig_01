@@ -96,38 +96,6 @@ export function Navbar() {
             <MenuItem label="Services" href="/services" open={menu === "/services"} onOpen={setMenu}>
               <MegaMenu
                 items={[
-                  {
-                    key: "experts",
-                    href: "/mitti-experts",
-                    number: "",
-                    icon: "team" as IconName,
-                    title: "Mitti implementation partner",
-                    line: "Setup, rollout, and support for multi-site teams.",
-                  },
-                  {
-                    key: "training",
-                    href: "/mitti-training",
-                    number: "",
-                    icon: "tablet" as IconName,
-                    title: "Mitti training",
-                    line: "Hands-on training for inspectors, supervisors, and admins.",
-                  },
-                  {
-                    key: "industries",
-                    href: "/industries",
-                    number: "",
-                    icon: "factory" as IconName,
-                    title: "Mitti by industry",
-                    line: "How different operations run inspections and actions.",
-                  },
-                  {
-                    key: "blog",
-                    href: "/blog",
-                    number: "",
-                    icon: "plan" as IconName,
-                    title: "Blog",
-                    line: "Guides on Mitti, SafetyCulture, and iAuditor.",
-                  },
                   ...services.map((s) => ({
                     key: s.slug,
                     href: `/services#${s.slug}`,
@@ -138,7 +106,7 @@ export function Navbar() {
                   })),
                   { key: "integrations", href: integrationsMenu.href, number: "", icon: "integrate", title: integrationsMenu.title, line: integrationsMenu.line, wide: true },
                 ]}
-                aside={{ eyebrow: "Mitti implementation", title: "Not sure where to start?", cta: "Talk to our team", href: "/contact" }}
+                aside={{ eyebrow: "Mitti services", title: "Not sure where to start?", cta: "Talk to our team", href: "/contact" }}
               />
             </MenuItem>
             {mainNav.map((item) => (
