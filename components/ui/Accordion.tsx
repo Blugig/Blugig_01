@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Accordion as AccordionPrimitive } from "radix-ui";
 import { cn } from "@/lib/utils";
 
@@ -26,19 +25,7 @@ export function FaqAccordion({
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
           <AccordionPrimitive.Content className="accordion-content overflow-hidden">
-            <p className="text-l max-w-[48rem] pb-10 text-gray-800">
-              {item.link && item.a.includes(item.link.label) ? (
-                <>
-                  {item.a.slice(0, item.a.indexOf(item.link.label))}
-                  <Link href={item.link.href} className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4">
-                    {item.link.label}
-                  </Link>
-                  {item.a.slice(item.a.indexOf(item.link.label) + item.link.label.length)}
-                </>
-              ) : (
-                item.a
-              )}
-            </p>
+            <p className="text-l max-w-[48rem] pb-10 text-gray-800">{item.a}</p>
           </AccordionPrimitive.Content>
         </AccordionPrimitive.Item>
       ))}

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -36,33 +35,8 @@ export const metadata: Metadata = pageMetadata({
 const textLink =
   "font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800";
 
-function Paragraph({
-  text,
-  link,
-}: {
-  text: string;
-  link?: { href: string; label: string; external?: boolean };
-}) {
-  if (!link) return <p className="text-l text-gray-800">{text}</p>;
-  const at = text.indexOf(link.label);
-  if (at < 0) return <p className="text-l text-gray-800">{text}</p>;
-  const linked = link.external ? (
-    <a href={link.href} className={textLink} target="_blank" rel="noopener noreferrer">
-      {link.label}
-      <span className="sr-only"> (opens in a new tab)</span>
-    </a>
-  ) : (
-    <Link href={link.href} className={textLink}>
-      {link.label}
-    </Link>
-  );
-  return (
-    <p className="text-l text-gray-800">
-      {text.slice(0, at)}
-      {linked}
-      {text.slice(at + link.label.length)}
-    </p>
-  );
+function Paragraph({ text }: { text: string }) {
+  return <p className="text-l text-gray-800">{text}</p>;
 }
 
 function Prose({
@@ -81,7 +55,7 @@ function Prose({
       <div className="shell flex max-w-[46rem] flex-col gap-6">
         <h2 className="title-l">{title}</h2>
         {paragraphs.map((paragraph) => (
-          <Paragraph key={paragraph.text} text={paragraph.text} link={paragraph.link} />
+          <Paragraph key={paragraph.text} text={paragraph.text} />
         ))}
       </div>
     </section>
@@ -142,9 +116,7 @@ export default function MittiExpertsPage() {
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 ) : (
-                  <Link href={card.href} className={textLink}>
-                    {card.anchor}
-                  </Link>
+                  <p className="text-m text-gray-800">{card.anchor}</p>
                 )}
               </RevealItem>
             ))}

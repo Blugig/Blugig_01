@@ -2,7 +2,6 @@
 
 import { Route } from "lucide-react";
 import { motion } from "motion/react";
-import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { Chip } from "@/components/ui/Chip";
 import { easeInOut, power4Out } from "@/lib/motion";
@@ -35,17 +34,7 @@ export function Delivery({
           </Chip>
           <h2 className="title-l">{title}</h2>
           {sub ? <p className="text-l max-w-[32rem]">{sub}</p> : null}
-          {more ? (
-            more.href.startsWith("http") ? (
-              <a href={more.href} className="w-fit text-base font-medium underline decoration-ink decoration-2 underline-offset-4">
-                {more.label}
-              </a>
-            ) : (
-              <Link href={more.href} className="w-fit text-base font-medium underline decoration-ink decoration-2 underline-offset-4">
-                {more.label}
-              </Link>
-            )
-          ) : null}
+          {more ? <p className="text-l max-w-[32rem]">{more.label}</p> : null}
         </Reveal>
         <motion.ol
           className="relative grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"

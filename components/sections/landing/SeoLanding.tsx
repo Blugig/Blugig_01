@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { MittiHero } from "@/components/sections/mitti/MittiHero";
@@ -12,6 +11,7 @@ import { site } from "@/content/site";
 import { serviceJsonLd } from "@/lib/mittiJsonLd";
 import { JsonLd } from "@/lib/seo";
 
+/** Body copy stays plain. Markdown links keep their words and drop the URL. */
 function Rich({ text }: { text: string }) {
   const link = /\[([^\]]+)\]\(([^)]+)\)/g;
   const nodes: ReactNode[] = [];
@@ -19,11 +19,7 @@ function Rich({ text }: { text: string }) {
   for (const match of text.matchAll(link)) {
     const start = match.index ?? 0;
     if (start > last) nodes.push(text.slice(last, start));
-    nodes.push(
-      <Link key={`${start}-${match[2]}`} href={match[2]}>
-        {match[1]}
-      </Link>,
-    );
+    nodes.push(match[1]);
     last = start + match[0].length;
   }
   if (last < text.length) nodes.push(text.slice(last));

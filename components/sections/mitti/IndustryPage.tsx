@@ -135,14 +135,7 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
         steps={industry.steps}
       />
       <p className="shell pb-10 text-l text-gray-800">
-        See how our{" "}
-        <Link
-          href="/mitti-experts"
-          className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
-        >
-          Mitti implementation experts
-        </Link>{" "}
-        run a rollout.
+        See how our Mitti implementation experts run a rollout.
       </p>
 
       <section id="outcomes" className="section-y scroll-mt-20">

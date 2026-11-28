@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { IndustryLinks } from "@/components/sections/mitti/IndustryLinks";
@@ -40,22 +39,7 @@ export default function MittiTrainingPage() {
         primary={{ label: mittiTrainingHero.primaryLabel, href: site.calendlyUrl, external: true }}
         secondary={{ label: mittiTrainingHero.secondaryLabel, href: "#sections" }}
         shape="orbit"
-      >
-        <p className="text-s flex flex-wrap gap-x-4 gap-y-2 text-gray-600">
-          <Link
-            href="/mitti-experts"
-            className="font-medium text-blue-600 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-700"
-          >
-            Mitti experts and consultants
-          </Link>
-          <Link
-            href="/mitti-experts#faq"
-            className="font-medium text-blue-600 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-700"
-          >
-            Mitti FAQ
-          </Link>
-        </p>
-      </MittiHero>
+      />
       <Capabilities
         id="sections"
         chip={mittiTrainingSections.chip}
@@ -67,32 +51,11 @@ export default function MittiTrainingPage() {
       <section id={mittiTrainingCourses.id} className="section-y scroll-mt-20 bg-white">
         <div className="shell flex max-w-[46rem] flex-col gap-6">
           <h2 className="title-l">{mittiTrainingCourses.title}</h2>
-          {mittiTrainingCourses.paragraphs.map((paragraph) => {
-            const label = mittiTrainingCourses.linkLabel;
-            const at = paragraph.indexOf(label);
-            if (at < 0) {
-              return (
-                <p key={paragraph} className="text-l text-gray-800">
-                  {paragraph}
-                </p>
-              );
-            }
-            return (
-              <p key={paragraph} className="text-l text-gray-800">
-                {paragraph.slice(0, at)}
-                <a
-                  href={mittiTrainingCourses.href}
-                  className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {label}
-                </a>
-                {paragraph.slice(at + label.length)}
-                <span className="sr-only"> (opens in a new tab)</span>
-              </p>
-            );
-          })}
+          {mittiTrainingCourses.paragraphs.map((paragraph) => (
+            <p key={paragraph} className="text-l text-gray-800">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </section>
       <FaqSection title="Training questions" items={[...mittiTrainingFaqs]} />

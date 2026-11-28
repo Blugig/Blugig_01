@@ -1,6 +1,5 @@
 import { Handshake, Lightbulb } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import type { CSSProperties } from "react";
 import { IntegrateIcon } from "@/components/icons/IntegrateIcon";
 import { SplitWords } from "@/components/motion/SplitWords";
@@ -58,21 +57,8 @@ export default function ServicesPage() {
                 <SplitWords text={servicesHero.titleAccent} offset={leadCount} wordClassName="text-grad" />
               </PageHeading>
               <p className="enter-fade text-l max-w-[36rem]" style={d(0.5)}>
-                {servicesHero.sub}{" "}
-                <Link
-                  href="/mitti-template-setup"
-                  className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
-                >
-                  We set up the templates and checklists your teams fill out.
-                </Link>{" "}
-                New to Mitti? Our{" "}
-                <Link
-                  href="/mitti-experts"
-                  className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
-                >
-                  Mitti implementation experts
-                </Link>{" "}
-                scope the setup, run a pilot, and train your team.
+                {servicesHero.sub} We set up the templates and checklists your teams fill out. New to Mitti? Our
+                Mitti implementation experts scope the setup, run a pilot, and train your team.
               </p>
             </div>
             <div className="enter-fade flex flex-wrap gap-3" style={d(0.65)}>

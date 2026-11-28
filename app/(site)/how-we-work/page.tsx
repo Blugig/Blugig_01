@@ -1,6 +1,5 @@
 import { Landmark } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { CardRow } from "@/components/sections/CardRow";
 import { Approach } from "@/components/sections/home/Approach";
@@ -36,14 +35,7 @@ export default function HowWeWorkPage() {
       />
       <Approach data={phases} />
       <p className="shell pb-16 text-l text-gray-800">
-        The phases above are how our{" "}
-        <Link
-          href="/mitti-experts"
-          className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
-        >
-          Mitti implementation experts
-        </Link>{" "}
-        take a team from the first form to a live account.
+        The phases above are how our Mitti implementation experts take a team from the first form to a live account.
       </p>
       <Gap
         id="ownership"

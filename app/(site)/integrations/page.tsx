@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { Reveal } from "@/components/motion/Reveal";
@@ -45,14 +44,7 @@ export default function IntegrationsPage() {
               className="max-w-[46rem]"
             />
             <p className="mt-4 max-w-[40rem] text-l text-gray-800">
-              Many teams start with{" "}
-              <Link
-                href="/mitti-experts"
-                className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
-              >
-                Mitti setup and rollout
-              </Link>{" "}
-              before the first connection.
+              Many teams start with Mitti setup and rollout before the first connection.
             </p>
           </Reveal>
           <IntegrationFlows className="mt-10" />
