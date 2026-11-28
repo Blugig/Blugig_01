@@ -42,6 +42,10 @@ export function MobileMenu() {
       label: "Services",
       all: { label: "All services", href: "/services" },
       links: [
+        { href: "/mitti-experts", number: "→", label: "Mitti implementation partner" },
+        { href: "/mitti-training", number: "→", label: "Mitti training" },
+        { href: "/industries", number: "→", label: "Mitti by industry" },
+        { href: "/blog", number: "→", label: "Blog" },
         ...services.map((s) => ({ href: `/services#${s.slug}`, number: s.number, label: s.title })),
         { href: integrationsMenu.href, number: "→", label: integrationsMenu.title },
       ],

@@ -3,10 +3,10 @@ import type { IconName } from "@/components/icons/DrawIcon";
 /** About page copy. */
 export const aboutHero = {
   /** Opens the page's H1 (see PageHeading): the search phrase the page targets. */
-  chip: "Mitti (SafetyCulture) Experts",
+  chip: "Global Mitti (by SafetyCulture) Implementation Partner",
   titleLead: "Technology works best",
   titleAccent: "when people can use it well.",
-  sub: "Avantra is a team of Mitti (SafetyCulture) experts. We help organizations put Mitti into practice with practical training and ongoing improvement.",
+  sub: "Avantra is a global Mitti (by SafetyCulture) implementation partner. We help organizations put Mitti into practice with practical training and ongoing improvement.",
 };
 
 /** Scroll-scrubbed statement + the rest of the story underneath. */

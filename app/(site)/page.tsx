@@ -20,9 +20,9 @@ import { services } from "@/content/services";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Avantra Technologies | Mitti (SafetyCulture) Experts",
+  title: "Avantra Technologies | Global Mitti (by SafetyCulture) Implementation Partner",
   description:
-    "Avantra Technologies is a Bengaluru team of Mitti (SafetyCulture) experts. We help you plan, set up, and run Mitti by SafetyCulture, which many teams still call iAuditor.",
+    "Avantra is a global Mitti (by SafetyCulture) implementation partner. We set up, integrate and train teams on Mitti across the US, UK, Australia and worldwide, so inspections and audits run smoothly from day one.",
   path: "/",
 });
 
