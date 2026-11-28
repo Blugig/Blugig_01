@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Reveal } from "@/components/motion/Reveal";
 import { IndustryLinks } from "@/components/sections/mitti/IndustryLinks";
@@ -156,24 +155,6 @@ export function IndustryPage({ industry }: { industry: IndustryPageContent }) {
       <div id="faq">
         <FaqSection items={industry.faqs} />
       </div>
-
-      <section id="related" className="pb-4">
-        <div className="shell flex flex-col gap-4">
-          <p className="eyebrow text-gray-500">Related</p>
-          <ul className="flex flex-wrap gap-3">
-            {industry.related.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-flex rounded-full bg-white px-5 py-3 text-base font-medium text-ink transition-colors duration-300 hover:text-blue-700"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
 
       <IndustryLinks
         chip="Also see"

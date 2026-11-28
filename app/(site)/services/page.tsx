@@ -6,7 +6,6 @@ import { SplitWords } from "@/components/motion/SplitWords";
 import { CardRow } from "@/components/sections/CardRow";
 import { Expertise } from "@/components/sections/home/Expertise";
 import { HeroMotion } from "@/components/sections/home/HeroMotion";
-import { GuideLinks } from "@/components/sections/GuideLinks";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import { Delivery } from "@/components/sections/service/Delivery";
 import { NextService } from "@/components/sections/service/NextService";
@@ -129,7 +128,6 @@ export default function ServicesPage() {
         }))}
       />
 
-      <GuideLinks omit={["/services"]} />
       <CtaBand
         title={servicesCta.title}
         sub={servicesCta.sub}
