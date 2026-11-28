@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { Reveal } from "@/components/motion/Reveal";
 import { assessmentLink, IntegrationFlows, WorkatoPartnerCard } from "@/components/sections/home/Integrations";
 import { NextService } from "@/components/sections/service/NextService";
@@ -9,7 +11,7 @@ import { integrations } from "@/content/home";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Connect Mitti to ERP, IT, and HR Systems | Avantra Technologies",
+  title: "Connect Mitti to ERP, ITSM and HR Systems | Avantra",
   description:
     "Mitti experts connect Mitti by SafetyCulture to SAP, ServiceNow, Salesforce, and HR tools with Workato, so a finding can open a ticket or work order on its own.",
   path: "/integrations",
@@ -42,10 +44,29 @@ export default function IntegrationsPage() {
               sub={integrations.page.flows.sub}
               className="max-w-[46rem]"
             />
+            <p className="mt-4 max-w-[40rem] text-l text-gray-800">
+              Many teams start with{" "}
+              <Link
+                href="/mitti-experts"
+                className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
+              >
+                Mitti setup and rollout
+              </Link>{" "}
+              before the first connection.
+            </p>
           </Reveal>
           <IntegrationFlows className="mt-10" />
         </div>
       </section>
+      <FaqSection
+        title="Integration questions"
+        items={[
+          {
+            q: "Can I integrate Mitti with my ERP, ITSM or HR system?",
+            a: "Yes. We connect Mitti through the Mitti API and Workato. A failed inspection can open work in the system that should act on it. Examples include SAP, ServiceNow, Salesforce, and Power BI.",
+          },
+        ]}
+      />
       <NextService
         href="/how-we-work"
         eyebrow="Approach"

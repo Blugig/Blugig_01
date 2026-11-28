@@ -52,9 +52,9 @@ export const construction: IndustryPageContent = {
   path: "/industries/construction",
   crumb: "Construction",
   linkLabel: "Mitti for Construction",
-  metaTitle: "Mitti for Construction | Avantra Technologies - Mitti Experts",
+  metaTitle: "Mitti for Construction: Setup & Rollout | Avantra",
   description:
-    "Mitti experts for construction. Avantra sets up SafetyCulture jobsite inspections and checklists so a failed check is assigned to a person before the crew moves on.",
+    "Mitti experts for construction. Avantra sets up SafetyCulture jobsite inspections and checklists so a failed check gets an owner before the crew moves on.",
   h1Lead: "Jobsite problems",
   h1Accent: "get a person to fix them",
   summary:
@@ -83,7 +83,7 @@ export const construction: IndustryPageContent = {
     {
       title: "Daily site walk",
       scenario: "A superintendent walks the job before the crews spread out. They look at trash, access, scaffold tags, and open holes from memory. The notes stay in a notebook.",
-      setup: "We build one site-walk checklist in the order of the walk. If a line fails, Mitti creates a task for a contractor or a lead, with a due date. We ask for a photo only when the picture matters, such as a missing rail.",
+      setup: "We build one site-walk checklist in the order of the walk, the kind of OSHA-style safety walk crews already do for rails, access, and open edges. If a line fails, Mitti creates a task for a contractor or a lead, with a due date. We ask for a photo only when the picture matters, such as a missing rail.",
       result: "The inspection has a time, a name, and a short list of open problems. The next person does not find the same hole again.",
     },
     {
@@ -158,9 +158,9 @@ export const manufacturing: IndustryPageContent = {
   path: "/industries/manufacturing",
   crumb: "Manufacturing",
   linkLabel: "Mitti for Manufacturing",
-  metaTitle: "Mitti for Manufacturing | Avantra Technologies - Mitti Experts",
+  metaTitle: "Mitti for Manufacturing: Setup & Rollout | Avantra",
   description:
-    "Mitti experts for manufacturing. Avantra sets up SafetyCulture line inspections and checklists so a miss on the floor is assigned to a person before the next shift.",
+    "Mitti experts for manufacturing. Avantra sets up SafetyCulture line inspections and checklists so a miss on the floor gets an owner before the next shift.",
   h1Lead: "Line checks that",
   h1Accent: "do not stay on paper",
   summary:
@@ -189,7 +189,7 @@ export const manufacturing: IndustryPageContent = {
     {
       title: "Shift startup",
       scenario: "The lead walks the line before it starts. They check guards, labels, the first piece, and the board. The paper is signed even when one item was skipped to keep the schedule.",
-      setup: "We build a startup checklist in the order of the line. People cannot skip a required item without a note. A fail becomes a task for maintenance or the lead, due on that shift.",
+      setup: "We build a startup checklist in the order of the line, covering the same ground as an OSHA-style safety walk: guards, startup, and who fixes a miss. People cannot skip a required item without a note. A fail becomes a task for maintenance or the lead, due on that shift.",
       result: "The shift starts with a record of what was really checked. The next lead can see what is still open.",
     },
     {
@@ -264,9 +264,9 @@ export const facilities: IndustryPageContent = {
   path: "/industries/facilities",
   crumb: "Facilities",
   linkLabel: "Mitti for Facilities",
-  metaTitle: "Mitti for Facilities | Avantra Technologies - Mitti Experts",
+  metaTitle: "Mitti for Facilities: Setup & Rollout | Avantra",
   description:
-    "Mitti experts for facilities teams. Avantra sets up SafetyCulture inspections and checklists for rounds and fire safety, so a failed item is assigned before the tech leaves.",
+    "Mitti experts for facilities teams. Avantra sets up SafetyCulture rounds and fire safety checks so a failed item gets an owner before the tech leaves.",
   h1Lead: "Building problems",
   h1Accent: "do not get lost between shifts",
   summary:
@@ -371,9 +371,9 @@ export const healthcare: IndustryPageContent = {
   path: "/industries/healthcare",
   crumb: "Healthcare",
   linkLabel: "Mitti for Healthcare",
-  metaTitle: "Mitti for Healthcare | Avantra Technologies - Mitti Experts",
+  metaTitle: "Mitti for Healthcare Operations | Avantra",
   description:
-    "Mitti experts for healthcare operations. Avantra sets up SafetyCulture inspections and checklists for rounds, cleanliness, and equipment. This is daily operations, not medical advice.",
+    "Mitti experts for healthcare operations. Avantra sets up SafetyCulture checklists for rounds, cleanliness and equipment. Daily operations, not medical advice.",
   h1Lead: "Paper rounds",
   h1Accent: "get typed up days later",
   summary:
@@ -479,7 +479,7 @@ export const hospitality: IndustryPageContent = {
   path: "/industries/hospitality",
   crumb: "Hospitality",
   linkLabel: "Mitti for Hotels and Restaurants",
-  metaTitle: "Mitti for Hotels | Avantra Technologies - Mitti Experts",
+  metaTitle: "Mitti for Hospitality and Hotels | Avantra",
   description:
     "Mitti experts for hotels and restaurants. Avantra sets up SafetyCulture opening, closing, food-temperature, and room checks a busy shift can finish.",
   h1Lead: "Shift checks that",
@@ -584,7 +584,7 @@ export const retail: IndustryPageContent = {
   path: "/industries/retail",
   crumb: "Retail",
   linkLabel: "Mitti for Retail",
-  metaTitle: "Mitti for Retail | Avantra Technologies - Mitti Experts",
+  metaTitle: "Mitti for Retail Store Audits | Avantra",
   description:
     "Mitti experts for retail store audits. Avantra turns SafetyCulture opening, floor, and closing checks into a list a district manager can actually review.",
   h1Lead: "Store audits that",

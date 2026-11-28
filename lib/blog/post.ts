@@ -100,9 +100,10 @@ export function postImagePath(slug: string) {
   return `/blog/${slug}/og`;
 }
 
-/** The <title> the post ships with. */
+/** `<title>` and social title: saved SEO title, then the post title, then a default, with `| Avantra` when it is not already there. */
 export function postTitleTag(post: Pick<Post, "title" | "seoTitle">) {
-  return post.seoTitle.trim() || `${post.title.trim()} | Avantra`;
+  const raw = post.seoTitle.trim() || post.title.trim() || "Blog";
+  return /\|\s*Avantra\s*$/i.test(raw) ? raw : `${raw} | Avantra`;
 }
 
 export function postExcerpt(post: Pick<Post, "excerpt" | "description">) {

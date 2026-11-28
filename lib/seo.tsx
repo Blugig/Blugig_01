@@ -100,12 +100,26 @@ type ContactPointLd = {
   email?: string;
 };
 
+/** E.164, no spaces: "+91 9821711355" → "+919821711355". */
+function toE164(phone: string) {
+  return `+${phone.replace(/\D/g, "")}`;
+}
+
+/** US, then GB, AU, CA, then Worldwide. Shared by Organization and every Service. */
+export const areaServedLd = [
+  { "@type": "Country" as const, name: "United States", alternateName: "US" },
+  { "@type": "Country" as const, name: "United Kingdom", alternateName: "GB" },
+  { "@type": "Country" as const, name: "Australia", alternateName: "AU" },
+  { "@type": "Country" as const, name: "Canada", alternateName: "CA" },
+  { "@type": "Place" as const, name: "Worldwide" },
+];
+
 /** Contact points from the phone numbers and email already published on the site. */
 function contactPoints(): ContactPointLd[] {
   const phones = site.phones.filter((phone) => phone.length > 0);
   const points: ContactPointLd[] = phones.map((telephone, index) => ({
     "@type": "ContactPoint",
-    telephone,
+    telephone: toE164(telephone),
     ...(index === 0 && site.email ? { email: site.email } : {}),
     contactType: "customer service",
   }));
@@ -143,15 +157,9 @@ export function organizationJsonLd() {
       name: site.parentCompany,
     },
     ...(site.email ? { email: site.email } : {}),
-    ...(site.phones[0] ? { telephone: site.phones[0] } : {}),
+    ...(site.phones[0] ? { telephone: toE164(site.phones[0]) } : {}),
     ...(contactPoint.length ? { contactPoint: contactPoint.length === 1 ? contactPoint[0] : contactPoint } : {}),
-    areaServed: [
-      { "@type": "Place", name: "Worldwide" },
-      { "@type": "Country", name: "United States", alternateName: "US" },
-      { "@type": "Country", name: "United Kingdom", alternateName: "GB" },
-      { "@type": "Country", name: "Australia", alternateName: "AU" },
-      { "@type": "Country", name: "Canada", alternateName: "CA" },
-    ],
+    areaServed: areaServedLd,
     ...(site.address
       ? { address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" } }
       : {}),

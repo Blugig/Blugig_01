@@ -141,6 +141,10 @@
 :root[data-zone="sky"] .logo-auto.logo-on-brand {
   display: block;
 }
+/* One nav file. On a dark page, invert that same image instead of downloading a second colourway. */
+:root[data-zone="ink"] .nav-logo {
+  filter: brightness(0) invert(1);
+}
 
 html {
   -webkit-text-size-adjust: 100%;

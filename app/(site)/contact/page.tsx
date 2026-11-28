@@ -12,7 +12,7 @@ import { contactDetails, site } from "@/content/site";
 import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact Avantra | Global Mitti (by SafetyCulture) Implementation Partner",
+  title: "Contact Avantra | Book a Mitti Consultation",
   description: `Contact Avantra, a global Mitti (by SafetyCulture) implementation partner, about setup, training, or an integration. We reply within ${site.replyTime}.`,
   path: "/contact",
 });

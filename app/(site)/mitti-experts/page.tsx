@@ -179,11 +179,6 @@ export default function MittiExpertsPage() {
           description: mittiExpertsMeta.description,
           path: mittiExpertsMeta.path,
           alternateName: ["SafetyCulture implementation", "iAuditor implementation", "Mitti setup", "Mitti consultant"],
-          areaServed: [
-            { name: "United States", alternateName: "US" },
-            { name: "United Kingdom", alternateName: "GB" },
-            { name: "Australia", alternateName: "AU" },
-          ],
         })}
       />
     </>

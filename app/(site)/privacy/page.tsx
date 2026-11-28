@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Privacy Policy | Avantra Technologies",
+  title: "Privacy Policy | Avantra",
   description:
     "How Avantra Technologies collects, uses, shares, and protects personal data when you visit this website or contact us, and the rights you have.",
   path: "/privacy",

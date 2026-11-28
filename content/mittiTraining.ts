@@ -1,7 +1,7 @@
 export const mittiTrainingMeta = {
-  title: "Mitti Training for Teams | Avantra",
+  title: "Mitti Training for Teams: Role-Based, Hands-On | Avantra",
   description:
-    "Hands-on Mitti (SafetyCulture) training from Avantra. We train your inspectors, supervisors and admins on your templates, so your team uses Mitti from day one.",
+    "Hands-on Mitti (by SafetyCulture) training from Avantra. We train your inspectors, supervisors and admins on your own templates. Book a 30-minute call.",
   path: "/mitti-training",
 } as const;
 
@@ -54,6 +54,33 @@ export const mittiTrainingSections = {
     },
   ],
 } as const;
+
+export const mittiTrainingCourses = {
+  id: "mitti-courses",
+  title: "Mitti's own courses vs training on your templates",
+  href: "https://mitti.com/training",
+  linkLabel: "Mitti's training page",
+  paragraphs: [
+    "Mitti ships with its own courses. An admin can assign a lesson from Mitti's library, or build one inside the account, and people complete it on the phone. Those lessons are useful for a general topic, such as how a feature works or a workplace habit that is the same in every company. You can browse them on Mitti's training page.",
+    "That is a different job from practicing the checklist your night shift will actually open. A library course does not know your site names, which question should create an action, or who the supervisor is on Tuesday. People can finish the course and still hesitate on the first real inspection.",
+    "We train the roles that will touch the account. Inspectors run the template they will use on shift. Supervisors assign an action and close it. Admins set sites, groups, and who may edit a form. The session uses your login, so the next shift is not learning on a sample company. Use Mitti's courses for the general lessons, and book us when the training has to match your operation.",
+  ],
+} as const;
+
+export const mittiTrainingFaqs = [
+  {
+    q: "How long is a session?",
+    a: "Most first sessions are one sitting, long enough to practice one inspection, one action, and who owns it. We agree the length before we book your people, based on how many roles are in the room.",
+  },
+  {
+    q: "Who attends?",
+    a: "The people who will use Mitti: inspectors, supervisors, and the admin who owns the account. We do not pull the whole company into one call. Each role practices the task they will do the next day.",
+  },
+  {
+    q: "Do you train remotely?",
+    a: "Yes. Sessions run online with your team, on your account. You share a screen, open the template, and complete a real check together. Nobody has to be in the same building.",
+  },
+] as const;
 
 export const mittiTrainingCta = {
   title: "Want Mitti training for your team?",
