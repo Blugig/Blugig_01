@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { HashScroll } from "@/components/layout/HashScroll";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { AgentSpotlight } from "@/components/sections/home/AgentSpotlight";
@@ -71,14 +70,8 @@ export default function HomePage() {
         cards={explore.cards.map((card) => ({ ...card }))}
         footer={
           <p className="mt-10 max-w-[40rem] text-l text-gray-800">
-            Planning a first site or a wider rollout? Our{" "}
-            <Link
-              href="/mitti-experts"
-              className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
-            >
-              Mitti implementation experts
-            </Link>{" "}
-            scope the account, run a pilot, and train each role.
+            Planning a first site or a wider rollout? Our Mitti implementation experts scope the account, run a
+            pilot, and train each role.
           </p>
         }
       />

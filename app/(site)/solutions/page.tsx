@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Capabilities } from "@/components/sections/service/Capabilities";
 import { CtaBand } from "@/components/sections/service/CtaBand";
@@ -34,14 +33,7 @@ export default function SolutionsPage() {
         shape="mitti"
       />
       <p className="shell pb-4 text-l text-gray-800">
-        When those checks need one owner across sites,{" "}
-        <Link
-          href="/mitti-experts"
-          className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
-        >
-          work with our Mitti consultants
-        </Link>
-        .
+        When those checks need one owner across sites, work with our Mitti consultants.
       </p>
       <Capabilities
         id="use-cases"

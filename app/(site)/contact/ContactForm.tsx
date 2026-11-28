@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
-import Link from "next/link";
 import { useEffect, useId, useState, useTransition } from "react";
 import { useForm, type FieldError } from "react-hook-form";
 import { submitContact, type ContactResult } from "@/app/(site)/contact/actions";
@@ -131,11 +130,7 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-s max-w-[20rem] text-gray-500">
-          We&apos;ll only use your details to respond. See our{" "}
-          <Link href="/privacy" className="underline decoration-sky-500 underline-offset-2 hover:text-blue-700">
-            Privacy Policy
-          </Link>
-          .
+          We&apos;ll only use your details to respond. See our Privacy Policy.
         </p>
         <Button type="submit" disabled={pending} className="w-full disabled:opacity-60 sm:w-auto">
           {pending ? "Sending…" : "Send message"}

@@ -43,7 +43,7 @@ export const templateSetup: SeoLandingPage = {
   serviceName: "Mitti template and checklist setup",
   ctaTitle: "Bring us the form you use today",
   stepsIntro: "A short path from the form in the binder to a template people will open on a phone.",
-  stepsMore: { href: "/mitti-experts", label: "how our Mitti implementation experts run a full rollout" },
+  stepsMore: { href: "/mitti-experts", label: "Template setup is part of how our Mitti implementation experts run a full rollout." },
   sections: [
     {
       heading: "Start from the form people already use",

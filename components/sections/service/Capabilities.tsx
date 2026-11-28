@@ -43,12 +43,7 @@ export function Capabilities({
           {more ? (
             <p className="mt-4 text-base text-gray-800">
               {more.before}
-              <Link
-                href={more.href}
-                className="font-medium text-blue-600 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-700"
-              >
-                {more.label}
-              </Link>
+              {more.label}
               {more.after}
             </p>
           ) : null}
