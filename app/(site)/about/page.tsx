@@ -52,7 +52,14 @@ export default function AboutPage() {
               <SplitWords text={aboutHero.titleAccent} offset={leadCount} wordClassName="text-grad" />
             </PageHeading>
             <p className="enter-fade text-l max-w-[36rem]" style={d(0.5)}>
-              {aboutHero.sub}
+              {aboutHero.sub}{" "}
+              <Link
+                href="/mitti-experts"
+                className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
+              >
+                Mitti implementation help
+              </Link>{" "}
+              covers the account, the templates, and the first site.
             </p>
           </div>
         }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Capabilities } from "@/components/sections/service/Capabilities";
 import { CtaBand } from "@/components/sections/service/CtaBand";
@@ -11,7 +12,7 @@ import { solutions, solutionsCta, solutionsHero, solutionsIndustries, solutionsI
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Mitti Solutions for Inspections and Actions | Avantra Technologies",
+  title: "Mitti Solutions: Inspections, Audits, Actions | Avantra",
   description:
     "Mitti experts set up inspections, audits, actions, and site standards in Mitti by SafetyCulture. Asset and maintenance checks are only one use case.",
   path: "/solutions",
@@ -32,6 +33,16 @@ export default function SolutionsPage() {
         secondary={solutionsHero.secondary}
         shape="mitti"
       />
+      <p className="shell pb-4 text-l text-gray-800">
+        When those checks need one owner across sites,{" "}
+        <Link
+          href="/mitti-experts"
+          className="font-medium text-blue-700 underline decoration-sky-500 decoration-2 underline-offset-4 hover:text-blue-800"
+        >
+          work with our Mitti consultants
+        </Link>
+        .
+      </p>
       <Capabilities
         id="use-cases"
         chip={solutionsIntro.chip}

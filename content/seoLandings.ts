@@ -31,7 +31,7 @@ const adoption = "[when adoption stalls](/blog/mitti-adoption-stalls-get-teams-u
 
 export const templateSetup: SeoLandingPage = {
   path: "/mitti-template-setup",
-  title: "Template Setup | Avantra Technologies - Mitti Experts",
+  title: "Template Setup | Avantra",
   description:
     "Avantra sets up Mitti templates and checklists for teams that used SafetyCulture or iAuditor. One shared form, tested on a real shift.",
   crumb: "Template setup",
@@ -102,7 +102,7 @@ export const templateSetup: SeoLandingPage = {
 
 export const zapier: SeoLandingPage = {
   path: "/integrations/zapier",
-  title: "Mitti and Zapier | Avantra Technologies - Mitti Experts",
+  title: "Mitti and Zapier | Avantra",
   description:
     "Connect Mitti by SafetyCulture to other apps with Zapier. Avantra sets up simple automations so a failed check can email, task, or log a row.",
   crumb: "Zapier",
@@ -173,7 +173,7 @@ export const zapier: SeoLandingPage = {
 
 export const powerBi: SeoLandingPage = {
   path: "/integrations/power-bi",
-  title: "Mitti and Power BI | Avantra Technologies - Mitti Experts",
+  title: "Mitti and Power BI | Avantra",
   description:
     "Put Mitti by SafetyCulture inspection numbers into Power BI. Avantra helps you show the few reports leaders already ask for each week.",
   crumb: "Power BI",
@@ -224,6 +224,10 @@ export const powerBi: SeoLandingPage = {
   ],
   faqs: [
     {
+      q: "Can you connect Mitti to Power BI?",
+      a: "Yes. We send the inspections and actions you care about into Power BI, with the site name spelled the same way as the rest of your report. People still complete and close the work in Mitti. Power BI is the view leaders already open.",
+    },
+    {
       q: "Do we still need the reports inside Mitti?",
       a: "Yes. People running the checks should see their own inspections in Mitti. Power BI is for leaders who already look at other numbers there.",
     },
@@ -244,7 +248,7 @@ export const powerBi: SeoLandingPage = {
 
 export const maintainx: SeoLandingPage = {
   path: "/integrations/maintainx",
-  title: "Mitti and MaintainX | Avantra Technologies - Mitti Experts",
+  title: "Mitti and MaintainX | Avantra",
   description:
     "Send a failed Mitti equipment check to MaintainX as a work order. Avantra maps SafetyCulture findings to the fields your technicians already use.",
   crumb: "MaintainX",

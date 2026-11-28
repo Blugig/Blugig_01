@@ -22,26 +22,18 @@ export const instant = false;
 type Props = { params: Promise<{ slug: string }> };
 
 /**
- * Title tag and meta description only. The visible H1 and intro stay the post's own title and excerpt.
- * Open Graph and Twitter use the same strings so the share card matches the search result.
+ * Title tag and meta description only. The visible H1 stays the post's own title.
+ * The document title uses the saved SEO title, then the title, then a default.
+ * Open Graph and Twitter use that same title so the share card matches the tab.
  */
-const POST_SEARCH_META: Record<string, { title: string; description: string }> = {
-  "safetyculture-is-now-mitti": {
-    title: "SafetyCulture Is Now Mitti | Mitti Experts",
-    description:
-      "SafetyCulture is now Mitti, and iAuditor was renamed in the rebrand. What changes for your teams, plus a checklist to keep inspections on track.",
-  },
-};
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const found = await findLivePost((await params).slug);
   if (!found || "movedTo" in found) return {};
   const { post } = found;
   const path = postPath(post.slug);
-  const searchMeta = POST_SEARCH_META[post.slug];
-  const title = searchMeta?.title ?? postTitleTag(post);
-  const description = searchMeta?.description ?? post.description;
-  const socialTitle = searchMeta?.title ?? post.title;
+  const title = postTitleTag(post);
+  const description = post.description;
+  const socialTitle = title;
   const author = displayAuthor(post);
   const canonical = post.canonicalUrl ? asHttps(post.canonicalUrl) : path;
   const image = { url: postImagePath(post.slug), width: 1200, height: 630, alt: post.title };

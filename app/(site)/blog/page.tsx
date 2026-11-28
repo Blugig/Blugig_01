@@ -19,7 +19,7 @@ export const instant = false;
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getLivePosts();
   const base = pageMetadata({
-    title: "Blog | Avantra Technologies",
+    title: "Blog | Avantra",
     description:
       "Guides from Avantra's Mitti experts on rollouts, inspections, and corrective actions in Mitti by SafetyCulture, which many teams still call iAuditor.",
     path: "/blog",

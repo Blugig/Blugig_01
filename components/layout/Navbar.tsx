@@ -1,11 +1,10 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { NavigationMenu } from "radix-ui";
-import { useState } from "react";
 import { DrawIcon, type IconName } from "@/components/icons/DrawIcon";
 import { Logo } from "@/components/layout/Logo";
 import { MobileMenu } from "@/components/layout/MobileMenu";
@@ -28,7 +27,6 @@ const navlink =
  */
 export function Navbar() {
   const pathname = usePathname();
-  const { scrollY } = useScroll();
   // Open mega menu (its trigger href, or ""). Closed on every route change, since the nav persists across pages.
   const [menu, setMenu] = useState("");
   const [menuPath, setMenuPath] = useState(pathname);
@@ -43,10 +41,16 @@ export function Navbar() {
   const desktop = useMediaQuery(DESKTOP_QUERY);
   const scrolled = depth >= (desktop ? 2 : 1);
 
-  useMotionValueEvent(scrollY, "change", (y) => {
-    const next = y >= 200 ? 2 : y > 8 ? 1 : 0;
-    setDepth((prev) => (prev === next ? prev : next));
-  });
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const next = y >= 200 ? 2 : y > 8 ? 1 : 0;
+      setDepth((prev) => (prev === next ? prev : next));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-[var(--gutter)]">
@@ -63,11 +67,12 @@ export function Navbar() {
       >
         <Link href="/" className="justify-self-start">
           <Logo
+            variant="onLight"
             eager
-            height={32}
-            sizes="(min-width: 1024px) 176px, 154px"
+            height={28}
+            sizes="154px"
             alt={site.name}
-            className="h-7 w-auto lg:h-8"
+            className="nav-logo h-7 w-auto lg:h-8"
           />
         </Link>
 

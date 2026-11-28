@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Terms and Conditions | Avantra Technologies",
+  title: "Terms and Conditions | Avantra",
   description:
     "The terms that apply when you use the Avantra Technologies website, including the pages about our Mitti by SafetyCulture services.",
   path: "/terms",

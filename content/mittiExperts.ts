@@ -1,7 +1,7 @@
 import { site } from "@/content/site";
 
-const h1Lead = "Global Mitti (by SafetyCulture)";
-const h1Accent = "Implementation Partner";
+const h1Lead = "Mitti implementation experts";
+const h1Accent = "and consultants";
 
 export const mittiExpertsMeta = {
   title: "Mitti (by SafetyCulture) Implementation Partner & Experts | Avantra",
@@ -17,7 +17,7 @@ export const mittiExpertsHero = {
   /** Visible H1: lead plus accent, with a space between them. */
   h1: `${h1Lead} ${h1Accent}`,
   summary:
-    "The licenses are paid. People have logins. Then a supervisor walks a site and finds last week's paper checklist still on the clipboard, while the new one on the phone was never opened. That is usually when someone starts looking for help. We implement Mitti with your team: plan the account, build the templates, try them on one real site, train each role, and roll the rest out at a pace people can keep.",
+    "Avantra is a Global Mitti (by SafetyCulture) Implementation Partner. The licenses are paid. People have logins. Then a supervisor walks a site and finds last week's paper checklist still on the clipboard, while the new one on the phone was never opened. That is usually when someone starts looking for help. We implement Mitti with your team: plan the account, build the templates, try them on one real site, train each role, and roll the rest out at a pace people can keep.",
   primaryLabel: "Book a call",
   secondaryLabel: "Email us",
 } as const;
@@ -178,7 +178,7 @@ export const mittiTeam = {
   title: "Who we are",
   paragraphs: [
     {
-      text: "Avantra Technologies is a global Mitti (by SafetyCulture) implementation partner. We do not make Mitti. Khasim Basha is a Mitti Expert on the team. The same people who scope a project build the templates and run the training.",
+      text: "Avantra Technologies helps operations teams put Mitti to work. We do not make Mitti. Khasim Basha is a Mitti Expert on the team. The same people who scope a project build the templates and run the training.",
     },
     {
       text: "We work with teams in the US, UK, and Australia, remotely. Discovery, setup, training, and support all happen online. You do not need us in the building to run a pilot. You do need a project owner who can get us the forms and a few people for the first site.",

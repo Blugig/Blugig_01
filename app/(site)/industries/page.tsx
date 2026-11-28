@@ -6,7 +6,7 @@ import { industryDirectory } from "@/content/mittiIndustries";
 import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
-const title = "Mitti for Your Industry | Avantra Technologies - Mitti Experts";
+const title = "Mitti for Your Industry | Avantra";
 const description =
   "How Avantra sets up Mitti, formerly SafetyCulture, for construction, manufacturing, facilities, healthcare, hotels, and retail.";
 
