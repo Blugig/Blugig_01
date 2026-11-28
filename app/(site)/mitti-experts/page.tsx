@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { GuideLinks } from "@/components/sections/GuideLinks";
 import { IndustryLinks } from "@/components/sections/mitti/IndustryLinks";
 import { MittiHero } from "@/components/sections/mitti/MittiHero";
 import { Capabilities } from "@/components/sections/service/Capabilities";
@@ -135,7 +134,6 @@ export default function MittiExpertsPage() {
       <div id="faq">
         <FaqSection items={mittiFaqs} title="Mitti implementation questions" />
       </div>
-      <GuideLinks omit={["/mitti-experts"]} />
       <CtaBand
         title={mittiCta.title}
         sub={mittiCta.sub}

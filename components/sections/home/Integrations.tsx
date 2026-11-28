@@ -1,6 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { IntegrateIcon } from "@/components/icons/IntegrateIcon";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -98,24 +97,6 @@ export function IntegrationFlows({ className }: { className?: string }) {
           );
         })}
       </RevealGroup>
-
-      <Reveal>
-        <nav aria-label="Connection guides" className="flex flex-col gap-4">
-          <p className="text-s text-gray-600">Guides for a specific connection</p>
-          <ul className="flex flex-wrap gap-3">
-            {integrations.guides.map((guide) => (
-              <li key={guide.href}>
-                <Link
-                  href={guide.href}
-                  className="inline-flex rounded-full bg-white px-5 py-3 text-base font-medium text-ink shadow-[0_14px_30px_-18px_rgba(6,69,148,0.35)] transition-colors duration-300 hover:text-blue-700"
-                >
-                  {guide.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </Reveal>
 
       <Reveal className="rounded-[1.5rem] bg-white p-7 sm:p-8">
         <p className="text-s text-gray-600">{integrations.process.label}</p>

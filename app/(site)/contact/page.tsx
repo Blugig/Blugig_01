@@ -7,7 +7,6 @@ import { SplitWords } from "@/components/motion/SplitWords";
 import { HeroRays } from "@/components/sections/home/HeroArt";
 import { Chip } from "@/components/ui/Chip";
 import { PageHeading } from "@/components/ui/PageHeading";
-import { GuideLinks } from "@/components/sections/GuideLinks";
 import { contactDetails, site } from "@/content/site";
 import { breadcrumbJsonLd, JsonLd, pageMetadata } from "@/lib/seo";
 
@@ -113,7 +112,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <GuideLinks omit={["/contact"]} />
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },

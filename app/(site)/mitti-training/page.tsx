@@ -4,7 +4,6 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { IndustryLinks } from "@/components/sections/mitti/IndustryLinks";
 import { MittiHero } from "@/components/sections/mitti/MittiHero";
 import { Capabilities } from "@/components/sections/service/Capabilities";
-import { GuideLinks } from "@/components/sections/GuideLinks";
 import { CtaBand } from "@/components/sections/service/CtaBand";
 import {
   mittiTrainingCourses,
@@ -65,7 +64,6 @@ export default function MittiTrainingPage() {
         lead="Mitti for your operation"
         sub="Construction, manufacturing, facilities, healthcare, hotels, and retail. Each page is a practical setup, not a client list."
       />
-      <GuideLinks omit={["/mitti-training"]} />
       <CtaBand
         title={mittiTrainingCta.title}
         sub={`For training with your supervisors and crews, book a 30-minute call, or email ${site.email}.`}
